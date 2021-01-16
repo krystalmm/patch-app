@@ -20,7 +20,7 @@ module Myapp
       g.test_framework :rspec,
         fixtures: true,
         view_specs: false,
-        helper_specs: false,
+        helper_specs: false
     end
   end
 end
