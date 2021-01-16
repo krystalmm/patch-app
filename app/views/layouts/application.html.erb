@@ -10,6 +10,56 @@
   </head>
 
   <body>
+    <header>
+      <h1 class="logo">
+        <img src="/assets/Lifewave-logo.jpg" alt="LifeWave-Logo" class="logo-img">
+      </h1>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <div class="footer-category">
+        <h2 class="footer-head">CATEGORY <br> 種類</h2>
+        <ul>
+          <li class="footer-category-item">
+            <p>全身・局所的な痛みに</p>
+          </li>
+          <li class="footer-category-item">
+            <p>スポーツを楽しみたい方に</p>
+          </li>
+          <li class="footer-category-item">
+            <p>良質な睡眠に</p>
+          </li>
+          <li class="footer-category-item">
+            <p>ストレスを緩和させたい方に</p>
+          </li>
+          <li class="footer-category-item">
+            <p>スタミナ不足の方に</p>
+          </li>
+          <li class="footer-category-item">
+            <p>体に溜まった毒素を取り除きたい方に</p>
+          </li>
+          <li class="footer-category-item">
+            <p>身体的老化が気になる全ての方に</p>
+          </li>
+          <li class="footer-category-item">
+            <p>お肌の老化でお悩みの方に</p>
+          </li>
+          <li class="footer-category-item">
+            <p>体型が気になる方に</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-service">
+        <h2 class="footer-head">SERVICE <br> サービス</h2>
+        <ul>
+          <li class="footer-service-item"><p>初めての方へ</p></li>
+          <li class="footer-service-item"><%= link_to "ご注文の流れ", static_pages_support_path %></li>
+          <li class="footer-service-item"><%= link_to "お問い合わせ", static_pages_contact_path %></li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>
