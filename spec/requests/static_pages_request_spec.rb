@@ -1,24 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe "StaticPages", type: :request do
+RSpec.describe 'StaticPages', type: :request do
 
-  describe "GET /home" do
-    it "returns http success" do
-      get "/static_pages/home"
+  describe 'GET /home' do
+    it 'returns http success' do
+      get '/static_pages/home'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /support" do
-    it "returns http success" do
-      get "/static_pages/support"
+  describe 'GET /support' do
+    it 'returns http success' do
+      get '/static_pages/support'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /contact" do
-    it "returns http success" do
-      get "/static_pages/contact"
+  describe 'GET /contact' do
+    it 'returns http success' do
+      get '/static_pages/contact'
       expect(response).to have_http_status(:success)
     end
   end

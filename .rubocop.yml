@@ -1,0 +1,34 @@
+inherit_from: .rubocop_todo.yml
+
+require: 
+  - rubocop-rails
+
+
+AllCops:
+  TargetRubyVersion: 2.7.2
+  Exclude: # 除外するファイルを指定
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'node_modules/node-sass/src/libsass/contrib/libsass.spec'
+
+Rails:
+  Enabled: true
+
+AsciiComments: #日本語のコメントを許可
+  Enabled: false
+
+Documentation: # クラスにコメントを記載しなくてもいい
+  Enabled: false
+
+ClassAndModuleChildren: # モジュール名::クラス名の定義を許可する
+  Enabled: false
+
+Style/FrozenStringLiteralComment: 
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
