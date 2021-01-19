@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Myapp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0e93b877b5.js" crossorigin="anonymous"></script>
   </head>
 
@@ -32,52 +36,83 @@
             <a href="#">LOGIN <br> ログイン</a>
           </li>
         </ul>
+        <div class="media-s">
+          <div class="cart-icon">
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <nav class="globalMenuSp">
+              <ul>
+                  <li><a href="#">LOGIN <br> ログイン</a></li>
+                  <li><a href="#">ALL ITEM <br> 製品一覧</a></li>
+                  <li><a href="#">HOW TO USE <br> パッチの貼り方</a></li>
+              </ul>
+          </nav>
+        </div>
       </div>
     </header>
 
     <%= yield %>
 
     <footer>
-      <div class="footer-category">
-        <h2 class="footer-head">CATEGORY <br> 種類</h2>
-        <ul>
-          <li class="footer-category-item">
-            <p>全身・局所的な痛みに</p>
-          </li>
-          <li class="footer-category-item">
-            <p>スポーツを楽しみたい方に</p>
-          </li>
-          <li class="footer-category-item">
-            <p>良質な睡眠に</p>
-          </li>
-          <li class="footer-category-item">
-            <p>ストレスを緩和させたい方に</p>
-          </li>
-          <li class="footer-category-item">
-            <p>スタミナ不足の方に</p>
-          </li>
-          <li class="footer-category-item">
-            <p>体に溜まった毒素を取り除きたい方に</p>
-          </li>
-          <li class="footer-category-item">
-            <p>身体的老化が気になる全ての方に</p>
-          </li>
-          <li class="footer-category-item">
-            <p>お肌の老化でお悩みの方に</p>
-          </li>
-          <li class="footer-category-item">
-            <p>体型が気になる方に</p>
-          </li>
-        </ul>
-      </div>
+      <div class="row">
+        <div class="footer-box">
+          <div class="footer-category col-lg-9 col-md-9">
+            <h2 class="footer-head">CATEGORY <br> 種類</h2>
+            <div class="category-box">
+              <ul class="category-list-left">
+                <li class="footer-category-item">
+                  <a href="#">全身・局所的な痛みに</a>
+                </li>
+                <li class="footer-category-item">
+                  <a href="#">スタミナ不足の方に</a>
+                </li>
+                <li class="footer-category-item">
+                  <a href="#">良質な睡眠に</a>
+                </li>
+              </ul>
+              <ul class="category-list-center">
+                <li class="footer-category-item">
+                  <a href="#">ストレスを緩和させたい方に</a>
+                </li>
+                <li class="footer-category-item">
+                  <a href="#">スポーツを楽しみたい方に</a>
+                </li>
+                <li class="footer-category-item">
+                  <a href="#">体に溜まった毒素を取り除きたい方に</a>
+                </li>
+              </ul>
+              <ul class="category-list-right">
+                <li class="footer-category-item">
+                  <a href="#">身体的老化が気になる全ての方に</a>
+                </li>
+                <li class="footer-category-item">
+                  <a href="#">お肌の老化でお悩みの方に</a>
+                </li>
+                <li class="footer-category-item">
+                  <a href="#">体型が気になる方に</a>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-      <div class="footer-service">
-        <h2 class="footer-head">SERVICE <br> サービス</h2>
-        <ul>
-          <li class="footer-service-item"><p>初めての方へ</p></li>
-          <li class="footer-service-item"><%= link_to "ご注文の流れ", static_pages_support_path %></li>
-          <li class="footer-service-item"><%= link_to "お問い合わせ", static_pages_contact_path %></li>
-        </ul>
+          <div class="footer-service col-lg-3 col-md-3">
+            <h2 class="footer-head">SERVICE <br> サービス</h2>
+            <ul>
+              <li class="footer-service-item"><a href="#">初めての方へ</a></li>
+              <li class="footer-service-item"><%= link_to "ご注文の流れ", static_pages_support_path %></li>
+              <li class="footer-service-item"><%= link_to "お問い合わせ", static_pages_contact_path %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-end">
+        <p>LIFE WAVE</p>
       </div>
     </footer>
   </body>

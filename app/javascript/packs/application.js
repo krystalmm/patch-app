@@ -17,3 +17,17 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 import 'bootstrap-material-design'
 import '../stylesheets/application.scss'
+
+
+// ハンバーガーメニュー
+$(function() {
+  $('.hamburger').click(function() {
+      $(this).toggleClass('active');
+
+      if ($(this).hasClass('active')) {
+          $('.globalMenuSp').addClass('active');
+      } else {
+          $('.globalMenuSp').removeClass('active');
+      }
+  });
+});
