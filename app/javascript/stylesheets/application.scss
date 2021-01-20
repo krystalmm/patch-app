@@ -4,7 +4,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Noto Sans JP', sans-serif;}
+  font-family: 'Noto Sans JP', sans-serif;
+}
 
 a {
   color: black;
@@ -96,7 +97,7 @@ footer {
     display: flex;
 
     .footer-head {
-      font-size: 15px;
+      font-size: 16px;
       margin-bottom: 30px;
     }
 
@@ -115,7 +116,7 @@ footer {
           margin-right: 50px;
 
           a {
-            font-size: 13px;
+            font-size: 14px;
 
             &:hover, &:active {
               opacity: 0.5;
@@ -129,14 +130,15 @@ footer {
     .footer-service {
 
       ul {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
 
         li {
-          margin-right: 30px;
 
           a {
-            font-size: 13px;
+            font-size: 14px;
 
             &:hover, &:active {
               opacity: 0.5;
@@ -324,10 +326,6 @@ footer {
       display: block;
       margin-top: 80px;
 
-      .footer-head {
-        font-size: 14px;
-      }
-
       .footer-category {
         width: 100%;
         margin: 0 auto;
@@ -338,13 +336,13 @@ footer {
           margin: 0 auto;
           display: flex;
           flex-wrap: wrap;
+          justify-content: space-between;
 
           ul {
 
             li {
               width: 100%;
               margin: 0 auto;
-              margin-right: 60px;
 
               a {
                 font-size: 11px;
@@ -356,14 +354,16 @@ footer {
 
       .footer-service {
         width: 100%;
-        background-color: red;
 
         ul {
-          background-color: indianred;
           justify-content: space-evenly;
 
           li {
             text-align: center;
+            width: 110px;
+            margin: 0 auto;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
 
             a {
               font-size: 11px;
@@ -372,8 +372,11 @@ footer {
         }
       }
     }
-  }
 
+    .footer-end {
+      font-size: 10px;
+    }
+  }
 }
 
 
@@ -421,7 +424,6 @@ footer {
       margin-top: 50px;
 
       .footer-head {
-        font-size: 13px;
         text-align: center;
       }
 
@@ -440,10 +442,6 @@ footer {
             li {
               width: 100%;
               text-align: center;
-
-              a {
-                font-size: 10px;
-              }
             }
           }
         }
@@ -455,22 +453,18 @@ footer {
 
         ul {
           width: 100%;
+          display: block;
 
           li {
-            width: 55%;
+            width: 110px;
             margin: 0 auto;
             text-align: center;
             border-bottom: 1px solid #555;
             padding-bottom: 5px;
             margin-top: 10px;
-
-            a {
-              font-size: 10px;
-            }
           }
         }
       }
-
     }
   }
 }
