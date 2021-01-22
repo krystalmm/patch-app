@@ -17,7 +17,7 @@ RSpec.describe "StaticPages", type: :system do
 
   describe "#contact" do
     before do
-      visit static_pages_contact_path
+      visit contact_path
     end
 
     it "has title 'お問い合わせ | ライフウェーブパッチ販売サイト'" do
@@ -27,7 +27,7 @@ RSpec.describe "StaticPages", type: :system do
 
   describe "#support" do
     before do
-      visit static_pages_support_path
+      visit support_path
     end
 
     it "has title 'ご注文の流れ | ライフウェーブパッチ販売サイト'" do
@@ -37,7 +37,7 @@ RSpec.describe "StaticPages", type: :system do
 
   describe "#about" do
     before do
-      visit static_pages_about_path
+      visit about_path
     end
 
     it "has title 'LifeWaveパッチについて | ライフウェーブパッチ販売サイト'" do
