@@ -34,4 +34,14 @@ RSpec.describe "StaticPages", type: :system do
       expect(page).to have_title("ご注文の流れ | ライフウェーブパッチ販売サイト")
     end
   end
+
+  describe "#about" do
+    before do
+      visit static_pages_about_path
+    end
+
+    it "has title 'LifeWaveパッチについて | ライフウェーブパッチ販売サイト'" do
+      expect(page).to have_title("LifeWaveパッチについて | ライフウェーブパッチ販売サイト")
+    end
+  end
 end

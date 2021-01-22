@@ -2,31 +2,29 @@ require 'rails_helper'
 
 RSpec.describe StaticPagesController, type: :controller do
   describe "#home" do
-    before do
-      get :home
-    end
-
     it "responds successfully" do
+      get :home
       expect(response).to be_successful
     end
   end
 
   describe "#contact" do
-    before do
-      get :contact
-    end
-
     it "responds successfully" do
+      get :contact
       expect(response).to be_successful
     end
   end
 
   describe "#support" do
-    before do
-      get :support
-    end
-
     it "responds successfully" do
+      get :support
+      expect(response).to be_successful
+    end
+  end
+
+  describe "#about" do
+    it "responds successfully" do
+      get :about
       expect(response).to be_successful
     end
   end
