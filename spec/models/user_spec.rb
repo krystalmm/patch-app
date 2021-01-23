@@ -63,4 +63,16 @@ RSpec.describe User, type: :model do
     case_user = FactoryBot.create(:user, email: mixed_case_email)
     expect(case_user.reload.email).to eq mixed_case_email.downcase
   end
+
+  # パスワードがなければ無効であること
+  it "is invalid without password" do
+    user.password = " " * 8
+    expect(user).to be_invalid
+  end
+
+  # 長さが８文字以上のパスワードでなければ無効であること
+  it "is invalid without passwords more than 8 characters" do
+    user.password = 'a' * 7
+    expect(user).to be_invalid
+  end
 end
