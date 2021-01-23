@@ -93,10 +93,18 @@ RSpec.describe User, type: :model do
 
   # フリガナはカタカナ(+ー)以外無効であること
   it "is invalid except for Katakana to name_kana" do
-    invalid_name_kanas = %w[ふりがな furigana フリガナ+ /jカナ]
+    invalid_name_kanas = %w[furigana フリガナ+ /jカナ]
     invalid_name_kanas.each do |kana|
       user.name_kana = kana
       expect(user).to be_invalid, "#{kana.inspect} should be invalid"
     end
   end
+
+  # フリガナはひらがなだった場合カタカナに変換されること
+  it "is conversion to katakana" do
+    name_hiragana = 'てすとーふりがな'
+    hiragana_user = FactoryBot.create(:user, name_kana: name_hiragana)
+    expect(hiragana_user.reload.name_kana).to eq name_hiragana.tr('あ-ん', 'ア-ン')
+  end
 end
+
