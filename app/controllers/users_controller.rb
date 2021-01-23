@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-    #new
+    @user = User.new
   end
 
   def show
