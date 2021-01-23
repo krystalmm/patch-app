@@ -75,4 +75,28 @@ RSpec.describe User, type: :model do
     user.password = 'a' * 7
     expect(user).to be_invalid
   end
+
+  # 郵便番号のフォーマットが無効であること
+  it "is invalid with a wrong format postcode" do
+    invalid_postcodes = %w[1111-111 00-12341 0-244533 123-43281]
+    invalid_postcodes.each do |invalid_postcode|
+      user.postcode = invalid_postcode
+      expect(user).to be_invalid, "#{invalid_postcode.inspect} should be invalid"
+    end
+  end
+
+  # フリガナがなければ無効であること
+  it "is invalid without name_kana" do
+    user.name_kana = " "
+    expect(user).to be_invalid
+  end
+
+  # フリガナはカタカナ(+ー)以外無効であること
+  it "is invalid except for Katakana to name_kana" do
+    invalid_name_kanas = %w[ふりがな furigana フリガナ+ /jカナ]
+    invalid_name_kanas.each do |kana|
+      user.name_kana = kana
+      expect(user).to be_invalid, "#{kana.inspect} should be invalid"
+    end
+  end
 end

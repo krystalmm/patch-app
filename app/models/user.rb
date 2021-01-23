@@ -7,4 +7,9 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }
+  VALID_POSTCODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/.freeze
+  validates :postcode, format: { with: VALID_POSTCODE_REGEX }, allow_blank: true
+  VALID_KANA_REGEX = /\A[\p{katakana}\u{30fc}]+\z/.freeze
+  validates :name_kana, presence: true, format: { with: VALID_KANA_REGEX }
 end
+
