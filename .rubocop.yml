@@ -27,7 +27,7 @@ Documentation: # クラスにコメントを記載しなくてもいい
 ClassAndModuleChildren: # モジュール名::クラス名の定義を許可する
   Enabled: false
 
-Style/FrozenStringLiteralComment: 
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/SymbolArray:
@@ -36,3 +36,9 @@ Style/SymbolArray:
 # 自分で定義したグローバル変数を警告対象外にする
 GlobalVars:
   AllowedVariables: [$CFLAGS, $LIBS]
+
+# RSpecのコードは長くても警告対象外にする
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
