@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'jp_prefecture'
 
+gem 'validates_email_format_of'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
