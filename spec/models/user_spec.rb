@@ -65,19 +65,19 @@ RSpec.describe User, type: :model do
   end
 
   # パスワードがなければ無効であること
-  it "is invalid without password" do
-    user.password = " " * 8
+  it 'is invalid without password' do
+    user.password = ' ' * 8
     expect(user).to be_invalid
   end
 
   # 長さが８文字以上のパスワードでなければ無効であること
-  it "is invalid without passwords more than 8 characters" do
+  it 'is invalid without passwords more than 8 characters' do
     user.password = 'a' * 7
     expect(user).to be_invalid
   end
 
   # 郵便番号のフォーマットが無効であること
-  it "is invalid with a wrong format postcode" do
+  it 'is invalid with a wrong format postcode' do
     invalid_postcodes = %w[1111-111 00-12341 0-244533 123-43281]
     invalid_postcodes.each do |invalid_postcode|
       user.postcode = invalid_postcode
@@ -86,13 +86,13 @@ RSpec.describe User, type: :model do
   end
 
   # フリガナがなければ無効であること
-  it "is invalid without name_kana" do
-    user.name_kana = " "
+  it 'is invalid without name_kana' do
+    user.name_kana = ' '
     expect(user).to be_invalid
   end
 
   # フリガナはカタカナ(+ー)以外無効であること
-  it "is invalid except for Katakana to name_kana" do
+  it 'is invalid except for Katakana to name_kana' do
     invalid_name_kanas = %w[furigana フリガナ+ /jカナ]
     invalid_name_kanas.each do |kana|
       user.name_kana = kana
@@ -101,16 +101,15 @@ RSpec.describe User, type: :model do
   end
 
   # フリガナはひらがなだった場合カタカナに変換されること
-  it "is conversion to katakana" do
+  it 'is conversion to katakana' do
     name_hiragana = 'てすとーふりがな'
     hiragana_user = FactoryBot.create(:user, name_kana: name_hiragana)
     expect(hiragana_user.reload.name_kana).to eq name_hiragana.tr('あ-ん', 'ア-ン')
   end
 
   # 都道府県コードで都道府県名を参照できる
-  it "is conversion to jp_prefecture" do
+  it 'is conversion to jp_prefecture' do
     prefecture_user = FactoryBot.create(:user, prefecture_code: 1)
     expect(prefecture_user.prefecture_name).to eq '北海道'
   end
 end
-

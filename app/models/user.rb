@@ -1,7 +1,6 @@
 require 'nkf'
 
 class User < ApplicationRecord
-
   # データベースに保存される前に全ての文字列を小文字に変換する！（大文字と小文字を区別しないため！）
   before_save { email.downcase! }
 
@@ -20,7 +19,7 @@ class User < ApplicationRecord
   VALID_KANA_REGEX = /\A[\p{katakana}\u{30fc}]+\z/.freeze
   validates :name_kana, presence: true, format: { with: VALID_KANA_REGEX }
   before_validation do
-    self.name_kana = NKF.nkf("-W -w -Z1 --katakana", name_kana) if name_kana
+    self.name_kana = NKF.nkf('-W -w -Z1 --katakana', name_kana) if name_kana
   end
 
   include JpPrefecture
@@ -34,6 +33,3 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 end
-
-
-
