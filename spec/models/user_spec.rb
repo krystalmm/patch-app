@@ -106,5 +106,11 @@ RSpec.describe User, type: :model do
     hiragana_user = FactoryBot.create(:user, name_kana: name_hiragana)
     expect(hiragana_user.reload.name_kana).to eq name_hiragana.tr('あ-ん', 'ア-ン')
   end
+
+  # 都道府県コードで都道府県名を参照できる
+  it "is conversion to jp_prefecture" do
+    prefecture_user = FactoryBot.create(:user, prefecture_code: 1)
+    expect(prefecture_user.prefecture_name).to eq '北海道'
+  end
 end
 

@@ -28,6 +28,7 @@ a {
 
 body {
   width: 100%;
+  background-color: rgb(255, 255, 255);
 }
 
 html {
@@ -155,7 +156,7 @@ main {
   font-size: 1.8rem;
   text-align: center;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 50px;
   margin-bottom: 40px;
   border-bottom: 3px solid black;
   width: 150px;
@@ -169,7 +170,16 @@ main {
     padding-left: 5px;
     padding-right: 5px;
     font-size: 0.8rem;
-    margin-left: 10px;
+    margin-left: 15px;
+  }
+
+  .arbitrary-icon {
+    background-color: rgb(121, 117, 117);
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 0.8rem;
+    margin-left: 15px;
   }
 
   .form-p {
@@ -191,6 +201,23 @@ main {
     .form-check-label {
       font-size: 0.9rem;
     }
+  }
+
+  .prefecture-wrap {
+    padding-left: 0;
+  }
+
+  .form-address-street {
+    margin-top: 10px;
+  }
+
+  .form-address-building {
+    margin-top: 10px;
+    margin-bottom: 80px;
+  }
+
+  .return-page {
+    margin-bottom: 100px;
   }
 }
 
