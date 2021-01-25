@@ -7,8 +7,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX },
+  validates :email, presence: true, length: { maximum: 255 },
                     uniqueness: { case_sensitive: false }
+  validates :email, email_format: { :with => VALID_EMAIL_REGEX, :message => '正しいメールアドレスを入力してください。' }, allow_blank: true
+
   has_secure_password
 
   validates :password, presence: true, length: { minimum: 8 }

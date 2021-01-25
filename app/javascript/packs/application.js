@@ -11,6 +11,10 @@ require('sign_up_password.js')
 require('address_autofill.js')
 require('jquery.autoKana.js')
 require('autokana.js')
+require('jquery.validationEngine-ja.js')
+require('jquery.validationEngine.js')
+require('form-validation.js')
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -21,5 +25,5 @@ require('autokana.js')
 // const imagePath = (name) => images(name, true)
 import 'bootstrap-material-design'
 import '../stylesheets/application.scss'
-
+import '../stylesheets/validationEngine.jquery.css'
 
