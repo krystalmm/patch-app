@@ -222,6 +222,56 @@ main {
 }
 
 
+// マイページ(users/id)
+
+.mypage-head {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.8rem;
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
+  width: 170px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+
+.mypage {
+
+  .mypage-minihead {
+    margin-bottom: 30px;
+  }
+
+  .mypage-list {
+
+    .mypage-list-item {
+
+      .mypage-list-item-big {
+        font-size: 1.5rem;
+        border: 3px solid rgb(228, 232, 253);
+        width: 450px;
+        height: 50px;
+        align-items: center;
+
+        i {
+          margin-right: 13px;
+          margin-left: 18px;
+          vertical-align: middle;
+        }
+
+        a {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .mypage-logout {
+    margin-top: 40px;
+    margin-bottom: 100px;
+  }
+}
+
+
 // footer
 
 footer {

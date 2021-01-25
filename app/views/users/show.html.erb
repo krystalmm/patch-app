@@ -1,4 +1,39 @@
 <% provide(:title, "マイページ | ライフウェーブパッチ販売サイト") %>
 
-<h3>マイページ</h3>
-<%= @user.name %>, <%= @user.email %>
+<h3 class="mypage-head">マイページ</h3>
+
+<div class="mypage col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+  <h4 class="mypage-minihead">
+    ようこそ ！　<span><%= @user.name %></span>　様
+  </h4>
+  <ul class="mypage-list row">
+    <li class="mypage-list-item col">
+      <div class="mypage-list-item-big">
+        <i class="fas fa-history"></i><%= link_to "購入履歴", root_path %>
+      </div>
+      <p class="mypage-list-item-p">ご購入履歴と、詳細内容などがご確認いただけます。</p>
+    </li>
+    <li class="mypage-list-item col">
+      <div class="mypage-list-item-big">
+        <i class="fas fa-user-edit"></i><%= link_to "会員情報変更", root_path %>
+      </div>
+      <p class="mypage-list-item-p">お客様のご登録情報を変更いただけます。</p>
+    </li>
+    <div class="w-100"></div>
+    <li class="mypage-list-item col">
+      <div class="mypage-list-item-big">
+        <i class="fas fa-key"></i><%= link_to "パスワード変更", root_path %>
+      </div>
+      <p class="mypage-list-item-p">現在ご登録いただいているパスワードを変更いただけます。</p>
+    </li>
+    <li class="mypage-list-item col">
+      <div class="mypage-list-item-big">
+        <i class="fas fa-truck"></i><%= link_to "配送先の新規登録・変更", root_path %>
+      </div>
+      <p class="mypage-list-item-p">配送先のご住所を登録したり、変更することが可能です。</p>
+    </li>
+  </ul>
+  <div class="mypage-logout btn btn-raised btn-dark btn-lg col-4 offset-4">
+    ログアウト
+  </div>
+</div>
