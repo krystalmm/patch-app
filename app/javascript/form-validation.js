@@ -3,3 +3,9 @@ $(function() {
     promptPosition: "bottomLeft"
   });
 });
+
+$(function() {
+  $("#login-form").validationEngine('attach', {
+    promptPosition: "bottomLeft"
+  });
+});

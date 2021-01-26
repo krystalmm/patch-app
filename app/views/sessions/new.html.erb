@@ -1,2 +1,31 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% provide(:title, 'ログイン | ライフウェーブパッチ販売サイト') %>
+
+<h3 class="login-head">ログイン</h3>
+
+<div class="login-wrap col-md-6 offset-md-3 col-8 offset-2">
+  <div class="created-user">
+    <h4 class="created-user-head">会員登録がお済みのお客様</h4>
+    <p class="created-user-p">メールアドレスとパスワードを入力してログインしてください。</p>
+  </div>
+  <%= form_with scope: :session, url: login_path, id: 'login-form', local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: 'form-control validate[required] validate[custom[email]]', id: 'login-email', placeholder: ' 例 : life@wave.co.jp', autocomplete: 'email' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: 'form-control validate[required]', id: 'login-password', placeholder: ' ご登録いただいているパスワードを入力してください' %>
+    </div>
+    <div class="forgot-password">
+      <%= link_to "パスワードをお忘れの方はこちら", root_path %>
+    </div>
+    <div class="login-submit">
+      <%= f.submit 'ログインする', class: 'btn btn-raised btn-lg btn-dark col-6 offset-3', id: 'form-login-submit' %>
+    </div>
+  <% end %>
+  <div class="uncreated-user">
+    <h4 class="uncreated-user-head">まだ会員登録されていないお客様</h4>
+    <p class="uncreated-user-p">初めてご利用のお客様は、こちらから会員登録を行ってください。</p>
+    <%= link_to '新規会員登録', signup_path, class: 'btn btn-raised btn-lg btn-dark col-6 offset-3' %>
+  </div>
+</div>

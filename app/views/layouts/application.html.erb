@@ -34,7 +34,9 @@
             <a href="#"><i class="fas fa-shopping-cart"></i><br> カートを見る</a>
           </li>
           <li class="gnav-nav-item">
-            <a href="#">LOGIN <br> ログイン</a>
+            <%= link_to login_path do %>
+              LOGIN <br> ログイン
+            <% end %>
           </li>
         </ul>
         <div class="media-s">
@@ -49,7 +51,11 @@
 
           <nav class="globalMenuSp">
               <ul>
-                  <li><a href="#">LOGIN <br> ログイン</a></li>
+                  <li>
+                    <%= link_to login_path do %>
+                      LOGIN <br> ログイン
+                    <% end %>
+                  </li>
                   <li><a href="#">ALL ITEM <br> 製品一覧</a></li>
                   <li><a href="#">HOW TO USE <br> パッチの貼り方</a></li>
               </ul>
