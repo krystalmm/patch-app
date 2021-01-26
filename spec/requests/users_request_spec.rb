@@ -17,10 +17,10 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe "POST /users" do
+  describe 'POST /users' do
     # attributes_forを使うのは、ハッシュとなるから、パラメータに値を渡すことができるから！
     let(:user) { FactoryBot.attributes_for(:user) }
-    it "adds new user with correct signup information" do
+    it 'adds new user with correct signup information' do
       aggregate_failures do
         expect do
           post users_path, params: { user: user }
