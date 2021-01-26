@@ -2,7 +2,7 @@
 
 <h3 class="signup-head">会員登録</h3>
 
-<div class="signup-wrap col-6 offset-3">
+<div class="signup-wrap col-md-6 offset-md-3 col-8 offset-2">
   <%= render 'shared/error_messages' %>
   <p class="form-p"><span class="essential-icon">必須</span> は入力必須項目です。</p>
   <%= form_with model: @user, id: 'signup-form', local: true do |f| %>

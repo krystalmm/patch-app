@@ -1,3 +1,5 @@
 $(function() {
-  $("#signup-form").validationEngine();
+  $("#signup-form").validationEngine('attach', {
+    promptPosition: "bottomLeft"
+  });
 });
