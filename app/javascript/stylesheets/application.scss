@@ -39,6 +39,16 @@ li {
   list-style: none;
 }
 
+@mixin base-head {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 1.8rem;
+  border-bottom: 3px solid black;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+
 
 // header
 
@@ -150,17 +160,11 @@ main {
 }
 
 
-// 会員登録画面（users/new）
+// 会員登録画面（users/new, signup）
 
 .signup-head {
-  font-size: 1.8rem;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 50px;
-  margin-bottom: 40px;
-  border-bottom: 3px solid black;
-  width: 150px;
-  padding-bottom: 10px;
+  @include base-head;
+  width: 170px;
 }
 
 .signup-wrap {
@@ -225,14 +229,8 @@ main {
 // マイページ(users/id)
 
 .mypage-head {
-  text-align: center;
-  padding-top: 30px;
-  font-size: 1.8rem;
-  border-bottom: 3px solid black;
-  padding-bottom: 10px;
-  width: 170px;
-  margin: 0 auto;
-  margin-bottom: 80px;
+  @include base-head;
+  width: 200px;
 }
 
 .mypage {
@@ -283,6 +281,14 @@ main {
     margin-top: 40px;
     margin-bottom: 100px;
   }
+}
+
+
+// ログインページ（sessions/new, login）
+
+.login-head {
+  @include base-head;
+  width: 170px;
 }
 
 
@@ -642,9 +648,20 @@ footer {
   }
 
 
+  // 会員登録ページ(users/new, signup)
+
+  .signup-head {
+    width: 130px;
+    padding-top: 20px;
+    margin-bottom: 40px;
+  }
+
+
   // マイページ(users/id)
 
   .mypage-head {
+    width: 140px;
+    padding-top: 20px;
     margin-bottom: 40px;
   }
 
@@ -675,6 +692,15 @@ footer {
         }
       }
     }
+  }
+
+
+  // ログインページ(sessions/new, login)
+
+  .login-head {
+    width: 130px;
+    padding-top: 20px;
+    margin-bottom: 40px;
   }
 
 

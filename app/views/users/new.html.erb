@@ -55,7 +55,7 @@
       </small>
     </div>
     <div class="form-group">
-      <div class="prefecture-wrap col-5">
+      <div class="prefecture-wrap col-7 col-sm-5">
         <%= f.label :prefecture_name, '都道府県' %>
         <span class="arbitrary-icon">任意</span>
         <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', id: 'user_prefecture_code' %>
