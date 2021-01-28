@@ -648,6 +648,25 @@ footer {
     height: 57.28px;
   }
 
+  // ログイン画面(sessions/new, login)
+
+  .login-wrap {
+
+    .created-user {
+
+      .created-user-head {
+        width: 310px;
+      }
+    }
+
+    .uncreated-user {
+
+      .uncreated-user-head {
+        width: 380px;
+      }
+    }
+  }
+
 
   // footer
 
@@ -764,6 +783,16 @@ footer {
   }
 
 
+  // 前に戻るリンク
+
+  .backpage-wrap {
+
+    .backpage {
+      margin-left: -10px;
+    }
+  }
+
+
   // 会員登録ページ(users/new, signup)
 
   .signup-head {
@@ -817,6 +846,48 @@ footer {
     width: 130px;
     padding-top: 20px;
     margin-bottom: 40px;
+  }
+
+  .login-wrap {
+
+    .created-user {
+
+      .created-user-head {
+        width: auto;
+        padding: 0;
+        text-align: center;
+
+        &:after {
+          display: none;
+          width: 0;
+        }
+      }
+
+      .created-user-p {
+        margin-top: 20px;
+      }
+    }
+
+    .uncreated-user {
+      margin-bottom: 60px;
+      margin-top: 70px;
+
+      .uncreated-user-head {
+        width: auto;
+        padding: 0;
+        text-align: center;
+
+        &::after {
+          display: none;
+          width: 0;
+        }
+      }
+
+      .uncreated-user-p {
+        margin-top: 30px;
+        margin-bottom: 40px;
+      }
+    }
   }
 
 
