@@ -24,6 +24,22 @@
           </a>
         </h1>
         <ul class="gnav-nav">
+          <% if logged_in? %>
+          <li class="gnav-nav-item">
+            <a href="#">ALL ITEM <br> 製品一覧</a>
+          </li>
+          <li class="gnav-nav-item">
+            <a href="#">HOW TO USE <br> パッチの貼り方</a>
+          </li>
+          <li class="gnav-nav-item">
+            <a href="#"><i class="fas fa-shopping-cart"></i><br> カートを見る</a>
+          </li>
+          <li class="gnav-nav-item">
+            <%= link_to current_user do %>
+              <i class="fas fa-user"></i> <br> マイページ
+            <% end %>
+          </li>
+          <% else %>
           <li class="gnav-nav-item">
             <a href="#">ALL ITEM <br> 製品一覧</a>
           </li>
@@ -38,6 +54,7 @@
               LOGIN <br> ログイン
             <% end %>
           </li>
+          <% end %>
         </ul>
         <div class="media-s">
           <div class="cart-icon">
