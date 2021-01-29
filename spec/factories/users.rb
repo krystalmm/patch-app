@@ -3,6 +3,6 @@ FactoryBot.define do
     name { 'Test User' }
     sequence(:email) { |n| "tester#{n}@example.com" }
     password { 'foobarbaz' }
-    name_kana { 'テストユーザー' }
+    name_kana { 'テスト　ユーザー' }
   end
 end

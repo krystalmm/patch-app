@@ -15,6 +15,11 @@ ja:
         address_city: 市区町村
         address_street: 町名・番地
         address_building: マンション名・階数・部屋番号
+  activemodel:
+    attributes:
+      session:
+        email: メールアドレス
+        password: パスワード
   attributes:
     created_at: 作成日
     updated_at: 更新日
