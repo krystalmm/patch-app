@@ -793,6 +793,23 @@ footer {
   }
 
 
+  // ホームページ
+
+  main {
+
+    .main-content-wrap {
+
+      .main-content {
+        padding-top: 50px;
+
+        .main-head {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+
+
   // 会員登録ページ(users/new, signup)
 
   .signup-head {
