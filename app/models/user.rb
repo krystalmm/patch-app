@@ -24,6 +24,7 @@ class User < ApplicationRecord
     self.name_kana = NKF.nkf('-W -w -Z1 --katakana', name_kana) if name_kana
   end
 
+  # 都道府県番号と都道府県名の設定
   include JpPrefecture
   jp_prefecture :prefecture_code
 
@@ -33,5 +34,15 @@ class User < ApplicationRecord
 
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
+  # 渡された文字列のハッシュ値を返す
+  def self.digest(string)
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
+    BCrypt::Password.create(string, cost: cost)
   end
 end

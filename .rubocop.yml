@@ -42,3 +42,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
+# && の書き方を警告対象外にする
+Style/SafeNavigation:
+  Enabled: false
+
