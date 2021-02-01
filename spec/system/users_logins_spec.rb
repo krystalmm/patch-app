@@ -17,17 +17,23 @@ RSpec.describe 'UsersLogins', type: :system, js: true do
     end
   end
 
-  # 有効な値の時ユーザーはログインできること
-  it "login succeeds when user submits valid information" do
+  # 有効な値の時ユーザーはログイン・ログアウトできること
+  it "login succeeds when user submits valid information followed by logout" do
     visit login_path
     fill_in 'login-email', with: user.email
     fill_in 'login-password', with: user.password
     click_button 'ログインする'
     aggregate_failures do
       expect(current_path).to eq user_path(user)
-      take_screenshot
       expect(page).to_not have_link 'ログイン'
       expect(page).to have_link 'マイページ', href: user_path(user)
+    end
+
+    click_link 'ログアウト'
+    aggregate_failures do
+      expect(current_path).to eq root_path
+      expect(page).to have_link 'ログイン', href: login_path
+      expect(page).to_not have_link 'マイページ'
     end
   end
 end

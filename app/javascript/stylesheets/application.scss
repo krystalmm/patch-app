@@ -312,6 +312,10 @@ main {
   .mypage-logout {
     margin-top: 40px;
     margin-bottom: 100px;
+    
+    a {
+      color: white;
+    }
   }
 }
 
@@ -855,6 +859,7 @@ footer {
       }
     }
   }
+
 
 
   // ログインページ(sessions/new, login)

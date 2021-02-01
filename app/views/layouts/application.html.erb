@@ -67,15 +67,25 @@
           </div>
 
           <nav class="globalMenuSp">
-              <ul>
-                  <li>
-                    <%= link_to login_path do %>
-                      LOGIN <br> ログイン
-                    <% end %>
-                  </li>
-                  <li><a href="#">ALL ITEM <br> 製品一覧</a></li>
-                  <li><a href="#">HOW TO USE <br> パッチの貼り方</a></li>
-              </ul>
+            <ul>
+              <% if logged_in? %>
+                <li>
+                  <%= link_to current_user do %>
+                    <i class="fas fa-user"></i> <br> マイページ
+                  <% end %>
+                </li>
+                <li><a href="#">ALL ITEM <br> 製品一覧</a></li>
+                <li><a href="#">HOW TO USE <br> パッチの貼り方</a></li>
+              <% else %>
+                <li>
+                  <%= link_to login_path do %>
+                    LOGIN <br> ログイン
+                  <% end %>
+                </li>
+                <li><a href="#">ALL ITEM <br> 製品一覧</a></li>
+                <li><a href="#">HOW TO USE <br> パッチの貼り方</a></li>
+              <% end %>
+            </ul>
           </nav>
         </div>
       </div>
