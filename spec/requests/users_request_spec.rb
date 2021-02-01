@@ -27,6 +27,7 @@ RSpec.describe 'Users', type: :request do
         end.to change(User, :count).by(1)
         expect(response).to have_http_status(302)
         expect(response).to redirect_to user_path(User.last)
+        expect(is_logged_in?).to be_truthy
       end
     end
   end
