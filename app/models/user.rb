@@ -1,6 +1,8 @@
 require 'nkf'
 
 class User < ApplicationRecord
+  attr_accessor :remamber_token
+
   # データベースに保存される前に全ての文字列を小文字に変換する！（大文字と小文字を区別しないため！）
   before_save { email.downcase! }
 
@@ -44,5 +46,16 @@ class User < ApplicationRecord
              BCrypt::Engine.cost
            end
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  # ランダムなトークンを返す
+  def self.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  # 永続セッションのためにユーザーをデータベースに記憶する
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 end

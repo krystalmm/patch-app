@@ -6,7 +6,7 @@ RSpec.describe 'UsersLogins', type: :system, js: true do
   # フラッシュメッセージ（エラー）の残留がないかどうかのテスト
   it "don't login when user submits invalid information" do
     visit login_path
-    fill_in 'login-email', with: 'testinvalid@example.com' #js trueにしてるから空文字だとjqueryのほうがうごいてしまう！
+    fill_in 'login-email', with: 'testinvalid@example.com' # js trueにしてるから空文字だとjqueryのほうがうごいてしまう！
     fill_in 'login-password', with: 'password'
     click_button 'ログインする'
     aggregate_failures do
@@ -18,7 +18,7 @@ RSpec.describe 'UsersLogins', type: :system, js: true do
   end
 
   # 有効な値の時ユーザーはログイン・ログアウトできること
-  it "login succeeds when user submits valid information followed by logout" do
+  it 'login succeeds when user submits valid information followed by logout' do
     visit login_path
     fill_in 'login-email', with: user.email
     fill_in 'login-password', with: user.password

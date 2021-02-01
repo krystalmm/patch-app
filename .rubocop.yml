@@ -46,3 +46,12 @@ Metrics/BlockLength:
 Style/SafeNavigation:
   Enabled: false
 
+# ヘルパーメソッドでもインスタンス変数を使う
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/sessions_helper.rb'
+
+# update_attributeを警告対象外にする
+Rails/SkipsModelValidations:
+  Enabled: false
+
