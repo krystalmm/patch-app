@@ -312,7 +312,7 @@ main {
   .mypage-logout {
     margin-top: 40px;
     margin-bottom: 100px;
-    
+
     a {
       color: white;
     }
@@ -362,6 +362,19 @@ main {
 
   .form-group {
     margin-top: 30px;
+  }
+
+  .form-check {
+    margin-top: 10px;
+
+    .form-check-input {
+      position: relative;
+      top: 1px;
+    }
+
+    .form-check-label {
+      font-size: 0.9rem;
+    }
   }
 
   .forgot-password {

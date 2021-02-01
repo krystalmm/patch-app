@@ -23,3 +23,16 @@ $(function() {
     }
   });
 });
+
+$(function() {
+  var password = '#login-password'
+  var passcheck = '#login-password-check'
+
+  $(passcheck).change(function(){
+    if ($(this).prop('checked')) {
+      $(password).attr('type', 'text');
+    } else {
+      $(password).attr('type', 'password');
+    }
+  });
+});

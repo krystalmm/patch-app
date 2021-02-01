@@ -24,6 +24,10 @@
     <div class="form-group">
       <%= f.label :password, "パスワード" %>
       <%= f.password_field :password, class: 'form-control validate[required] validate[minSize[8]]', id: 'login-password', placeholder: ' ご登録いただいているパスワードを入力してください' %>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="login-password-check" value="">
+        <label class="form-check-label" for="login-password-check">パスワードを表示する</label>
+      </div>
     </div>
     <div class="forgot-password">
       <%= link_to "パスワードをお忘れの方はこちらをクリック", root_path %>
