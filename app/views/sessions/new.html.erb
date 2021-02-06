@@ -30,8 +30,8 @@
       </div>
     </div>
     <div class="form-check remember-me-checkbox">
-      <input type="checkbox" class="form-check-input" id="remember-me-check">
-      <label for="remember-me-check" class="form-check-label">ログイン情報を保存する</label>
+      <%= f.check_box :remember_me, class: 'form-check-input', id: 'remember-me-check' %>
+      <%= f.label :remember_me, class: 'form-check-label' do %>ログイン情報を保存する <% end %>
     </div>
     <div class="login-submit">
       <%= f.submit 'ログインする', class: 'btn btn-raised btn-lg btn-dark col-6 offset-3', id: 'form-login-submit' %>

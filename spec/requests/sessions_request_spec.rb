@@ -38,4 +38,16 @@ RSpec.describe 'Sessions', type: :request do
       end
     end
   end
+
+  describe 'remember me' do
+    it 'remembers the cookie when user checks the Remember me box' do
+      log_in_as(user)
+      expect(cookies[:remember_token]).to_not eq nil
+    end
+
+    it 'does not remembers the cookie when user does not checks the Remember me box' do
+      log_in_as(user, remember_me: '0')
+      expect(cookies[:remember_token]).to eq nil
+    end
+  end
 end
