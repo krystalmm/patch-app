@@ -55,3 +55,6 @@ Rails/HelperInstanceVariable:
 Rails/SkipsModelValidations:
   Enabled: false
 
+# ABC Sizeの最大点数
+Metrics/AbcSize:
+  Max: 20
