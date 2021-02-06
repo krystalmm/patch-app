@@ -112,4 +112,9 @@ RSpec.describe User, type: :model do
     prefecture_user = FactoryBot.create(:user, prefecture_code: 1)
     expect(prefecture_user.prefecture_name).to eq '北海道'
   end
+
+  # ダイジェストが存在しない場合のauthenticated?のテスト
+  it 'returns false for a user with nil digest' do
+    expect(user.authenticated?('')).to be_falsy
+  end
 end
