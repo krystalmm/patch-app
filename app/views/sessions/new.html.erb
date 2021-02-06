@@ -29,11 +29,15 @@
         <label class="form-check-label" for="login-password-check">パスワードを表示する</label>
       </div>
     </div>
-    <div class="forgot-password">
-      <%= link_to "パスワードをお忘れの方はこちらをクリック", root_path %>
+    <div class="form-check remember-me-checkbox">
+      <input type="checkbox" class="form-check-input" id="remember-me-check">
+      <label for="remember-me-check" class="form-check-label">ログイン情報を保存する</label>
     </div>
     <div class="login-submit">
       <%= f.submit 'ログインする', class: 'btn btn-raised btn-lg btn-dark col-6 offset-3', id: 'form-login-submit' %>
+    </div>
+    <div class="forgot-password">
+      <%= link_to "パスワードをお忘れの方はこちらをクリック", root_path %>
     </div>
   <% end %>
   <div class="uncreated-user">
@@ -42,3 +46,4 @@
     <%= link_to '新規会員登録', signup_path, class: 'btn btn-raised btn-lg btn-dark col-6 offset-3' %>
   </div>
 </div>
+

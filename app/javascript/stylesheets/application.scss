@@ -377,8 +377,24 @@ main {
     }
   }
 
+  .remember-me-checkbox {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 40px;
+
+    .form-check-input {
+      transform: scale(1.5);
+      margin-right: 5px;
+    }
+
+    .form-check-label {
+      font-size: 1rem;
+    }
+  }
+
   .forgot-password {
-    margin-bottom: 50px;
+    margin-top: 20px;
+    text-align: center;
 
     a {
       font-size: 0.9rem;
