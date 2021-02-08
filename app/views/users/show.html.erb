@@ -23,7 +23,7 @@
     </li>
     <li class="mypage-list-item col">
       <div class="mypage-list-item-big">
-        <%= link_to root_path do %>
+        <%= link_to edit_user_path(@user) do %>
           <i class="fas fa-user-edit"></i>会員情報変更
         <% end %>
       </div>
@@ -41,10 +41,10 @@
     <li class="mypage-list-item col">
       <div class="mypage-list-item-big">
         <%= link_to root_path do %>
-          <i class="fas fa-truck"></i>配送先の新規登録・変更
+          <i class="fas fa-heart"></i>お気に入り
         <% end %>
       </div>
-      <p class="mypage-list-item-p">配送先のご住所を登録したり、変更することが可能です。</p>
+      <p class="mypage-list-item-p">登録済みお気に入り商品一覧をご確認いただけます。</p>
     </li>
   </ul>
   <div class="mypage-logout btn btn-raised btn-dark btn-lg col-4 offset-4">

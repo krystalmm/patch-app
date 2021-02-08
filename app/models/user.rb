@@ -15,9 +15,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :password, presence: true, length: { minimum: 8 }
+  validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 
-  VALID_POSTCODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/.freeze
+  VALID_POSTCODE_REGEX = /\A[0-9]{3}[0-9]{4}\z/.freeze
   validates :postcode, format: { with: VALID_POSTCODE_REGEX }, allow_blank: true
 
   VALID_KANA_REGEX = /\A[\p{katakana}\u{30fc}\s 　]+\z/.freeze

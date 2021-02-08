@@ -1,0 +1,80 @@
+<% provide(:title, '会員情報変更 | ライフウェーブパッチ販売サイト') %>
+
+<div class="backpage-wrap col-10 offset-1">
+  <button type="submit" onclick="history.back();" class="backpage" tabIndex="-1">
+    <i class="fas fa-chevron-left"></i> 前に戻る
+  </button>
+</div>
+
+
+<h3 class="edit-head mb-5">会員情報変更</h3>
+
+<div class="container pt-4 mb-5">
+  <div class="row">
+    <div class="edit-form col-lg-6 offset-lg-3 col-8 offset-2">
+      <%= render 'shared/error_messages' %>
+      <p class="form-p mb-0">※<span class="essential-icon ml-2">必須</span> は入力必須項目です。</p>
+      <p class="pt-1">※ 住所をご登録されますと、ご注文の際に入力する手間が省けます。</p>
+      <%= form_with model: @user, id: 'edit-form', local: true do |f| %>
+        <div class="form-group mt-4 pt-3">
+          <%= f.label :name, "お名前"%>
+          <span class="essential-icon">必須</span>
+          <%= f.text_field :name, class: "form-control validate[required]", id: "edit-name", autocomplete: 'name' %>
+        </div>
+        <div class="form-group mt-5">
+          <%= f.label :name_kana, "フリガナ"%>
+          <span class="essential-icon">必須</span>
+          <%= f.text_field :name_kana, class: "form-control validate[required, custom[katakana]]", id: "edit-name_kana" %>
+        </div>
+        <div class="form-group mt-5">
+          <%= f.label :email, "メールアドレス"%>
+          <span class="essential-icon">必須</span>
+          <%= f.email_field :email, class: "form-control validate[required] validate[custom[email]]", id: "edit-email", autocomplete: 'email' %>
+          <small id="passwordHelpBlock" class="form-text text-muted">
+            ※「..（ドットが２つ連続）」を含むメールアドレスはご利用いただけません。
+          </small>
+        </div>
+        <div class="form-group mt-5">
+          <%= f.label :postcode, '郵便番号（7桁）' %>
+          <span class="arbitrary-icon">任意</span>
+          <%= f.text_field :postcode, class: 'form-control validate[custom[number], maxSize[7]]', id: 'edit-user_postcode', autocomplete: 'postcode', placeholder: ' 例 : 1234567' %>
+          <small class="form-text text-muted">
+            郵便番号を入力すると、住所の一部が自動的に表示されます。<br>※半角数字、ハイフン（-）無しで入力してください。
+          </small>
+        </div>
+        <div class="form-group mt-5">
+          <div class="prefecture-wrap col-7 col-sm-5 pl-0">
+            <%= f.label :prefecture_name, '都道府県' %>
+            <span class="arbitrary-icon">任意</span>
+            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control', id: 'edit-user_prefecture_code' %>
+          </div>
+        </div>
+        <div class="form-group mt-5">
+          <%= f.label :address_city, '住所' %>
+          <span class="arbitrary-icon">任意</span>
+          <div class="form-address-city">
+            <%= f.text_field :address_city, class: 'form-control', id: 'edit-user_address_city', autocomplete: 'address_city', placeholder: ' 例 : 〇〇市〇〇区〇〇町' %>
+          </div>
+          <div class="form-address-street pt-2">
+            <%= f.text_field :address_street, class: 'form-control', id: 'edit-user_address_street', autocomplete: 'address_street', placeholder: ' 例 : 〇〇 1-1' %>
+            <small class="form-text text-muted">
+              ※町名・番地の入力漏れにご注意ください。
+            </small>
+          </div>
+          <div class="form-address-building pt-2 pb-3">
+            <%= f.text_field :address_building, class: 'form-control', id: 'edit-user_address_building', autocomplete: 'address_building', placeholder: ' 例 : 〇〇マンション００号' %>
+            <small class="form-text text-muted">
+              ※部屋番号や階数なども忘れずにご記入ください。
+            </small>
+          </div>
+          <div class="edit-submit mt-5">
+            <%= f.submit '保存する', class: 'btn btn-raised btn-lg btn-dark col-md-6 offset-md-3', id: 'form-edit-submit' %>
+          </div>
+        </div>
+      <% end %>
+      <div class="return-page mb-5 btn btn-raised active col-md-4 offset-md-4 col-8 offset-2 mt-2">
+        <%= link_to '戻る', user_path(@user) %>
+      </div>
+    </div>
+  </div>
+</div>

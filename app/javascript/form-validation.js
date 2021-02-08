@@ -9,3 +9,9 @@ $(function() {
     promptPosition: "bottomLeft", scrollOffset: 140
   });
 });
+
+$(function() {
+  $("#edit-form").validationEngine('attach', {
+    promptPosition: "bottomLeft", scrollOffset: 140
+  });
+});
