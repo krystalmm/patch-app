@@ -17,6 +17,12 @@ RSpec.describe 'Sessions', type: :request do
         expect(is_logged_in?).to be_truthy
       end
     end
+
+    it 'does not login with a dismissed user' do
+      dismissed_user = FactoryBot.create(:user, :dismissed)
+      post login_path, params: { session: { email: dismissed_user.email, password: dismissed_user.password } }
+      expect(response).to redirect_to new_user_url
+    end
   end
 
   describe 'delete /logput' do

@@ -50,4 +50,9 @@
   <div class="mypage-logout btn btn-raised btn-dark btn-lg col-4 offset-4">
     <%= link_to "ログアウト", logout_path, method: :delete %>
   </div>
+  <div class="unsubscribe-link row mt-5 pb-3 mb-5">
+    <%= link_to confirm_unsubscribe_path(@user), class: 'ml-auto mb-5' do %>
+      <span>※ 退会をご希望の方はこちらから</span>
+    <% end %>
+  </div>
 </div>

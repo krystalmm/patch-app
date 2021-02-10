@@ -317,6 +317,16 @@ main {
       color: white;
     }
   }
+
+  .unsubscribe-link {
+
+    a {
+      &:hover, &:active {
+        opacity: 0.6;
+        transition: opacity .4s ease;
+      }
+    }
+  }
 }
 
 
@@ -468,6 +478,31 @@ main {
     margin-left: 15px;
   }
 }
+
+
+// 退会ページ（unsubscribe/:id）
+
+.unsubscribe {
+
+  .unsubscribe-head {
+    @include base-head;
+    width: 180px;
+  }
+
+  .unsubscribe-alert {
+    border: 1px solid #e27878;
+    margin-top: 80px;
+    background-color: #fce0e0;
+    padding: 20px;
+  }
+
+  .unsubscribe-text {
+    font-size: 0.9rem;
+  }
+}
+
+
+
 
 
 // footer

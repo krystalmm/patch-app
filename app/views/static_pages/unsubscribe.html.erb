@@ -1,0 +1,22 @@
+<% provide(:title, '退会手続き | ライフウェーブパッチ販売サイト') %>
+
+<div class="backpage-wrap col-10 offset-1">
+  <button type="submit" onclick="history.back();" class="backpage" tabIndex="-1">
+    <i class="fas fa-chevron-left"></i> 前に戻る
+  </button>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="unsubscribe col-md-8 mx-auto">
+      <h2 class="unsubscribe-head mb-5">退会手続き</h2>
+      <p class="unsubscribe-alert text-center">本当に退会手続きを実行してもよろしいでしょうか？</p>
+      <p class="unsubscribe-text text-center mt-4 pb-4">※ 退会する場合は、『退会する』をクリックしてください。</p>
+      <div class="links row justify-content-between my-5 pb-5">
+        <%= link_to '退会しない', user_path(@user), class: 'btn btn-raised btn-secondary btn-lg btn-block col-md-5 mt-3' %>
+        <%= link_to '退会する', withdraw_user_path(@user), method: :patch, class: 'btn btn-raised btn-dark btn-lg btn-block col-md-5 mt-3' %>
+      </div>
+    </div>
+  </div>
+</div>

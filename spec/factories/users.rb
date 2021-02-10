@@ -7,5 +7,9 @@ FactoryBot.define do
     postcode { '1000000' }
     prefecture_code { 13 }
     address_city { '千代田区' }
+
+    trait :dismissed do
+      is_valid { false }
+    end
   end
 end
