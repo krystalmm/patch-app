@@ -11,6 +11,7 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'GET /users/id' do
+    before { log_in_as(user) }
     it 'responds successfully' do
       get user_path(user)
       expect(response).to have_http_status(:success)
@@ -48,6 +49,51 @@ RSpec.describe 'Users', type: :request do
         name: 'test user', name_kana: 'テスト　ユーザー', email: 'test@example.com'
       } }
       expect(response).to redirect_to user_path(user)
+    end
+  end
+
+  describe 'before_action: :logged_in_user' do
+    let(:user) { FactoryBot.create(:user) }
+
+    it 'redirects edit when not logged in' do
+      get edit_user_path(user)
+      expect(response).to redirect_to login_url
+    end
+
+    it 'redirects update when not logged in' do
+      patch user_path(user),  params: { user: {
+        name: user.name, name_kana: user.name_kana, email: user.email
+      } }
+      expect(response).to redirect_to login_url
+    end
+
+    it 'redirects show when not logged in' do
+      get user_path(user)
+      expect(response).to redirect_to login_url
+    end
+  end
+
+  describe 'before_action: :correct_user' do
+    let(:user) { FactoryBot.create(:user) }
+    let(:other_user) { FactoryBot.create(:user) }
+
+    before { log_in_as(other_user) }
+
+    it 'redirects edit when logged in as wrong user' do
+      get edit_user_path(user)
+      expect(response).to redirect_to user_path(other_user)
+    end
+
+    it 'redirects update when logged in as wrong user' do
+      patch user_path(user), params: { user: {
+        name: user.name, name_kana: user.name_kana, email: user.email
+      } }
+      expect(response).to redirect_to user_path(other_user)
+    end
+
+    it 'redirects show when logged in as wrong user' do
+      get user_path(user)
+      expect(response).to redirect_to user_path(other_user)
     end
   end
 end
