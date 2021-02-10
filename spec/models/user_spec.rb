@@ -78,7 +78,7 @@ RSpec.describe User, type: :model do
 
   # 郵便番号のフォーマットが無効であること
   it 'is invalid with a wrong format postcode' do
-    invalid_postcodes = %w[1111-111 00-12341 0-244533 123-43281]
+    invalid_postcodes = %w[1111-111 11111111]
     invalid_postcodes.each do |invalid_postcode|
       user.postcode = invalid_postcode
       expect(user).to be_invalid, "#{invalid_postcode.inspect} should be invalid"

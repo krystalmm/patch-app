@@ -31,4 +31,23 @@ RSpec.describe 'Users', type: :request do
       end
     end
   end
+
+  describe 'PATCH /users/:id' do
+    let(:user) { FactoryBot.create(:user) }
+    before { log_in_as(user) }
+
+    it 'fails edit with wrong information' do
+      patch user_path(user), params: { user: {
+        neme: ' ', name_kana: ' ', email: 'test@invalid'
+      } }
+      expect(response).to have_http_status(200)
+    end
+
+    it 'succeeds edit user with correct information' do
+      patch user_path(user), params: { user: {
+        name: 'test user', name_kana: 'テスト　ユーザー', email: 'test@example.com'
+      } }
+      expect(response).to redirect_to user_path(user)
+    end
+  end
 end
