@@ -12,7 +12,8 @@ RSpec.describe 'UsersDismissed', type: :request do
   describe '#withdraw' do
     let(:user) { FactoryBot.create(:user) }
     it 'succeeds dismissed' do
-      
+      patch withdraw_user_path(user)
+      expect(response).to redirect_to root_url
     end
   end
 end
