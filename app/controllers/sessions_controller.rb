@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
     if @user
       if @user.authenticate(params[:session][:password]) && !@user.is_valid
         flash[:danger] = '退会済みです'
-        redirect_to new_user_path
+        redirect_to signup_path
       end
     end
   end

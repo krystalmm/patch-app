@@ -21,7 +21,7 @@ RSpec.describe 'Sessions', type: :request do
     it 'does not login with a dismissed user' do
       dismissed_user = FactoryBot.create(:user, :dismissed)
       post login_path, params: { session: { email: dismissed_user.email, password: dismissed_user.password } }
-      expect(response).to redirect_to new_user_url
+      expect(response).to redirect_to signup_path
     end
   end
 
