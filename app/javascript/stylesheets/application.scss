@@ -502,6 +502,21 @@ main {
 }
 
 
+// パスワードリセットページ（/password_resets/new）
+
+.password-reset {
+  .password-reset-head {
+    @include base-head;
+    width: 300px;
+  }
+
+  .password-reset-text {
+    font-size: 0.9rem;
+  }
+}
+
+
+
 
 
 

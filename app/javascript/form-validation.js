@@ -15,3 +15,10 @@ $(function() {
     promptPosition: "bottomLeft", scrollOffset: 140
   });
 });
+
+$(function() {
+  $('#password-reset-form').validationEngine('attach', {
+    promptPosition: "bottomLeft", scrollOffset: 140
+  });
+});
+
