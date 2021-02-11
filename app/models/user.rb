@@ -1,10 +1,8 @@
 require 'nkf'
 
 class User < ApplicationRecord
-  attr_accessor :remember_token
-
-  # データベースに保存される前に全ての文字列を小文字に変換する！（大文字と小文字を区別しないため！）
-  before_save { email.downcase! }
+  attr_accessor :remember_token, :reset_token
+  before_save :downcase_email
 
   validates :name, presence: true, length: { maximum: 30 }
 
@@ -70,4 +68,24 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  # パスワード再設定の属性を設定する
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # パスワード再設定のメールを送信する
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+
+  private
+
+    # メールアドレスを全て小文字にする
+    def downcase_email
+      self.email = email.downcase
+    end
 end
