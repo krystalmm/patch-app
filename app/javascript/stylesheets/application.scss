@@ -516,6 +516,16 @@ main {
 }
 
 
+// パスワードリセット再設定ページ（password_resets#edit）
+
+.password-reset-edit {
+  .password-reset-edit-head {
+    @include base-head;
+    width: 300px;
+  }
+}
+
+
 
 
 
