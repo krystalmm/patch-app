@@ -93,7 +93,9 @@
     <div class="header-height"></div>
 
     <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %> col-10 offset-1 col-lg-8 offset-lg-2"><%= message %></div>
+      <div class="alert alert-<%= message_type %><%= ' flash-long-sentence' if message.include?('<br>') %> col-10 offset-1 col-lg-8 offset-lg-2">
+        <%= message.html_safe %>
+      </div>
     <% end %>
 
     <%= yield %>

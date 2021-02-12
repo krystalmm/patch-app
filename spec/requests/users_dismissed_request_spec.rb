@@ -50,6 +50,15 @@ RSpec.describe 'UsersDismissed', type: :request do
       expect(response).to redirect_to user_path(other_user)
     end
   end
+
+  describe 'before_action: :not_dismissed_user' do
+    let(:dissmissed_user) { FactoryBot.create(:user, :dismissed) }
+
+    it 'redirects password_resets when dismissed user' do
+      post password_resets_path, params: { password_reset: { email: dissmissed_user.email } }
+      expect(response).to redirect_to signup_path
+    end
+  end
 end
 
 

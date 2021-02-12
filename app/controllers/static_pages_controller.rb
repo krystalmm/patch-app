@@ -27,7 +27,7 @@ class StaticPagesController < ApplicationController
     @user = User.find(params[:id])
     @user.update(is_valid: false)
     reset_session
-    flash[:primary] = 'またのご利用を心よりお待ちしております'
+    flash[:primary] = 'ありがとうございました <br> またのご利用を心よりお待ちしております'
     redirect_to root_path
   end
 
