@@ -2,6 +2,7 @@ require 'nkf'
 
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
+
   before_save :downcase_email
 
   validates :name, presence: true, length: { maximum: 30 }
@@ -87,11 +88,10 @@ class User < ApplicationRecord
     reset_sent_at < 24.hours.ago
   end
 
-
   private
 
-    # メールアドレスを全て小文字にする
-    def downcase_email
-      self.email = email.downcase
-    end
+  # メールアドレスを全て小文字にする
+  def downcase_email
+    self.email = email.downcase
+  end
 end

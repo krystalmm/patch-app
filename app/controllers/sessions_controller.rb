@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   before_action :reject_inactive_user, only: [:create]
 
   def new
@@ -25,16 +24,12 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-
   # 退会後のログインを阻止
   def reject_inactive_user
     @user = User.find_by(email: params[:session][:email].downcase)
-    if @user
-      if @user.authenticate(params[:session][:password]) && !@user.is_valid
-        flash[:danger] = '退会済みです'
-        redirect_to signup_path
-      end
-    end
+    return unless @user && @user.authenticate(params[:session][:password]) && !@user.is_valid
+
+    flash[:danger] = '退会済みです'
+    redirect_to signup_path
   end
 end
-

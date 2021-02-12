@@ -13,7 +13,7 @@ RSpec.describe 'UsersEdit', type: :system do
     fill_in 'edit-name_kana', with: ' '
     fill_in 'edit-email', with: 'user@invalid'
     fill_in 'edit-user_postcode', with: '00000000'
-    find("#edit-user_prefecture_code").find("option[value='1']").select_option
+    find('#edit-user_prefecture_code').find("option[value='1']").select_option
     fill_in 'edit-user_address_city', with: ' '
     fill_in 'edit-user_address_street', with: ' '
     fill_in 'edit-user_address_building', with: ' '
@@ -30,7 +30,7 @@ RSpec.describe 'UsersEdit', type: :system do
     fill_in 'edit-name_kana', with: 'テスト　ユーザー'
     fill_in 'edit-email', with: 'test@example.com'
     fill_in 'edit-user_postcode', with: '5300001'
-    find("#edit-user_prefecture_code").find("option[value='27']").select_option
+    find('#edit-user_prefecture_code').find("option[value='27']").select_option
     fill_in 'edit-user_address_city', with: '大阪市北区'
     fill_in 'edit-user_address_street', with: '梅田'
     fill_in 'edit-user_address_building', with: ' '

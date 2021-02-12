@@ -83,10 +83,10 @@ RSpec.describe 'PasswordResets', type: :request do
     context 'when user sends wrong password' do
       before do
         patch password_reset_path(user.reset_token),
-          params: {
-            email: user.email,
-            user: { password: 'foobarbaz', password_confirmation: 'bazbarfoo' }
-          }
+              params: {
+                email: user.email,
+                user: { password: 'foobarbaz', password_confirmation: 'bazbarfoo' }
+              }
       end
 
       it 'fails' do
@@ -101,10 +101,10 @@ RSpec.describe 'PasswordResets', type: :request do
     context 'when user sends blank password' do
       before do
         patch password_reset_path(user.reset_token),
-          params: {
-            email: user.email,
-            user: { password: ' ', password_confirmation: ' ' }
-          }
+              params: {
+                email: user.email,
+                user: { password: ' ', password_confirmation: ' ' }
+              }
       end
 
       it 'fails' do
@@ -119,10 +119,10 @@ RSpec.describe 'PasswordResets', type: :request do
     context 'when user sends correct password' do
       before do
         patch password_reset_path(user.reset_token),
-          params: {
-            email: user.email,
-            user: { password: 'foobarbaz', password_confirmation: 'foobarbaz' }
-          }
+              params: {
+                email: user.email,
+                user: { password: 'foobarbaz', password_confirmation: 'foobarbaz' }
+              }
       end
 
       it 'succeeds' do
@@ -142,10 +142,10 @@ RSpec.describe 'PasswordResets', type: :request do
       before do
         user.update_attribute(:reset_sent_at, 25.hours.ago)
         patch password_reset_path(user.reset_token),
-          params: {
-            email: user.email,
-            user: { password: 'foobarbaz', password_confirmation: 'foobarbaz' }
-          }
+              params: {
+                email: user.email,
+                user: { password: 'foobarbaz', password_confirmation: 'foobarbaz' }
+              }
       end
 
       it 'fails' do

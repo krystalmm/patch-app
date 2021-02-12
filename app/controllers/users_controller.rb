@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:show, :edit, :update]
 
@@ -38,32 +37,32 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(
-        :name, :name_kana, :email, :password, :password_confirmation, :postcode, :prefecture_code, :prefecture_name,
-        :address_city, :address_street, :address_building
-      )
-    end
+  def user_params
+    params.require(:user).permit(
+      :name, :name_kana, :email, :password, :password_confirmation, :postcode, :prefecture_code, :prefecture_name,
+      :address_city, :address_street, :address_building
+    )
+  end
 
-    def user_update_params
-      params.require(:user).permit(
-        :name, :name_kana, :email, :postcode, :prefecture_code, :prefecture_name,
-        :address_city, :address_street, :address_building
-      )
-    end
+  def user_update_params
+    params.require(:user).permit(
+      :name, :name_kana, :email, :postcode, :prefecture_code, :prefecture_name,
+      :address_city, :address_street, :address_building
+    )
+  end
 
-    # ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = 'ログインしてください'
-        redirect_to login_url
-      end
-    end
+  # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    return if logged_in?
 
-    # 正しいユーザーかどうか確認
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(user_path(current_user)) unless current_user?(@user)
-    end
+    store_location
+    flash[:danger] = 'ログインしてください'
+    redirect_to login_url
+  end
+
+  # 正しいユーザーかどうか確認
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(user_path(current_user)) unless current_user?(@user)
+  end
 end
