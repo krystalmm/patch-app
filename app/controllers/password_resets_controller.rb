@@ -3,7 +3,7 @@ class PasswordResetsController < ApplicationController
   before_action :get_user, only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
-  before_action :not_dismissed_user, only: [:create, :edit, :update]
+  before_action :not_dismissed_user, only: [:create]
 
   def new
   end
@@ -28,8 +28,9 @@ class PasswordResetsController < ApplicationController
     if params[:user][:password].empty?
       @user.errors.add(:password, :blank)
       render 'edit'
-    elsif @user.update_attributes(user_params)
+    elsif @user.update(user_params)
       log_in @user
+      @user.update_attribute(:reset_digest, nil)
       flash[:success] = 'パスワードが再設定されました'
       redirect_to @user
     else
@@ -50,7 +51,7 @@ class PasswordResetsController < ApplicationController
 
     # 正しいユーザーかどうか確認する
     def valid_user
-      unless (@user && @user.authenticated?(:reset, params[:id]))
+      unless (@user && @user.is_valid? && @user.authenticated?(:reset, params[:id]))
         redirect_to root_url
       end
     end
