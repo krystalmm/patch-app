@@ -18,5 +18,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :password_resets, only: [:new, :edit, :create, :update]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
 
