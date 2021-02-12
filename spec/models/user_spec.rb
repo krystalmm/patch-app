@@ -115,6 +115,6 @@ RSpec.describe User, type: :model do
 
   # ダイジェストが存在しない場合のauthenticated?のテスト
   it 'returns false for a user with nil digest' do
-    expect(user.authenticated?('')).to be_falsy
+    expect(user.authenticated?(:remember, '')).to be_falsy
   end
 end

@@ -22,3 +22,9 @@ $(function() {
   });
 });
 
+$(function() {
+  $('#password-reset-edit-form').validationEngine('attach', {
+    promptPosition: "bottomLeft", scrollOffset: 140
+  });
+});
+

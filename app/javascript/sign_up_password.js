@@ -36,3 +36,16 @@ $(function() {
     }
   });
 });
+
+$(function() {
+  var password = '#password-reset-edit'
+  var passcheck = '#password-reset-check'
+
+  $(passcheck).change(function(){
+    if ($(this).prop('checked')) {
+      $(password).attr('type', 'text');
+    } else {
+      $(password).attr('type', 'password');
+    }
+  });
+});
