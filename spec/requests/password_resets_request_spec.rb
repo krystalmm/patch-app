@@ -35,7 +35,6 @@ RSpec.describe 'PasswordResets', type: :request do
   end
 
   describe '#edit' do
-    # メールアドレスが無効な時
     context 'when user sends correct token and wrong email' do
       before { get edit_password_reset_path(user.reset_token, email: '') }
 
@@ -44,7 +43,6 @@ RSpec.describe 'PasswordResets', type: :request do
       end
     end
 
-    # 退会済みのユーザーのとき
     context 'when dismissed user sends correct token and email' do
       before do
         user.toggle!(:is_valid)
@@ -56,7 +54,6 @@ RSpec.describe 'PasswordResets', type: :request do
       end
     end
 
-    # メールアドレスが有効で、トークンが無効な時
     context 'when user sends wrong token and correct email' do
       before { get edit_password_reset_path('wrong', email: user.email) }
 
@@ -65,7 +62,6 @@ RSpec.describe 'PasswordResets', type: :request do
       end
     end
 
-    # メールアドレスもトークンも有効な時
     context 'when user sends correct token and correct email' do
       before { get edit_password_reset_path(user.reset_token, email: user.email) }
 
@@ -79,7 +75,6 @@ RSpec.describe 'PasswordResets', type: :request do
   end
 
   describe '#update' do
-    # 無効なパスワードとパスワード確認
     context 'when user sends wrong password' do
       before do
         patch password_reset_path(user.reset_token),
@@ -97,7 +92,6 @@ RSpec.describe 'PasswordResets', type: :request do
       end
     end
 
-    # パスワードが空
     context 'when user sends blank password' do
       before do
         patch password_reset_path(user.reset_token),
@@ -115,7 +109,6 @@ RSpec.describe 'PasswordResets', type: :request do
       end
     end
 
-    # 有効なパスワードとパスワード確認
     context 'when user sends correct password' do
       before do
         patch password_reset_path(user.reset_token),
@@ -129,7 +122,6 @@ RSpec.describe 'PasswordResets', type: :request do
         aggregate_failures do
           expect(response).to redirect_to user
           expect(is_logged_in?).to be_truthy
-          # パスワード再設定が成功したらダイジェストをnilにする
           expect(user.reload.reset_digest).to eq nil
         end
       end
@@ -137,7 +129,6 @@ RSpec.describe 'PasswordResets', type: :request do
   end
 
   describe 'check_expiration' do
-    # パスワード再設定の期限切れ
     context 'when user updates after 25hours' do
       before do
         user.update_attribute(:reset_sent_at, 25.hours.ago)

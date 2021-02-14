@@ -45,12 +45,10 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:email])
   end
 
-  # 正しいユーザーかどうか確認する
   def valid_user
     redirect_to root_url unless @user && @user.is_valid? && @user.authenticated?(:reset, params[:id])
   end
 
-  # トークンが期限切れかどうか確認する
   def check_expiration
     return unless @user.password_reset_expired?
 
@@ -58,7 +56,6 @@ class PasswordResetsController < ApplicationController
     redirect_to new_password_reset_url
   end
 
-  # 退会済みのユーザーはパスワード再発行できない
   def not_dismissed_user
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     return unless @user && !@user.is_valid

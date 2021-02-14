@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'UsersSignups', type: :system do
-  # 無効なデータを登録できないこと
   it "Don't create new data when user submits invalid information" do
     visit signup_path
     fill_in 'form-name', with: ' '
@@ -14,7 +13,6 @@ RSpec.describe 'UsersSignups', type: :system do
     expect(page).to have_content '必須項目です'
   end
 
-  # フラッシュメッセージ（success）が表示されること
   it 'Create new data when user submits valid information' do
     visit signup_path
     fill_in 'form-name', with: 'example user'
