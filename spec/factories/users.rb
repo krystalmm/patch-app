@@ -11,5 +11,9 @@ FactoryBot.define do
     trait :dismissed do
       is_valid { false }
     end
+
+    trait :admin do
+      admin { true }
+    end
   end
 end
