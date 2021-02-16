@@ -8,9 +8,9 @@
 
 User.create!(
   name: "Admin User",
-  email: "admin@example.com",
-  password: "password",
-  password_confirmation: "password",
+  email: ENV['EMAIL'],
+  password: ENV['PASSWORD'],
+  password_confirmation: ENV['PASSWORD'],
   name_kana: "アドミン　ユーザー",
   postcode: "5300001",
   prefecture_code: 27,
