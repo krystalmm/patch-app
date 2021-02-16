@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admins do
+    get 'toppages/index'
+  end
   get 'products/index'
   get 'products/show'
   root 'static_pages#home'
@@ -16,9 +19,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users
+  resources :users, only: [:new, :edit, :create, :update, :show]
 
   resources :password_resets, only: [:new, :edit, :create, :update]
+
+  namespace :admins do
+    root 'toppages#index'
+  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

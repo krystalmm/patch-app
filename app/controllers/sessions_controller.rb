@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :reject_inactive_user, only: [:create]
+  before_action :admin_user_logged_in, only: [:create]
 
   def new; end
 
@@ -22,11 +23,23 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  private
+
   def reject_inactive_user
     @user = User.find_by(email: params[:session][:email].downcase)
     return unless @user && @user.authenticate(params[:session][:password]) && !@user.is_valid
 
     flash[:danger] = '退会済みです'
     redirect_to signup_path
+  end
+
+  def admin_user_logged_in
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password]) && user.admin?
+      log_in user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      flash[:success] = '管理者としてログインしました'
+      redirect_to admins_root_path
+    end
   end
 end
