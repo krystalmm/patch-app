@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
   devise_for :admin_users
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'products/index'
   get 'products/show'
@@ -23,10 +23,6 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :edit, :create, :update, :show]
 
   resources :password_resets, only: [:new, :edit, :create, :update]
-
-  namespace :admins do
-    root 'toppages#index'
-  end
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
