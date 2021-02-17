@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      admin_user: 管理者ユーザー
     attributes:
       user:
         id: ID

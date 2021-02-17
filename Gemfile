@@ -21,11 +21,15 @@ gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'devise'
+
 gem 'dotenv-rails'
 
 gem 'jbuilder', '~> 2.7'
 
 gem 'jp_prefecture'
+
+gem 'rails_admin'
 
 gem 'validates_email_format_of'
 

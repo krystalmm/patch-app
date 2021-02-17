@@ -49,13 +49,6 @@ RSpec.describe 'Users', type: :request do
       } }
       expect(response).to redirect_to user_path(user)
     end
-
-    it 'not allow the admin attribute to be edited via the web' do
-      patch user_path(user), params: { user: {
-        name: user.name, name_kana: user.name_kana, email: user.email, admin: true
-      } }
-      expect(user.reload.admin?).to be_falsey
-    end
   end
 
   describe 'before_action: :logged_in_user' do

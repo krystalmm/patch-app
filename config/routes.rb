@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :admins do
-    get 'toppages/index'
-  end
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  devise_for :admin_users
+
   get 'products/index'
   get 'products/show'
   root 'static_pages#home'

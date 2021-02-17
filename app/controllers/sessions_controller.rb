@@ -35,11 +35,11 @@ class SessionsController < ApplicationController
 
   def admin_user_logged_in
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password]) && user.admin?
+    if user && user.authenticate(params[:session][:password]) && AdminUser.exists?(user.id)
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:success] = '管理者としてログインしました'
-      redirect_to admins_root_path
+      redirect_to rails_admin_path
     end
   end
 end
