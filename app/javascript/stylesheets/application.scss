@@ -334,7 +334,13 @@ main {
 }
 
 
-// ログインページ（sessions/new, login）
+// ログインページ（sessions/new, login, admin-login）
+
+.admin-login-head {
+  @include base-head;
+  width: 300px;
+  margin-bottom: 60px;
+}
 
 .login-head {
   @include base-head;

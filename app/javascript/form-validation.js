@@ -28,3 +28,9 @@ $(function() {
   });
 });
 
+$(function() {
+  $('#admin-login-form').validationEngine('attach', {
+    promptPosition: "bottomLeft", scrollOffset: 140
+  });
+});
+
