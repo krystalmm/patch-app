@@ -1,0 +1,39 @@
+<% provide(:title, '管理者ログイン | ライフウェーブパッチ販売サイト') %>
+
+<div class="backpage-wrap col-10 offset-1">
+  <button type="submit" onclick="history.back();" class="backpage" tabIndex="-1">
+    <i class="fas fa-chevron-left"></i> 前に戻る
+  </button>
+</div>
+
+<h3 class="login-head">管理者ログイン</h3>
+
+<div class="login-wrap col-lg-6 offset-lg-3 col-8 offset-2">
+  <div class="created-user">
+    <p>※ こちらは管理者専用ページへのログインです。 <br> （ 管理者のみログイン可能です。）</p>
+    <p class="created-user-p">メールアドレスとパスワードを入力してログインしてください。</p>
+  </div>
+  <%= form_with model: resource, scope: resource_name, url: session_path(resource_name), local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: 'form-control validate[required] validate[custom[email]]', id: 'login-email', placeholder: ' 例 : life@wave.co.jp', autocomplete: 'email' %>
+      <small class="form-text text-muted">
+        ※ ご登録いただいているメールアドレスを入力してください。
+      </small>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: 'form-control validate[required] validate[minSize[8]]', id: 'login-password', placeholder: ' ご登録いただいているパスワードを入力してください' %>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="login-password-check" value="">
+        <label class="form-check-label" for="login-password-check">パスワードを表示する</label>
+      </div>
+    </div>
+    <div class="login-submit">
+      <%= f.submit 'ログインする', class: 'btn btn-raised btn-lg btn-dark col-6 offset-3 mb-3', id: 'form-login-submit' %>
+    </div>
+    <div class="forgot-password mb-5">
+      <%= link_to "パスワードをお忘れの方はこちらをクリック", new_password_reset_path, class: 'border-bottom border-dark' %>
+    </div>
+  <% end %>
+</div>

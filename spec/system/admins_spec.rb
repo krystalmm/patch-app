@@ -7,7 +7,8 @@ RSpec.describe "Admins", type: :system, js:true do
     it 'fails show admin page when logged in not admin user' do
       login_as(user)
       visit rails_admin_path
-      expect(current_path).to eq root_path
+      expect(current_path).to eq new_admin_user_session_path
+      expect(page).to have_content "管理者ログイン"
     end
   end
 end

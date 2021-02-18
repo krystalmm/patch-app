@@ -24,13 +24,7 @@
           </a>
         </h1>
         <ul class="gnav-nav">
-          <% if admin_logged_in? %>
-          <li class="gnav-nav-item">
-            <%= link_to logout_path, method: :delete do %>
-              LOGOUT <br> ログアウト
-            <% end %>
-          </li>
-          <% elsif logged_in? %>
+          <% if logged_in? %>
           <li class="gnav-nav-item">
             <a href="#">ALL ITEM <br> 製品一覧</a>
           </li>
@@ -63,11 +57,9 @@
           <% end %>
         </ul>
         <div class="media-s">
-          <% unless admin_logged_in? %>
           <div class="cart-icon">
             <a href="#"><i class="fas fa-shopping-cart"></i></a>
           </div>
-          <% end %>
           <div class="hamburger">
             <span></span>
             <span></span>
@@ -76,13 +68,7 @@
 
           <nav class="globalMenuSp">
             <ul>
-              <% if admin_logged_in? %>
-                <li>
-                  <%= link_to logout_path, method: :delete do %>
-                    LOGOUT <br> ログアウト
-                  <% end %>
-                </li>
-              <% elsif logged_in? %>
+              <% if logged_in? %>
                 <li>
                   <%= link_to current_user do %>
                     <i class="fas fa-user"></i> <br> マイページ
@@ -115,7 +101,6 @@
     <%= yield %>
 
     <footer>
-      <% unless admin_logged_in? %>
       <div class="row">
         <div class="footer-box">
           <div class="footer-category col-lg-9">
@@ -170,7 +155,6 @@
       <div class="footer-end">
         <p>LIFE WAVE</p>
       </div>
-      <% end %>
     </footer>
   <%= javascript_pack_tag 'hbmenu' %>
   </body>
