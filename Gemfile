@@ -27,11 +27,13 @@ gem 'devise'
 
 gem 'dotenv-rails'
 
-gem 'fog'
+# gem 'fog'
 
 gem 'jbuilder', '~> 2.7'
 
 gem 'jp_prefecture'
+
+gem 'mini_magick'
 
 gem 'rails_admin'
 

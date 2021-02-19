@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :product do
-    name { "Sample item" }
-    price { 10000 }
-    description { "Sample item description" }
-    stock_quantity { 100 }
+    name { "MyString" }
+    price { 1 }
+    description { "MyText" }
+    product_image { "MyString" }
+    stock_quantity { 1 }
   end
 end
-
