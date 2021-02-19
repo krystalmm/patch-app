@@ -8,6 +8,16 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_admin_user)
 
+  config.model 'Product' do
+    edit do
+      field :name, :string
+      field :price, :integer
+      field :description, :text
+      field :product_image, :carrierwave
+      field :stock_quantity, :integer
+    end
+  end
+
   ## == CancanCan ==
   # config.authorize_with :cancancan
 
