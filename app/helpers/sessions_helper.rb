@@ -25,6 +25,10 @@ module SessionsHelper
     end
   end
 
+  def admin_user?
+    !current_user.nil? && AdminUser.exists?(email: current_user.email)
+  end
+
   def logged_in?
     !current_user.nil?
   end

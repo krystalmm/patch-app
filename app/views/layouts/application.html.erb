@@ -24,6 +24,11 @@
           </a>
         </h1>
         <ul class="gnav-nav">
+          <% if admin_user? %>
+            <li class="gnav-nav-item">
+              <a href="/admin/">ADMIN <br> 管理者画面</a>
+            </li>
+          <% end %>
           <% if logged_in? %>
           <li class="gnav-nav-item">
             <a href="#">ALL ITEM <br> 製品一覧</a>
