@@ -544,6 +544,30 @@ main {
 }
 
 
+// 製品一覧ページ(/products)
+
+.all-item {
+  .all-item-head {
+    @include base-head;
+    width: 200px;
+    margin-bottom: 50px;
+  }
+
+  .item-count {
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  .item-wrap {
+    margin: 0 auto;
+    width: 870px;
+
+    .item-box {
+      margin: 20px;
+    }
+  }
+}
+
 
 
 

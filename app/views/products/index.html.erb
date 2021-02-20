@@ -1,2 +1,38 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<% provide(:title, '製品一覧 | ライフウェーブパッチ販売サイト') %>
+
+<div class="backpage-wrap col-10 offset-1">
+  <button type="submit" onclick="history.back();" class="backpage" tabIndex="-1">
+    <i class="fas fa-chevron-left"></i> 前に戻る
+  </button>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="all-item col-10 offset-1">
+      <h3 class="all-item-head">製品一覧</h3>
+      <div class="item-count row">
+        <p><%= @products.count %> 件 :</p>
+        <div class="order-select dropdown">
+          <button class="btn dropdown-toggle" type="button" id="item-order-select-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            並べ替え
+          </button>
+          <div class="dropdown-menu" aria-labelledby="item-order-select-button">
+            <a class="dropdown-item" href="/products">おすすめ順</a>
+            <a class="dropdown-item" href="/products/?option=cp">価格（安い順）</a>
+            <a class="dropdown-item" href="/products/?option=hp">価格（高い順）</a>
+          </div>
+        </div>
+      </div>
+      <ul class="item-wrap d-flex flex-wrap">
+        <% @products.each do |product| %>
+          <li class="item-box">
+            <%= link_to product_path(product) do %>
+              <%= image_tag product.product_image_url(:thumb) %> <br>
+              <p class="item-name mt-3"><%= product.name%></p>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
