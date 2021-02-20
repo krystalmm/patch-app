@@ -11,3 +11,11 @@ AdminUser.create!(
   password: ENV['PASSWORD'],
   password_confirmation: ENV['PASSWORD']
 )
+
+User.create!(
+  name: 'まな',
+  email: 'mana@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  name_kana: 'マナ'
+)

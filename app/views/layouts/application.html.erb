@@ -31,7 +31,9 @@
           <% end %>
           <% if logged_in? %>
           <li class="gnav-nav-item">
-            <a href="#">ALL ITEM <br> 製品一覧</a>
+            <%= link_to products_path do %>
+              ALL ITEM <br> 製品一覧
+            <% end %>
           </li>
           <li class="gnav-nav-item">
             <a href="#">HOW TO USE <br> パッチの貼り方</a>
@@ -46,7 +48,9 @@
           </li>
           <% else %>
           <li class="gnav-nav-item">
-            <a href="#">ALL ITEM <br> 製品一覧</a>
+            <%= link_to products_path do %>
+              ALL ITEM <br> 製品一覧
+            <% end %>
           </li>
           <li class="gnav-nav-item">
             <a href="#">HOW TO USE <br> パッチの貼り方</a>
@@ -79,16 +83,28 @@
                     <i class="fas fa-user"></i> <br> マイページ
                   <% end %>
                 </li>
-                <li><a href="#">ALL ITEM <br> 製品一覧</a></li>
-                <li><a href="#">HOW TO USE <br> パッチの貼り方</a></li>
+                <li>
+                  <%= link_to products_path do %>
+                    ALL ITEM <br> 製品一覧
+                  <% end %>
+                </li>
+                <li>
+                  <a href="#">HOW TO USE <br> パッチの貼り方</a>
+                </li>
               <% else %>
                 <li>
                   <%= link_to login_path do %>
                     LOGIN <br> ログイン
                   <% end %>
                 </li>
-                <li><a href="#">ALL ITEM <br> 製品一覧</a></li>
-                <li><a href="#">HOW TO USE <br> パッチの貼り方</a></li>
+                <li>
+                  <%= link_to products_path do %>
+                    ALL ITEM <br> 製品一覧
+                  <% end %>
+                </li>
+                <li>
+                  <a href="#">HOW TO USE <br> パッチの貼り方</a>
+                </li>
               <% end %>
             </ul>
           </nav>

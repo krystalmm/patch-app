@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  get 'products/index'
-  get 'products/show'
   root 'static_pages#home'
 
   get '/support', to: 'static_pages#support'
@@ -20,9 +18,11 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:new, :edit, :create, :update, :show]
+  resources :users, only: [:edit, :create, :update, :show]
 
   resources :password_resets, only: [:new, :edit, :create, :update]
+
+  resources :products, only: [:index, :show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
