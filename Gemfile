@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'jp_prefecture'
 
+gem 'kaminari'
+
 gem 'mini_magick'
 
 gem 'rails_admin'

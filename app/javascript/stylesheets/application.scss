@@ -94,6 +94,22 @@ li {
 }
 
 
+// paginate
+
+.page-item.active .page-link {
+  background-color: rgb(63, 62, 62);
+  border-color: rgb(63, 62, 62);
+}
+
+.page-link {
+  color: rgb(63, 62, 62);
+
+  &:hover {
+    color: rgb(63, 62, 62);
+  }
+}
+
+
 // header
 
 header {
@@ -564,6 +580,24 @@ main {
 
     .item-box {
       margin: 20px;
+
+      .item-bottom {
+        justify-content: flex-end;
+        margin-right: 20px;
+
+        .item-cart-icon {
+          margin-left: 10px;
+          font-size: 1.5rem;
+          height: 40px;
+          background-color:rgb(63, 62, 62);
+
+          a {
+            color: #fff;
+            padding: 2px 7px 0 5px;
+            display: block;
+          }
+        }
+      }
     }
   }
 }

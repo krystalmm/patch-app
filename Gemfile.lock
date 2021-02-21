@@ -359,6 +359,7 @@ DEPENDENCIES
   factory_bot_rails
   jbuilder (~> 2.7)
   jp_prefecture
+  kaminari
   launchy
   letter_opener
   letter_opener_web
