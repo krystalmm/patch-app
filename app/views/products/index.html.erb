@@ -11,7 +11,7 @@
     <div class="all-item col-10 offset-1">
       <h3 class="all-item-head">製品一覧</h3>
       <div class="item-count row">
-        <p><%= @products.count %> 件 :</p>
+        <p><%= all_products_count %> 件 :</p>
         <div class="order-select dropdown">
           <button class="btn dropdown-toggle" type="button" id="item-order-select-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             並べ替え
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <ul class="item-wrap d-flex flex-wrap">
+      <ul class="item-wrap d-flex flex-wrap mb-5 pb-3">
         <% @products.each do |product| %>
           <li class="item-box">
             <%= link_to product_path(product) do %>
