@@ -1,10 +1,6 @@
 <% provide(:title, '製品一覧 | ライフウェーブパッチ販売サイト') %>
 
-<div class="backpage-wrap col-10 offset-1">
-  <button type="submit" onclick="history.back();" class="backpage" tabIndex="-1">
-    <i class="fas fa-chevron-left"></i> 前に戻る
-  </button>
-</div>
+<%= render 'shared/backpage' %>
 
 <div class="container">
   <div class="row">
@@ -29,7 +25,7 @@
             <%= link_to product_path(product) do %>
               <%= image_tag product.product_image_url(:thumb) %> <br>
               <p class="item-name mt-3 mb-0"><strong><%= product.name%></strong></p>
-              <p class="item-name-kana"><%= product.name_kana %></p>
+              <p class="item-name-kana"><strong><%= product.name_kana %></strong></p>
             <% end %>
             <div class="item-bottom d-flex">
               <div class="item-price pt-2">

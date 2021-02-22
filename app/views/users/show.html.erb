@@ -1,10 +1,6 @@
 <% provide(:title, "マイページ | ライフウェーブパッチ販売サイト") %>
 
-<div class="backpage-wrap col-10 offset-1">
-  <button type="submit" onclick="history.back();" class="backpage" tabIndex="-1">
-    <i class="fas fa-chevron-left"></i> 前に戻る
-  </button>
-</div>
+<%= render 'shared/backpage' %>
 
 <h3 class="mypage-head">マイページ</h3>
 
@@ -32,7 +28,7 @@
     <div class="w-100"></div>
     <li class="mypage-list-item col">
       <div class="mypage-list-item-big">
-        <%= link_to root_path do %>
+        <%= link_to new_password_reset_path do %>
           <i class="fas fa-key"></i>パスワード変更
         <% end %>
       </div>

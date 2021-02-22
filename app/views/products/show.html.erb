@@ -1,2 +1,22 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<% provide(:title, "#{@product.name} | ライフウェーブパッチ販売サイト") %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="item-detail col-10 offset-1 d-flex">
+      <div class="item-img mt-4">
+        <%= image_tag @product.product_image_url %>
+      </div>
+      <div class="item-info ml-5 mt-5">
+        <p class="item-name mt-3"><strong><%= @product.name %></strong></p>
+        <p class="item-name-kana"><strong><%= @product.name_kana %></strong></p>
+        <p class="item-price">¥ <span class="price-big"><%= change_consumption_tax(@product.price).to_s(:delimited) %></span> (税込)</p>
+        <p class="stock-quantity">在庫 : <%= stock_judg(@product) %></p>
+        <div class="favorites-icon">
+          <i class="far fa-heart"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

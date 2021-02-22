@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :product do
-    name { "Sample Product" }
+    sequence(:name) { |n| "sample-#{n} product" }
     price { 10000 }
     description { "Sample Product's description" }
-    product_image { "sample_product_image.png" }
-    stock_quantity { 1 }
+    product_image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.png')) }
+    stock_quantity { 10 }
   end
 end
