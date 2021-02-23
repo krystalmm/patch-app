@@ -673,21 +673,28 @@ main {
         .cartplus {
           background-color: #353434;
           margin-right: 0;
-
-          a {
-            display: block;
-          }
+          width: 292px;
 
           &:hover, &:active {
             opacity: 0.6;
             transition: opacity .3s ease;
+            cursor: pointer;
           }
 
-          p {
-            font-size: 1.1rem;
-            padding: 15px 65px;
+          i {
+            font-size: 1.4rem;
+            padding: 15px 5px 15px 60px;
             color: #fff;
             margin-bottom: 0;
+          }
+
+          input {
+            font-size: 1.1rem;
+            background-color: #353434;
+            color: #fff;
+            border-style: none;
+            margin-bottom: 0;
+            outline: none;
           }
         }
       }

@@ -11,17 +11,19 @@ class CartsController < ApplicationController
       @line_item = current_cart.line_items.build(product_id: params[:product_id])
     end
 
-    @line_item.quantity = 1
+    @line_item.quantity += params[:quantity].to_i
     @line_item.save
+    flash[:success] = 'カートに商品が追加されました'
     redirect_to current_cart
   end
 
   def update_item
-    
+    @line_item.update(quantity: params[:quantity].to_i)
+    redirect_to current_cart
   end
 
-  def destroy
-    @cart.destroy
+  def delete_item
+    @line_item.destroy
     redirect_to current_cart
   end
 
