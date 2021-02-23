@@ -39,7 +39,7 @@
             <a href="#">HOW TO USE <br> パッチの貼り方</a>
           </li>
           <li class="gnav-nav-item">
-            <%= link_to current_cart do %>
+            <%= link_to cart_path(current_cart) do %>
               <i class="fas fa-shopping-cart"></i><br> カートを見る
             <% end %>
           </li>
@@ -58,7 +58,7 @@
             <a href="#">HOW TO USE <br> パッチの貼り方</a>
           </li>
           <li class="gnav-nav-item">
-            <%= link_to current_cart do %>
+            <%= link_to cart_path(current_cart) do %>
               <i class="fas fa-shopping-cart"></i><br> カートを見る
             <% end %>
           </li>
@@ -71,7 +71,7 @@
         </ul>
         <div class="media-s">
           <div class="cart-icon">
-            <%= link_to current_cart do %>
+            <%= link_to cart_path(current_cart) do %>
               <i class="fas fa-shopping-cart"></i>
             <% end %>
           </div>
@@ -183,6 +183,5 @@
         <p>LIFE WAVE</p>
       </div>
     </footer>
-  <%= javascript_pack_tag 'hbmenu' %>
   </body>
 </html>
