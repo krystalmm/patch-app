@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
+  helper_method :current_cart
+
   private
 
   def logged_in_user
@@ -17,9 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    current_cart = Cart.find_by(id: session[:cart_id])
-    current_cart = Cart.create unless current_cart
-    session[:cart_id] = current_cart.id
-    current_cart
+    if session[:cart_id]
+      @cart = Cart.find(session[:cart_id])
+    else
+      @cart = Cart.create
+      session[:cart_id] = @cart.id
+    end
   end
 end

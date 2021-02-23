@@ -17,23 +17,25 @@
           <div class="item-description">
             <p>【<%= @product.description %>】</p>
           </div>
-          <%= form_with url: add_item_path, local: true do |f| %>
-          <div class="quantity d-flex">
-            <div class="button" id="down">−</div>
-            <%= f.text_field :quantity, value: "1", class: "inputtext", id: "quantity-text" %>
-            <div class="button" id="up">+</div>
-          </div>
-          <div class="heart-and-cart d-flex justify-content-between">
-            <div class="favorites-icon">
-              <%= link_to root_path do %>
-                <i class="far fa-heart"></i>
-              <% end %>
+          <%= form_with model: @line_item, url: add_item_path, local: true do |f| %>
+            <%= f.hidden_field :product_id, :value => @product.id %>
+            <div class="quantity d-flex">
+              <div class="button" id="down">−</div>
+              <%= f.text_field :quantity, value: "1", class: "inputtext", id: "quantity-text" %>
+              <div class="button" id="up">+</div>
             </div>
-            <div class="cartplus">
-              <i class="fas fa-cart-plus"></i>
-              <%= f.submit "カートに入れる" %>
+            <div class="heart-and-cart d-flex justify-content-between">
+              <div class="favorites-icon">
+                <%= link_to root_path do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
+              </div>
+              <div class="cartplus">
+                <%= f.button :type => "submit" do %>
+                  <i class="fas fa-cart-plus"></i> カートに入れる
+                <% end %>
+              </div>
             </div>
-          </div>
           <% end %>
           <div id="button-review">
             <a href="#" class="button-to-review">

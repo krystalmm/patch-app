@@ -39,7 +39,9 @@
             <a href="#">HOW TO USE <br> パッチの貼り方</a>
           </li>
           <li class="gnav-nav-item">
-            <a href="#"><i class="fas fa-shopping-cart"></i><br> カートを見る</a>
+            <%= link_to current_cart do %>
+              <i class="fas fa-shopping-cart"></i><br> カートを見る
+            <% end %>
           </li>
           <li class="gnav-nav-item">
             <%= link_to current_user do %>
@@ -56,7 +58,9 @@
             <a href="#">HOW TO USE <br> パッチの貼り方</a>
           </li>
           <li class="gnav-nav-item">
-            <a href="#"><i class="fas fa-shopping-cart"></i><br> カートを見る</a>
+            <%= link_to current_cart do %>
+              <i class="fas fa-shopping-cart"></i><br> カートを見る
+            <% end %>
           </li>
           <li class="gnav-nav-item">
             <%= link_to login_path do %>
@@ -67,7 +71,9 @@
         </ul>
         <div class="media-s">
           <div class="cart-icon">
-            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <%= link_to current_cart do %>
+              <i class="fas fa-shopping-cart"></i>
+            <% end %>
           </div>
           <div class="hamburger">
             <span></span>

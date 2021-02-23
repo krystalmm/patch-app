@@ -681,20 +681,16 @@ main {
             cursor: pointer;
           }
 
-          i {
-            font-size: 1.4rem;
-            padding: 15px 5px 15px 60px;
-            color: #fff;
-            margin-bottom: 0;
-          }
-
-          input {
+          button {
+            width: 292px;
             font-size: 1.1rem;
             background-color: #353434;
             color: #fff;
             border-style: none;
             margin-bottom: 0;
             outline: none;
+            padding: 15px;
+            text-align: center;
           }
         }
       }
@@ -723,6 +719,16 @@ main {
         }
       }
     }
+  }
+}
+
+
+// ショッピングカートページ（/carts/:id）
+
+.cart-detail {
+  .cart-detail-head {
+    @include base-head;
+    width: 200px;
   }
 }
 

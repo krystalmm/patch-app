@@ -1,1 +1,37 @@
+<% provide(:title, 'ショッピングカート | ライフウェーブパッチ販売サイト') %>
 
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="cart-detail col-10 offset-1">
+      <h3 class="cart-detail-head">ショッピングカート</h3>
+        <% if @line_items.present? %>
+          <p class="cart-info">※ 数量変更された場合は必ず更新を押してください。</p>
+            <% @line_items.each do |line_item| %>
+              <ul class="cart-list col-10 offset-1">
+                <li class="cart-list-item d-flex">
+                  <div class="cart-item-img">
+                    <%= link_to product_path(line_item.product) do %>
+                      <%= image_tag line_item.product.product_image_url(:thumb) %>
+                    <% end %>
+                  </div>
+                  <div class="cart-item-info">
+                    <div class="name-and-price">
+                      <%= link_to product_path(line_item.product) do %>
+                        <p class="cart-item-name mb-0"><strong><%= line_item.product.name %></strong></p>
+                        <p class="cart-item-name-kana"><strong><%= line_item.product.name_kana %></strong></p>
+                      <% end %>
+                      <p class="cart-item-price">¥ <%= change_consumption_tax(line_item.product.price).to_s(:delimited) %>  (税込)</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            <% end %>
+        <% else %>
+          <p class="item-not-found mb-5">現在カートに商品はありません。</p>
+          <%= link_to "製品一覧を見る", products_path, class: 'btn btn-dark btn-raised' %>
+        <% end %>
+    </div>
+  </div>
+</div>
