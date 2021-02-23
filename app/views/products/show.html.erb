@@ -19,10 +19,14 @@
           </div>
           <div class="heart-and-cart d-flex">
             <div class="favorites-icon">
-              <i class="far fa-heart"></i>
+              <%= link_to root_path do %>
+                <i class="far fa-heart"></i>
+              <% end %>
             </div>
             <div class="cartplus">
-              <p><i class="fas fa-cart-plus"></i> カートに入れる</p>
+              <%= link_to root_path do %>
+                <p><i class="fas fa-cart-plus"></i> カートに入れる</p>
+              <% end %>
             </div>
           </div>
           <div id="button-review">
@@ -36,7 +40,7 @@
         <h4 class="review-head mt-5">
           <i class="far fa-comments"></i> レビュー
         </h4>
-        
+
       </div>
     </div>
   </div>

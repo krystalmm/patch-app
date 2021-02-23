@@ -636,8 +636,16 @@ main {
       }
 
       .heart-and-cart {
+        margin-top: 60px;
+        margin-bottom: 30px;
+
         .favorites-icon {
           background-color: #777777;
+          margin-right: 20px;
+
+          a {
+            display: block;
+          }
 
           &:hover, &:active {
             opacity: 0.6;
@@ -651,6 +659,50 @@ main {
             -webkit-text-stroke-color: #777777;
             -webkit-text-stroke-width: 1px;
             padding: 15px;
+          }
+        }
+
+        .cartplus {
+          background-color: #353434;
+
+          a {
+            display: block;
+          }
+
+          &:hover, &:active {
+            opacity: 0.6;
+            transition: opacity .3s ease;
+          }
+
+          p {
+            font-size: 1.1rem;
+            padding: 15px 65px;
+            color: #fff;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      #button-review {
+        border: 1px solid #000;
+
+        &:hover, &:active {
+          opacity: 0.6;
+          transition: opacity .3s ease;
+        }
+
+        a {
+          font-size: 1.1rem;
+          padding: 15px;
+          display: block;
+          text-align: center;
+
+          i {
+            padding-right: 5px;
+            font-size: 1.5rem;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-color: #fff;
+            -webkit-text-stroke-width: 1px;
           }
         }
       }
