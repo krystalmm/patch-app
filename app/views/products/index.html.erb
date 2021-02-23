@@ -31,11 +31,6 @@
               <div class="item-price pt-2">
                 <p>¥ <%= change_consumption_tax(product.price).to_s(:delimited) %> (税込)</p>
               </div>
-              <div class="item-cart-icon">
-                <%= link_to root_path do %>
-                  <i class="fas fa-cart-plus"></i>
-                <% end %>
-              </div>
             </div>
           </li>
         <% end %>

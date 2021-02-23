@@ -21,6 +21,14 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
 
+  resources :carts, only: [:show]
+
+  post '/add_item', to: 'carts#add_item'
+
+  post '/update_item', to: 'carts#update_item'
+
+  delete '/delete_item', to: 'carts#delete_item'
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

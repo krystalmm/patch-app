@@ -15,6 +15,7 @@ require('jquery.validationEngine-ja.js')
 require('jquery.validationEngine.js')
 require('form-validation.js')
 require('review-scroll.js')
+require('quantity-count.js')
 
 
 
