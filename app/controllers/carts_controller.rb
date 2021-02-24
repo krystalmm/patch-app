@@ -23,6 +23,7 @@ class CartsController < ApplicationController
   end
 
   def delete_item
+    binding.pry
     @line_item.destroy
     redirect_to current_cart
   end

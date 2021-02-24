@@ -728,7 +728,143 @@ main {
 .cart-detail {
   .cart-detail-head {
     @include base-head;
-    width: 200px;
+    width: 300px;
+  }
+
+  .cart-info {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .cart-list {
+    border-bottom: 1px solid #ccc;
+    width: 613px;
+
+    .cart-list-item {
+      border-top: 1px solid #ccc;
+      padding: 25px 0;
+      position: relative;
+
+      .cart-item-img {
+        margin-right: 20px;
+        margin-left: 20px;
+
+        a {
+          display: block;
+          &:hover, &:active {
+            opacity: 0.6;
+            transition: opacity .3s ease;
+          }
+
+          img {
+            width: 130px;
+          }
+        }
+      }
+
+      .cart-item-info {
+        position: relative;
+        .name-and-price {
+          a {
+            font-size: 1.1rem;
+
+            p {
+              &:hover, &:active {
+                opacity: 0.6;
+                transition: opacity .3s ease;
+              }
+            }
+          }
+        }
+
+        .item-delete-button {
+          border: 1px solid #ccc;
+          position: absolute;
+          bottom: 0;
+          padding: 1px 10px;
+          font-size: 0.8rem;
+
+          i {
+            padding-right: 5px;
+          }
+
+          &:hover, &:active {
+            opacity: 0.6;
+            transition: opacity .3s ease;
+          }
+        }
+      }
+
+      .quantity-and-price {
+        margin-right: 30px;
+
+        .quantity-reload {
+          .quantity {
+            margin-top: 10px;
+
+            input {
+              width: 40px;
+              text-align: center;
+            }
+          }
+
+          .reload {
+            margin-top: 10px;
+
+            button {
+              width: 90px;
+              border-style: none;
+              outline: none;
+              background-color: #353434;
+              color: #fff;
+              padding: 5px;
+              text-align: center;
+
+              &:hover, &:active {
+                opacity: 0.6;
+                transition: opacity .3s ease;
+              }
+
+              i {
+                padding-right: 5px;
+              }
+            }
+          }
+        }
+      }
+
+      .subtotal {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 30px;
+
+        .sub-head {
+          display: inline-block;
+          vertical-align: middle;
+          line-height: 2.4rem;
+
+          span {
+            font-size: 0.9rem;
+          }
+        }
+
+        .subtotal-price {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+
+  .item-not-found {
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  .to-products-button {
+    margin-bottom: 80px;
   }
 }
 
