@@ -858,6 +858,24 @@ main {
     }
   }
 
+  .total-price {
+    margin-top: 30px;
+    width: 613px;
+
+    p {
+      margin-right: 15px;
+      text-align: right;
+
+      span.sm {
+        font-size: 0.9rem;
+      }
+
+      span.price-big {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
   .item-not-found {
     text-align: center;
     margin-top: 80px;
