@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
+  has_one :card, dependent: :destroy
+
   validates :name, presence: true, length: { maximum: 30 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze

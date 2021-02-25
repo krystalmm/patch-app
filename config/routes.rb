@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:show]
 
+  resources :cards, only: [:new, :create, :show, :destroy]
+
   post '/add_item', to: 'carts#add_item'
 
   post '/update_item', to: 'carts#update_item'
