@@ -37,6 +37,8 @@ gem 'kaminari'
 
 gem 'mini_magick'
 
+gem 'payjp'
+
 gem 'rails_admin'
 
 gem 'validates_email_format_of'

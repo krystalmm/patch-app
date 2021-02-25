@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client chromium-driver
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
     apt-get install nodejs
+RUN apt-get install -y vim
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
