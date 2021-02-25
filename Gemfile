@@ -29,6 +29,8 @@ gem 'dotenv-rails'
 
 # gem 'fog'
 
+gem 'gon'
+
 gem 'jbuilder', '~> 2.7'
 
 gem 'jp_prefecture'
