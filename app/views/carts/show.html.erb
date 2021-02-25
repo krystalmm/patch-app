@@ -30,10 +30,10 @@
                   </div>
                   <div class="quantity-and-price ml-auto">
                     <%= form_with model: @line_item, url: update_item_path, local: true do |f| %>
-                      <%= f.hidden_field :product_id, value: line_item.product_id %>
+                      <%= f.hidden_field :product_id, value: line_item.product_id, id: "hidden-#{line_item.id}" %>
                       <div class="quantity-reload">
                         <div class="quantity">
-                          <p><span>数量 : </span><%= f.text_field :quantity, value: line_item.quantity %></p>
+                          <p><span>数量 : </span><%= f.text_field :quantity, value: line_item.quantity, class: 'quantity', id: "quantity-#{line_item.id}" %></p>
                         </div>
                         <div class="reload">
                           <%= f.button type: "submit" do %>

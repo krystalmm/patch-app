@@ -25,6 +25,7 @@ class CartsController < ApplicationController
 
   def delete_item
     @line_item.destroy
+    flash[:info] = 'カートの商品が削除されました'
     redirect_to current_cart
   end
 
