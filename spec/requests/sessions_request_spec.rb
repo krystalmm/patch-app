@@ -59,7 +59,8 @@ RSpec.describe 'Sessions', type: :request do
 
   describe 'friendly forwarding' do
     let(:user) { FactoryBot.create(:user) }
-    it 'succeeds' do
+    let(:cart) { FactoryBot.create(:cart) }
+    it 'succeeds redirect to users/edit' do
       get edit_user_path(user)
       log_in_as(user)
       expect(response).to redirect_to edit_user_url(user)

@@ -55,9 +55,44 @@
             <p>合計<span class="sm">（税込）</span><span class="price-big"><strong>¥ <%= change_consumption_tax(@cart.total_price).to_s(:delimited) %></strong></span></p>
           </div>
           <div class="cart-links">
-          <%= link_to "お買い物を続ける", products_path, class: 'btn btn-raised keep-shopping' %>
-          <%= link_to "ご購入手続きへ", root_path, class: 'btn btn-raised btn-lg btn-dark to-order' %>
+            <%= link_to "お買い物を続ける", products_path, class: 'btn btn-raised keep-shopping' %>
+            <%= link_to "ご購入手続きへ", root_path, class: 'btn btn-raised btn-lg btn-dark to-order' %>
           </div>
+          <% unless logged_in? %>
+            <div class="cart-login col-lg-8 offset-lg-2">
+              <div class="created-user">
+              <h4 class="created-user-head">会員登録がお済みのお客様</h4>
+              <p class="created-user-p mt-3">メールアドレスとパスワードを入力してログインしてください。</p>
+            </div>
+            <%= form_with scope: :session, url: login_path, id: 'login-form', local: true do |f| %>
+              <div class="form-group">
+                <%= f.label :email, "メールアドレス" %>
+                <%= f.email_field :email, class: 'form-control validate[required] validate[custom[email]]', id: 'login-email', placeholder: ' 例 : life@wave.co.jp', autocomplete: 'email' %>
+                <small class="form-text text-muted">
+                  ※ ご登録いただいているメールアドレスを入力してください。
+                </small>
+              </div>
+              <div class="form-group">
+                <%= f.label :password, "パスワード" %>
+                <%= f.password_field :password, class: 'form-control validate[required] validate[minSize[8]]', id: 'login-password', placeholder: ' ご登録いただいているパスワードを入力してください' %>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="login-password-check" value="">
+                  <label class="form-check-label" for="login-password-check">パスワードを表示する</label>
+                </div>
+              </div>
+              <div class="form-check remember-me-checkbox mt-4">
+                <%= f.check_box :remember_me, class: 'form-check-input', id: 'remember-me-check' %>
+                <%= f.label :remember_me, class: 'form-check-label' do %>ログイン情報を保存する <% end %>
+              </div>
+              <div class="login-submit">
+                <%= f.submit '会員ログインをして購入手続きへ', class: 'btn btn-raised btn-lg btn-dark col-8 offset-2 mt-4', id: 'form-login-submit' %>
+              </div>
+              <div class="forgot-password text-center my-4 pb-5">
+                <%= link_to "パスワードをお忘れの方はこちらをクリック", new_password_reset_path, class: 'border-bottom border-dark' %>
+              </div>
+            <% end %>
+            </div>
+          <% end %>
       <% else %>
         <p class="item-not-found mb-5">現在カートに商品はありません。</p>
         <%= link_to "製品一覧を見る", products_path, class: 'to-products-button btn btn-dark btn-raised btn-lg col-6 offset-3 col-lg-4 offset-lg-4' %>

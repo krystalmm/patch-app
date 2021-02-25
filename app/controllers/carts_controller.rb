@@ -19,11 +19,11 @@ class CartsController < ApplicationController
 
   def update_item
     @line_item.update(quantity: params[:quantity].to_i)
+    flash[:success] = 'カート内商品の数量が変更されました'
     redirect_to current_cart
   end
 
   def delete_item
-    binding.pry
     @line_item.destroy
     redirect_to current_cart
   end

@@ -876,6 +876,21 @@ main {
     }
   }
 
+  .cart-links {
+    text-align: center;
+    margin-bottom: 80px;
+
+    a.keep-shopping {
+      width: 180px;
+      margin-right: 30px;
+    }
+
+    a.to-order {
+      width: 200px;
+      margin-left: 30px;
+    }
+  }
+
   .item-not-found {
     text-align: center;
     margin-top: 80px;

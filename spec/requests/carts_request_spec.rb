@@ -21,14 +21,4 @@ RSpec.describe "Carts", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe 'POST /update_item' do
-    let(:product) { FactoryBot.create(:product) }
-    let(:line_item) { FactoryBot.create(:line_item, product_id: product.id) }
-    it 'succeeds update item quantity' do
-      expect(line_item.quantity).to eq 1
-      post update_item_path, params: { quantity: 3 }
-      expect(line_item.quantity).to eq 3
-    end
-  end
 end
