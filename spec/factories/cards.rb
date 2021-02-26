@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :card do
-    customer_id { "MyString" }
-    card_id { "MyString" }
-    user { nil }
+    sequence(:customer_id) { |n| n }
+    sequence(:card_id) { |n| n }
+    sequence(:user_id) { |n| n }
   end
 end
