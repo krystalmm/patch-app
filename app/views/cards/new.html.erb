@@ -16,12 +16,12 @@
             <%= f.text_field :card_number, id: 'card_number', placeholder: '半角数字のみ', class: 'card-form-input', maxlength: 16 %>
           </div>
           <div class="card-form-img">
-            <%= image_tag(image_path('cards/icon_visa.png'), class: 'visa', width: 58, height: 28) %>
-            <%= image_tag(image_path('cards/icon_mastercard.png'), class: 'master', width: 47, height: 36) %>
-            <%= image_tag(image_path('cards/icon_jcb.png'), class: 'jcb', width: 40, height: 30) %>
-            <%= image_tag(image_path('cards/icon_amex.png'), class: 'amex', width: 40, height: 30) %>
-            <%= image_tag(image_path('cards/icon_diners.png'), class: 'diners', width: 45, height: 32) %>
-            <%= image_tag(image_path('cards/icon_discover.png'), class: 'discover', width: 47, height: 30) %>
+            <%= image_tag(asset_path('cards/icon_visa.png'), class: 'visa', width: 58, height: 28) %>
+            <%= image_tag(asset_path('cards/icon_mastercard.png'), class: 'master', width: 47, height: 36) %>
+            <%= image_tag(asset_path('cards/icon_jcb.png'), class: 'jcb', width: 40, height: 30) %>
+            <%= image_tag(asset_path('cards/icon_amex.png'), class: 'amex', width: 40, height: 30) %>
+            <%= image_tag(asset_path('cards/icon_diners.png'), class: 'diners', width: 45, height: 32) %>
+            <%= image_tag(asset_path('cards/icon_discover.png'), class: 'discover', width: 47, height: 30) %>
           </div>
           <div class="card-form-expirationdate mt-5">
             <div class="card-form-expirationdate-details">
