@@ -40,20 +40,6 @@ class CardsController < ApplicationController
     @exp_year = default_card_information.exp_year.to_s.slice(2,3)
     customer_card = customer.cards.retrieve(@card.card_id)
     @card_brand = customer_card.brand
-    case @card_brand
-    when "Visa"
-      @card_src = "icon_visa.png"
-    when "JCB"
-      @card_src = "icon_jcb.png"
-    when "MasterCard"
-      @card_src = "icon_mastercard.png"
-    when "American Express"
-      @card_src = "icon_amex.png"
-    when "Diners Club"
-      @card_src = "icon_diners.png"
-    when "Discover"
-      @card_src = "icon_discover.png"
-    end
   end
 
   def destroy
