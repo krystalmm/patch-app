@@ -2,10 +2,10 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [500,500]
+  process resize_to_fill: [500, 500]
 
   version :thumb do
-    process resize_to_fill: [250,250]
+    process resize_to_fill: [250, 250]
   end
 
   # Choose what kind of storage to use for this uploader:
@@ -23,7 +23,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
     if Rails.env.test?
       "uploads_#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     else
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     end
   end
 
@@ -50,7 +50,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg png)
+    %w[jpg png]
   end
 
   # Override the filename of the uploaded files:

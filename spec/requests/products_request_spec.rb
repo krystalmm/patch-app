@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe "Products", type: :request do
+RSpec.describe 'Products', type: :request do
   let(:product) { FactoryBot.create(:product) }
 
-  describe "GET /index" do
-    it "responds successfully" do
+  describe 'GET /index' do
+    it 'responds successfully' do
       get products_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /show" do
-    it "responds  successfully" do
+  describe 'GET /show' do
+    it 'responds  successfully' do
       get product_path(product)
       expect(response).to have_http_status(:success)
     end

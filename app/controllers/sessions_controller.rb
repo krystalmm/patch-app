@@ -35,10 +35,10 @@ class SessionsController < ApplicationController
 
   def admin_user_logged_in
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password]) && AdminUser.exists?(email: user.email)
-      log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to rails_admin_path
-    end
+    return unless user && user.authenticate(params[:session][:password]) && AdminUser.exists?(email: user.email)
+
+    log_in user
+    params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+    redirect_to rails_admin_path
   end
 end

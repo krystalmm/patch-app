@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
   def index
-    if params[:option] == "hp"
-      @products = Product.page(params[:page]).per(9).order(price: "DESC")
-    elsif params[:option] == "cp"
-      @products = Product.page(params[:page]).per(9).order(price: "ASC")
-    else
-      @products = Product.page(params[:page]).per(9).order(:id)
-    end
+    @products = case params[:option]
+                when 'hp'
+                  Product.page(params[:page]).per(9).order(price: 'DESC')
+                when 'cp'
+                  Product.page(params[:page]).per(9).order(price: 'ASC')
+                else
+                  Product.page(params[:page]).per(9).order(:id)
+                end
   end
 
   def show

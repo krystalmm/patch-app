@@ -1,6 +1,5 @@
 module CartsHelper
   def subtotal(price, quantity)
-    return price * quantity
+    price * quantity
   end
 end
-

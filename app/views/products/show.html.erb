@@ -13,7 +13,7 @@
           <p class="item-name mt-3 mb-0"><strong><%= @product.name %></strong></p>
           <p class="item-name-kana"><strong><%= @product.name_kana %></strong></p>
           <p class="item-price">¥ <span class="price-big"> <%= change_consumption_tax(@product.price).to_s(:delimited) %> </span> (税込)</p>
-          <p class="stock-quantity">在庫 : <%= stock_judg(@product) %></p>
+          <p class="stock-quantity">在庫 : <%= stock_judg %></p>
           <div class="item-description">
             <p>【<%= @product.description %>】</p>
           </div>

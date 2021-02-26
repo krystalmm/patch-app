@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Products", type: :system do
+RSpec.describe 'Products', type: :system do
   describe '#show' do
     it 'stock_judg-icon is correct when stock_quantity is 0' do
       product = FactoryBot.create(:product, stock_quantity: 0)

@@ -1,6 +1,6 @@
 inherit_from: .rubocop_todo.yml
 
-require: 
+require:
   - rubocop-rails
 
 
@@ -57,8 +57,8 @@ Rails/SkipsModelValidations:
 
 # ABC Sizeの最大点数
 Metrics/AbcSize:
-  Max: 23
+  Max: 24
 
 # メソッドの長さをmax12行にする
 Metrics/MethodLength:
-  Max: 12
+  Max: 16

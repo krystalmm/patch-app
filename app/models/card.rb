@@ -7,14 +7,14 @@ class Card < ApplicationRecord
 
   def self.create_card_to_payjp(params)
     token = Payjp::Token.create({
-      card: {
-        number:    params['number'],
-        cvc:       params['cvc'],
-        exp_month: params['valid_month'],
-        exp_year:  params['valid_year']
-      }},
-      {'X-Payjp-Direct-Token-Generate': 'true'}
-    )
+                                  card: {
+                                    number: params['number'],
+                                    cvc: params['cvc'],
+                                    exp_month: params['valid_month'],
+                                    exp_year: params['valid_year']
+                                  }
+                                },
+                                { 'X-Payjp-Direct-Token-Generate': 'true' })
     Payjp::Customer.create(card: token.id)
   end
 end

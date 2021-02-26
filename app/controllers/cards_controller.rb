@@ -1,10 +1,10 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:new, :show, :destroy]
-  before_action :set_payjpSecretKey, except: :new
+  before_action :set_payjp_secret_key, except: :new
   before_action :set_cart
   before_action :set_user
 
-  require "payjp"
+  require 'payjp'
 
   def new
     redirect_to card_path(current_user.id) if @card.present?
@@ -37,7 +37,7 @@ class CardsController < ApplicationController
     default_card_information = customer.cards.retrieve(@card.card_id)
     @card_info = customer.cards.retrieve(@card.card_id)
     @exp_month = default_card_information.exp_month.to_s
-    @exp_year = default_card_information.exp_year.to_s.slice(2,3)
+    @exp_year = default_card_information.exp_year.to_s.slice(2, 3)
     customer_card = customer.cards.retrieve(@card.card_id)
     @card_brand = customer_card.brand
   end
@@ -56,15 +56,7 @@ class CardsController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
   end
 
-  def set_payjpSecretKey
+  def set_payjp_secret_key
     Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
-  end
-
-  def set_cart
-    @cart = current_cart
-  end
-
-  def set_user
-    @user = current_user
   end
 end
