@@ -6,6 +6,7 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   has_one :card, dependent: :destroy
+  has_many :orders, dependent: :nullify
 
   validates :name, presence: true, length: { maximum: 30 }
 

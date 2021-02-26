@@ -1,6 +1,6 @@
 class Card < ApplicationRecord
   belongs_to :user
-  # has_one :order, dependent: :nullify
+  has_one :order, dependent: :nullify
 
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
