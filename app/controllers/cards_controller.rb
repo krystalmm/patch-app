@@ -38,8 +38,7 @@ class CardsController < ApplicationController
     @card_info = customer.cards.retrieve(@card.card_id)
     @exp_month = default_card_information.exp_month.to_s
     @exp_year = default_card_information.exp_year.to_s.slice(2, 3)
-    customer_card = customer.cards.retrieve(@card.card_id)
-    @card_brand = customer_card.brand
+    @card_brand = default_card_information.brand
   end
 
   def destroy
