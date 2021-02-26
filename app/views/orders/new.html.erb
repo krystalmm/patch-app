@@ -1,2 +1,129 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<% provide(:title, 'ご注文内容のご確認 | ライフウェーブパッチ販売サイト') %>
+
+<div class="container">
+  <div class="row">
+    <div class="order col-10 offset-1">
+      <h3 class="order-head">ご注文内容のご確認</h3>
+      <%= form_with model: @order, id: "order-form", local: true do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :card_id, value: @card.id %>
+        <div class="order-items col-8 offset-2">
+          <h4 class="order-items-head order-sub-head mb-5">ご注文商品確認</h4>
+          <ul class="order-list p-0 mt-3">
+            <% sum_quantity = 0 %>
+            <% @line_items.each do |line_item| %>
+              <li class="order-list-item">
+                <div class="list-flex d-flex">
+                  <div class="order-item-img">
+                    <%= link_to product_path(line_item.product) do %>
+                      <%= image_tag line_item.product.product_image_url(:thumb), width: 200 %>
+                    <% end %>
+                  </div>
+                  <div class="order-item-info">
+                    <div class="name-and-price">
+                      <%= link_to product_path(line_item.product) do %>
+                        <p class="order-item-name"><strong><%= line_item.product.name %> <br> <%= line_item.product.name_kana %></strong></p>
+                      <% end %>
+                      <p class="order-item-price">¥ <%= change_consumption_tax(line_item.product.price).to_s(:delimited) %>  (税込)</p>
+                    </div>
+                    <div class="quantity">
+                      <p><span>数量 : </span><%= line_item.quantity %></p>
+                      <% sum_quantity += line_item.quantity %>
+                      <%= f.hidden_field :quantity, value: sum_quantity %>
+                    </div>
+                  </div>
+                </div>
+                <div class="subtotal d-flex">
+                  <p class="sub-head">小計<span class="sm">（税込）</span></p>
+                  <p class="subtotal-price"><strong>¥ <%= change_consumption_tax(subtotal(line_item.product.price, line_item.quantity)).to_s(:delimited) %></strong></p>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+          <div class="total-price mb-5">
+            <p><strong>送料無料</strong></p>
+            <p>合計<span class="sm">（税込）</span><span class="price-big"><strong>¥ <%= change_consumption_tax(@cart.total_price).to_s(:delimited) %></strong></span></p>
+          </div>
+          <%= f.hidden_field :price, value: change_consumption_tax(@cart.total_price) %>
+        </div>
+        <div class="order-user-info col-8 offset-2 mt-5">
+          <h4 class="order-user-info-head order-sub-head">お客様基本情報のご入力</h4>
+          <p class="form-p mb-4">※<span class="essential-icon ml-2">必須</span> は入力必須項目です。</p>
+          <div class="form-group">
+            <%= f.label :name, "お名前"%>
+            <span class="essential-icon">必須</span>
+            <%= f.text_field :name, class: "form-control validate[required]", id: "form-name", placeholder: " 例 : 山田　花子", autocomplete: "name" %>
+          </div>
+          <div class="form-group mt-4 pt-3">
+            <%= f.label :name_kana, "フリガナ"%>
+            <span class="essential-icon">必須</span>
+            <%= f.text_field :name_kana, class: "form-control validate[required, custom[katakana]]", id: "form-name_kana", placeholder: " 例 : ヤマダ　ハナコ" %>
+          </div>
+          <div class="form-group mt-4 pt-3">
+            <%= f.label :postcode, '郵便番号（7桁）' %>
+            <span class="essential-icon">必須</span>
+            <%= f.text_field :postcode, class: 'form-control validate[required] validate[custom[number], maxSize[7]]', id: 'user_postcode', autocomplete: 'postcode', placeholder: ' 例 : 1234567' %>
+            <small class="form-text text-muted">
+              郵便番号を入力すると、住所の一部が自動的に表示されます。<br>※半角数字、ハイフン（-）無しで入力してください。
+            </small>
+          </div>
+          <div class="form-group mt-4 pt-3">
+            <div class="prefecture-wrap col-7 col-sm-5 pl-0">
+              <%= f.label :prefecture_name, '都道府県' %>
+              <span class="essential-icon">必須</span>
+              <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control validate[required]', id: 'user_prefecture_code' %>
+            </div>
+          </div>
+          <div class="form-group mt-4 pt-3">
+            <%= f.label :address_city, '住所' %>
+            <span class="essential-icon">必須</span>
+            <div class="form-address-city">
+              <%= f.text_field :address_city, class: 'form-control validate[required]', id: 'user_address_city', autocomplete: 'address_city', placeholder: ' 例 : 〇〇市〇〇区〇〇町' %>
+            </div>
+            <div class="form-address-street mt-3">
+              <%= f.text_field :address_street, class: 'form-control validate[required]', id: 'user_address_street', autocomplete: 'address_street', placeholder: ' 例 : 〇〇 1-1' %>
+              <small class="form-text text-muted">
+                ※町名・番地の入力漏れにご注意ください。
+              </small>
+            </div>
+            <div class="form-address-building mt-3">
+              <%= f.text_field :address_building, class: 'form-control', id: 'form-address_building', autocomplete: 'address_building', placeholder: ' 例 : 〇〇マンション００号' %>
+              <small class="form-text text-muted">
+                ※部屋番号や階数なども忘れずにご記入ください。
+              </small>
+            </div>
+          </div>
+          <div class="form-group mt-4 pt-3">
+            <%= f.label :email, "メールアドレス"%>
+            <span class="essential-icon">必須</span>
+            <%= f.email_field :email, class: "form-control validate[required] validate[custom[email]]", id: "form-email", placeholder: " 例 : life@wave.co.jp", autocomplete: "email" %>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+              ※「..（ドットが２つ連続）」を含むメールアドレスはご利用いただけません。
+            </small>
+          </div>
+          <div class="form-group mt-4 pt-3">
+            <%= f.label :password, "パスワード" %>
+            <span class="essential-icon">必須</span>
+            <%= f.password_field :password, class: "form-control validate[required] validate[minSize[8]]", id: "password", placeholder: " 設定したいパスワードを入力してください"%>
+            <small id="passwordHelpBlock" class="form-text text-muted">
+              ※パスワードは半角英数字８文字以上で入力してください。
+            </small>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="password-check" value="">
+              <label class="form-check-label" for="password-check">パスワードを表示する</label>
+            </div>
+          </div>
+          <div class="form-group mt-4 pt-3">
+            <%= f.label :password_confirmation, "パスワード（確認）" %>
+            <span class="essential-icon">必須</span>
+            <%= f.password_field :password_confirmation, class: "form-control validate[required, equals[password]] validate[minSize[8]]", id: "password_confirmation", placeholder: "確認のため、もう一度入力してください" %>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="password_confirmation-check" value="">
+              <label class="form-check-label" for="password_confirmation-check">パスワードを表示する</label>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

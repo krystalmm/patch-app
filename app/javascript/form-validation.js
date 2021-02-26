@@ -34,3 +34,9 @@ $(function() {
   });
 });
 
+$(function() {
+  $('#order-form').validationEngine('attach', {
+    promptPosition: "bottomLeft", scrollOffset: 140
+  });
+});
+
