@@ -1001,6 +1001,7 @@ main {
 // 購入手続きページ（/orders/new）
 
 .order {
+
   .order-head {
     @include base-head;
     width: 300px;
@@ -1021,10 +1022,12 @@ main {
   }
 
   .order-items {
+
     .order-list {
       border-bottom: 1px solid #ccc;
 
       .order-list-item {
+        width: 583px;
         border-top: 1px solid #ccc;
         position: relative;
         padding: 25px 0;
@@ -1096,8 +1099,9 @@ main {
   }
 
   .total-price {
+    width: 583px;
     margin-top: 30px;
-    margin-right: 25px;
+    padding-right: 25px;
 
     p {
       text-align: right;
@@ -1114,6 +1118,10 @@ main {
   }
 
   .order-user-info {
+    .form-group {
+      width: 583px;
+    }
+
     .order-user-info-head {
       margin-bottom: 30px;
     }

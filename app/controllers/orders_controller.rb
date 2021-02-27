@@ -8,10 +8,12 @@ class OrdersController < ApplicationController
 
   def new
     @line_items = current_cart.line_items
-    return unless @cart.line_items.empty?
+    if @cart.line_items.empty?
+      flash[:info] = 'カートは空です'
+      redirect_to current_cart
+      return
+    end
 
-    flash[:info] = 'カートは空です'
-    redirect_to current_cart
     if @card.present?
       customer = Payjp::Customer.retrieve(@card.customer_id)
       default_card_information = customer.cards.retrieve(@card.card_id)
