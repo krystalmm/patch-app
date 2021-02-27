@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :user_logged_in
   before_action :set_user
   before_action :set_card
+  before_action :logged_in_user, only: [:create]
 
   require 'payjp'
 
@@ -29,12 +30,29 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create; end
+  def create
+    @purchaseByCard = Payjp::Charge.create(
+      amount: @cart.total_price,
+      customer: @card.customer_id,
+      currency: 'jpy',
+      card: params['payjpToken']
+    )
+    @order = Order.new(order_params)
+    @order.add_items(current_cart)
+    if @purchaseByCard.save && @order.save!
+      OrderDetail.create_items(@order, @cart.line_items)
+      flash[:success] = '注文が完了致しました <br> マイページにて注文履歴の確認ができます'
+      redirect_to current_user
+    else
+      flash[:danger] = '注文の登録ができませんでした'
+      redirect_to new_order_path
+    end
+  end
 
   private
 
   def order_params
-    params.permit(:user_id, :card_id, :quantity, :price)
+    params.require(:order).permit(:user_id, :card_id, :quantity, :price)
   end
 
   def set_card
