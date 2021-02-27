@@ -82,7 +82,7 @@
           <div class="form-group mt-4 pt-3">
             <%= f.label :postcode, '郵便番号（7桁）' %>
             <span class="essential-icon">必須</span>
-            <%= f.text_field :postcode, class: 'form-control validate[required] validate[custom[number], maxSize[7]]', id: 'user_postcode', autocomplete: 'postcode', placeholder: ' 例 : 1234567', value: current_user.postcode %>
+            <%= f.text_field :postcode, class: 'form-control validate[required] validate[custom[number], custom[size7]]', id: 'user_postcode', autocomplete: 'postcode', placeholder: ' 例 : 1234567', value: current_user.postcode %>
             <small class="form-text text-muted">
               郵便番号を入力すると、住所の一部が自動的に表示されます。<br>※半角数字、ハイフン（-）無しで入力してください。
             </small>

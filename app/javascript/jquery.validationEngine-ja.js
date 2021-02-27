@@ -145,13 +145,15 @@
                 "katakana": {
                     "regex": /^[ア-ンァ-ォャ-ョー\s 　]+$/,
                     "alertText": "全角カタカナで入力してください"
+                },
+                "size7": {
+                    "regex": /^.{7}$/,
+                    "alertText": "7桁で入力してください"
                 }
             };
-            
         }
     };
     $.validationEngineLanguage.newLang();
 })(jQuery);
 
 
-    

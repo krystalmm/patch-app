@@ -53,6 +53,10 @@ class OrdersController < ApplicationController
     @orders = Order.where(user_id: current_user.id).order(id: "desc")
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   private
 
   def order_params
