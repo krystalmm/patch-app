@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
     else
       @card = Card.new
       gon.payjpPublicKey = Rails.application.credentials[:payjp][:PAYJP_PUBLIC_KEY]
+      store_location
     end
     @order = Order.new
   end

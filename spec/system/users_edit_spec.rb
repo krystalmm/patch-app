@@ -29,6 +29,8 @@ RSpec.describe 'UsersEdit', type: :system do
     fill_in 'edit-name', with: 'test user'
     fill_in 'edit-name_kana', with: 'テスト　ユーザー'
     fill_in 'edit-email', with: 'test@example.com'
+    fill_in 'password', with: ''
+    fill_in 'password_confirmation', with: ''
     fill_in 'edit-user_postcode', with: '5300001'
     find('#edit-user_prefecture_code').find("option[value='27']").select_option
     fill_in 'edit-user_address_city', with: '大阪市北区'

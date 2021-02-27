@@ -118,6 +118,10 @@ header {
   z-index: 1000;
   background-color: white;
 
+  a {
+    display: block;
+  }
+
   .gnav {
     display: flex;
     justify-content: space-between;
@@ -1124,6 +1128,23 @@ main {
 
     .order-user-info-head {
       margin-bottom: 30px;
+    }
+  }
+
+  .order-paying {
+    .order-paying-content {
+      width: 583px;
+
+      .card-info-text {
+        font-size: 1.1rem;
+      }
+
+      .card-info-box {
+        width: 45%;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 3px;
+      }
     }
   }
 }

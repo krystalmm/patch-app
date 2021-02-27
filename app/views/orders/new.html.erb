@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="order col-10 offset-1">
+    <div class="order col-10 offset-1 mb-5">
       <h3 class="order-head">ご注文内容のご確認</h3>
       <%= form_with model: @order, id: "order-form", local: true do |f| %>
         <%= f.hidden_field :user_id, value: current_user.id %>
@@ -46,18 +46,18 @@
           </div>
           <%= f.hidden_field :price, value: change_consumption_tax(@cart.total_price) %>
         </div>
-        <div class="order-user-info col-8 offset-2 mt-5">
+        <div class="order-user-info col-8 offset-2 mt-5 pt-5">
           <h4 class="order-user-info-head order-sub-head">お客様基本情報のご入力</h4>
           <p class="form-p mb-4">※<span class="essential-icon ml-2">必須</span> は入力必須項目です。</p>
           <div class="form-group">
             <%= f.label :name, "お名前"%>
             <span class="essential-icon">必須</span>
-            <%= f.text_field :name, class: "form-control validate[required]", id: "form-name", placeholder: " 例 : 山田　花子", autocomplete: "name" %>
+            <%= f.text_field :name, class: "form-control validate[required]", id: "form-name", placeholder: " 例 : 山田　花子", autocomplete: "name", value: current_user.name %>
           </div>
           <div class="form-group mt-4 pt-3">
             <%= f.label :name_kana, "フリガナ"%>
             <span class="essential-icon">必須</span>
-            <%= f.text_field :name_kana, class: "form-control validate[required, custom[katakana]]", id: "form-name_kana", placeholder: " 例 : ヤマダ　ハナコ" %>
+            <%= f.text_field :name_kana, class: "form-control validate[required, custom[katakana]]", id: "form-name_kana", placeholder: " 例 : ヤマダ　ハナコ", value: current_user.name_kana %>
           </div>
           <div class="form-group mt-4 pt-3">
             <%= f.label :postcode, '郵便番号（7桁）' %>
@@ -87,7 +87,7 @@
               </small>
             </div>
             <div class="form-address-building mt-3">
-              <%= f.text_field :address_building, class: 'form-control', id: 'form-address_building', autocomplete: 'address_building', placeholder: ' 例 : 〇〇マンション００号' %>
+              <%= f.text_field :address_building, class: 'form-control', id: 'form-address_building', autocomplete: 'address_building', placeholder: ' 例 : 〇〇マンション００号', value: current_user.address_building %>
               <small class="form-text text-muted">
                 ※部屋番号や階数なども忘れずにご記入ください。
               </small>
@@ -123,45 +123,31 @@
             </div>
           </div>
         </div>
-        <div class="order-paying col-8 offset-2">
-          <h4 class="order-paing-head">お支払い</h4>
-          <p>※ お支払いは、クレジットカードのみ可能です。</p>
-          <% if has_card %>
-            <p class="card-info-text">ご登録済みのカード情報</p>
-            <div class="card-info-box">
-              <div class="card-number">
-                <%= image_tag asset_path("cards/#{card_src(@card_brand)}"), width: 50, height: 30, class: 'mr-3' %>
-                <%= " **** **** ****" + @card_info.last4 %>
-              </div>
-              <div class="card-exp-info mt-3">
-                <%= "有効期限 : " + @exp_month + "/" + @exp_year %>
-              </div>
-            </div>
-          <% else %>
-            <button type="button" class="btn btn-raised btn-secondary" data-toggle="modal" data-target="#exampleModal">
-              カードを登録する
-            </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title col-8 offset-2" id="exampleModalLabel">クレジットカード情報入力</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
+        <div class="order-paying col-8 offset-2 mt-5 pt-5 pb-5">
+          <h4 class="order-paying-head order-sub-head">お支払い</h4>
+          <div class="order-paying-content mt-3">
+            <p>※ お支払いは、クレジットカードのみ可能です。</p>
+            <% if has_card %>
+              <p class="card-info-text mt-4"><strong>ご登録済みのカード情報</strong></p>
+              <div class="card-info-box">
+                <div class="card-number">
+                  <%= image_tag asset_path("cards/#{card_src(@card_brand)}"), width: 50, height: 30, class: 'mr-3' %>
+                  <%= " **** **** ****" + @card_info.last4 %>
+                </div>
+                <div class="card-exp-info mt-3">
+                  <%= "有効期限 : " + @exp_month + "/" + @exp_year %>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% else %>
+              <%= link_to "カードを登録する", new_card_path, class: 'btn btn-raised btn-secondary' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="order-submit mt-5 pt-4">
+          <%= f.submit "注文を確定する", id: "order-submit", class: "btn btn-raised btn-dark btn-lg col-8 offset-2" %>
         </div>
       <% end %>
+      <%= link_to "カートへ戻る", cart_path(current_cart), class: "btn btn-raised active col-4 offset-4 mt-4 mb-5" %>
     </div>
   </div>
 </div>

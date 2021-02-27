@@ -24,7 +24,7 @@ class CardsController < ApplicationController
     )
     if @card.save
       flash[:success] = 'クレジットカードの登録が完了致しました'
-      redirect_to card_path(current_user.id)
+      redirect_back_or card_path(current_user.id)
     else
       flash[:danger] = 'クレジットカードの登録に失敗しました'
       redirect_to new_card_path
