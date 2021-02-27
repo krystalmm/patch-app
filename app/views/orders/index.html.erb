@@ -1,0 +1,40 @@
+<% provide(:title, '購入履歴 | ライフウェーブパッチ販売サイト') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="ordered col-10 offset-1 mb-5">
+      <h3 class="ordered-head">購入履歴</h3>
+      <p class="mb-5 text-center">※ boxをクリックすると詳細をご覧いただけます。</p>
+      <ul class="ordered-list">
+        <% @orders.each do |order| %>
+          <li class="ordered-list-item">
+            <%= link_to order_path(order) do %>
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td>購入日時 :</td>
+                    <td><strong><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></strong></td>
+                  </tr>
+                  <tr>
+                    <td class="pt-0">注文ID :</td>
+                    <td class="pt-0"><%= order.id %></td>
+                  </tr>
+                  <tr>
+                    <td class="pt-0">決済金額 :</td>
+                    <td class="pt-0"><%= order.price.to_s(:delimited) %></td>
+                  </tr>
+                  <tr>
+                    <td class="py-0">ご注文進行状況 :</td>
+                    <td class="py-0"><%= order.status %></td>
+                  </tr>
+                </tbody>
+              </table>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

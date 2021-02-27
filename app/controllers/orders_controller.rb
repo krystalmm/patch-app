@@ -41,12 +41,16 @@ class OrdersController < ApplicationController
     @order.add_items(current_cart)
     if @purchaseByCard.save && @order.save!
       OrderDetail.create_items(@order, @cart.line_items)
-      flash[:success] = '注文が完了致しました <br> マイページにて注文履歴の確認ができます'
+      flash[:success] = '注文が完了致しました <br> マイページにて購入履歴の確認ができます'
       redirect_to current_user
     else
       flash[:danger] = '注文の登録ができませんでした'
       redirect_to new_order_path
     end
+  end
+
+  def index
+    @orders = Order.where(user_id: current_user.id).order(id: "desc")
   end
 
   private

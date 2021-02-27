@@ -46,6 +46,26 @@
           </div>
           <%= f.hidden_field :price, value: change_consumption_tax(@cart.total_price) %>
         </div>
+        <div class="order-paying col-8 offset-2 mt-5 pt-5 pb-5">
+          <h4 class="order-paying-head order-sub-head">お支払い</h4>
+          <div class="order-paying-content mt-3">
+            <p>※ お支払いは、クレジットカードのみ可能です。</p>
+            <% if has_card %>
+              <p class="card-info-text mt-4"><strong>ご登録済みのカード情報</strong></p>
+              <div class="card-info-box">
+                <div class="card-number">
+                  <%= image_tag asset_path("cards/#{card_src(@card_brand)}"), width: 50, height: 30, class: 'mr-3' %>
+                  <%= " **** **** ****" + @card_info.last4 %>
+                </div>
+                <div class="card-exp-info mt-3">
+                  <%= "有効期限 : " + @exp_month + "/" + @exp_year %>
+                </div>
+              </div>
+            <% else %>
+              <%= link_to "カードを登録する", new_card_path, class: 'btn btn-raised btn-secondary col-6 offset-3 mt-5'%>
+            <% end %>
+          </div>
+        </div>
         <div class="order-user-info col-8 offset-2 mt-5 pt-5">
           <h4 class="order-user-info-head order-sub-head">お客様基本情報のご入力</h4>
           <p class="form-p mb-4">※<span class="essential-icon ml-2">必須</span> は入力必須項目です。</p>
@@ -102,36 +122,13 @@
             </small>
           </div>
         </div>
-        <div class="order-paying col-8 offset-2 mt-5 pt-5 pb-5">
-          <h4 class="order-paying-head order-sub-head">お支払い</h4>
-          <div class="order-paying-content mt-3">
-            <p>※ お支払いは、クレジットカードのみ可能です。</p>
-            <% if has_card %>
-              <p class="card-info-text mt-4"><strong>ご登録済みのカード情報</strong></p>
-              <div class="card-info-box">
-                <div class="card-number">
-                  <%= image_tag asset_path("cards/#{card_src(@card_brand)}"), width: 50, height: 30, class: 'mr-3' %>
-                  <%= " **** **** ****" + @card_info.last4 %>
-                </div>
-                <div class="card-exp-info mt-3">
-                  <%= "有効期限 : " + @exp_month + "/" + @exp_year %>
-                </div>
-              </div>
-            <% else %>
-              <%= link_to "カードを登録する", new_card_path, class: 'btn btn-raised btn-secondary' %>
-            <% end %>
-          </div>
-        </div>
         <div class="order-submit mt-5 pt-4">
           <%= f.submit "注文を確定する", id: "order-submit", class: "btn btn-raised btn-dark btn-lg col-8 offset-2" %>
         </div>
       <% end %>
-      <%= link_to "カートへ戻る", cart_path(current_cart), class: "btn btn-raised active col-4 offset-4 mt-4 mb-5" %>
+      <div class="order-back-cart">
+        <%= link_to "カートへ戻る", cart_path(current_cart), class: "btn btn-raised active col-4 offset-4 mt-4 mb-5" %>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-
-<%=  %>

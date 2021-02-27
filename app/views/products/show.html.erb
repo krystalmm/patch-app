@@ -13,7 +13,13 @@
           <p class="item-name mt-3 mb-0"><strong><%= @product.name %></strong></p>
           <p class="item-name-kana"><strong><%= @product.name_kana %></strong></p>
           <p class="item-price">¥ <span class="price-big"> <%= change_consumption_tax(@product.price).to_s(:delimited) %> </span> (税込)</p>
-          <p class="stock-quantity">在庫 : <%= stock_judg %></p>
+          <% if @product.stock_quantity > 3 %>
+            <p class="stock-quantity">在庫 : <span id="stock"><%= @product.stock_quantity %></span></p>
+          <% elsif @product.stock_quantity > 0 %>
+            <p class="stock-quantity">在庫 : 残り<span id="stock"><%= @product.stock_quantity %></span>つ</p>
+          <% else %>
+            <p class="stock-quantity">在庫 : なし<span id="stock"><% @product.stock_quantity %></span></p>
+          <% end %>
           <div class="item-description">
             <p>【<%= @product.description %>】</p>
           </div>
@@ -21,7 +27,7 @@
             <%= f.hidden_field :product_id, value: @product.id %>
             <div class="quantity d-flex">
               <div class="button" id="down">−</div>
-              <%= f.text_field :quantity, value: "1", class: "inputtext", id: "quantity-text" %>
+              <%= f.text_field :quantity, value: "0", class: "inputtext", id: "quantity-text" %>
               <div class="button" id="up">+</div>
             </div>
             <div class="heart-and-cart d-flex justify-content-between">

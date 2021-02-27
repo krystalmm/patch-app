@@ -1,5 +1,5 @@
 class OrderDetail < ApplicationRecord
-  belongs_to :product
+  belongs_to :product, optional: true
   belongs_to :order
 
   def self.create_items(order, line_items)

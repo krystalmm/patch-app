@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   mount_uploader :product_image, ProductImageUploader
 
-  has_many :orders, through: :order_details
   has_many :order_details, dependent: :nullify
+  has_many :orders, through: :order_details
 
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: true
