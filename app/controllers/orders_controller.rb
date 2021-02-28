@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(user_id: current_user.id).order(id: "desc")
+    @orders = Order.where(user_id: current_user.id).page(params[:page]).per(5).order(id: "desc")
   end
 
   def show
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :card_id, :quantity, :price)
+    params.require(:order).permit(:user_id, :card_id, :quantity, :price, :postcode, :prefecture_code, :address_city, :address_street, :address_building)
   end
 
   def set_card

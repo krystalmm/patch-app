@@ -6,6 +6,7 @@
   <div class="row">
     <div class="ordered col-10 offset-1 mb-5">
       <h3 class="ordered-head">購入履歴</h3>
+      <% if @orders.present? %>
       <p class="mb-5 text-center">※ boxをクリックすると詳細をご覧いただけます。</p>
       <ul class="ordered-list">
         <% @orders.each do |order| %>
@@ -14,7 +15,7 @@
               <table class="table table-borderless">
                 <tbody>
                   <tr>
-                    <td>購入日時 :</td>
+                    <td>ご注文日時 :</td>
                     <td><strong><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></strong></td>
                   </tr>
                   <tr>
@@ -35,6 +36,13 @@
           </li>
         <% end %>
       </ul>
+
+      <%= paginate @orders %>
+
+      <% else %>
+        <p class="text-center mb-5">購入履歴がありません。</p>
+        <%= link_to "製品一覧を見る", products_path, class: 'btn btn-dark btn-lg btn-raised col-6 offset-3 mb-5' %>
+      <% end %>
     </div>
   </div>
 </div>

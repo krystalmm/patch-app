@@ -1193,6 +1193,111 @@ main {
 }
 
 
+// 注文詳細ページ（orders/:id）
+
+.ordered-detail {
+  .ordered-detail-head {
+    @include base-head;
+    width: 280px;
+  }
+
+  .ordered-detail-sub-head {
+    border-left: 3px solid #000;
+    padding-left: 15px;
+  }
+
+  .ordered-detail-info {
+    width: 583px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 3px;
+  }
+
+  .ordered-detail-item {
+    width: 583px;
+    margin: 0 auto;
+    margin-top: 80px;
+
+    .ordered-detail-list {
+      border-bottom: 1px solid #ccc;
+
+      .ordered-detail-list-item {
+        border-top: 1px solid #ccc;
+        padding: 15px;
+
+        .item-img {
+          a {
+            display: block;
+
+            &:hover, &:active {
+              opacity: 0.6;
+              transition: opacity .3s ease;
+            }
+          }
+        }
+
+        .item-info {
+          margin-left: 50px;
+          margin-top: 10px;
+          position: relative;
+
+          p {
+            margin-bottom: 0;
+          }
+
+          .item-name, .item-name_kana {
+            font-size: 1.2rem;
+          }
+
+          .subtotal {
+            position: absolute;
+            bottom: 0;
+            width: 250px;
+
+            .sub-head {
+              font-size: 1.2rem;
+              display: inline-block;
+              vertical-align: middle;
+              line-height: 2.2rem;
+
+              span.sm {
+                font-size: 1.1rem;
+              }
+            }
+
+            .subtotal-price {
+              font-size: 1.4rem;
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+
+    .ordered-total-price {
+      margin-left: 20px;
+      margin-top: 30px;
+      font-size: 1.3rem;
+
+      .total-price {
+        margin-left: 150px;
+        text-align: right;
+
+        span.sm {
+          font-size: 1.2rem;
+        }
+
+        span.big {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+
 // footer
 
 footer {
