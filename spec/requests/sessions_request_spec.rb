@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Sessions', type: :request do
   let(:user) { FactoryBot.create(:user) }
-  describe 'GET /login' do
+  describe '#new' do
     it 'responds successfully' do
       get login_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'POST /login' do
+  describe '#create' do
     it 'login with valid information' do
       post login_path, params: { session: { email: user.email, password: user.password } }
       aggregate_failures do
@@ -25,7 +25,7 @@ RSpec.describe 'Sessions', type: :request do
     end
   end
 
-  describe 'delete /logput' do
+  describe '#destroy' do
     it 'redirects to root_path' do
       post login_path, params: { session: { email: user.email, password: user.password } }
 

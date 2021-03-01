@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe 'Users', type: :request do
   let(:user) { FactoryBot.create(:user) }
 
-  describe 'GET /signup' do
+  describe '#new' do
     it 'responds successfully' do
       get signup_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'GET /users/id' do
+  describe '#show' do
     before { log_in_as(user) }
     it 'responds successfully' do
       get user_path(user)
@@ -18,7 +18,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'POST /users' do
+  describe '#create' do
     let(:user) { FactoryBot.attributes_for(:user) }
     it 'adds new user with correct signup information' do
       aggregate_failures do
@@ -32,7 +32,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'PATCH /users/:id' do
+  describe '#update' do
     let(:user) { FactoryBot.create(:user) }
     before { log_in_as(user) }
 

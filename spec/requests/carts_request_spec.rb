@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Carts', type: :request do
-  describe 'POST /add_item' do
+  describe '#add_item' do
     let(:product) { FactoryBot.create(:product) }
     it 'succeeds add item' do
       aggregate_failures do
@@ -14,7 +14,7 @@ RSpec.describe 'Carts', type: :request do
     end
   end
 
-  describe 'GET /carts/:id' do
+  describe '#show' do
     let(:cart) { FactoryBot.create(:cart) }
     it 'responds successfully' do
       get cart_path(cart)
