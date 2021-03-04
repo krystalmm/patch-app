@@ -25,6 +25,7 @@ class CartsController < ApplicationController
       flash[:success] = 'カート内商品の数量が変更されました'
       redirect_to current_cart
     else
+      @line_item.destroy
       flash[:danger] = '商品の在庫数をご確認ください'
       redirect_to product_path(@line_item.product)
     end

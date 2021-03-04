@@ -43,6 +43,9 @@ Rails.application.configure do
     authentication:       'login',
     enable_starttls_auto: true
   }
+
+  config.action_controller.asset_host = 'http://localhost:3000'
+  config.action_mailer.asset_host = config.action_controller.asset_host
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   # config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_caching = false

@@ -16,4 +16,18 @@ module ApplicationHelper
     end
     card_src
   end
+
+  def order_quantity(product)
+    order = OrderDetail.find_by(product_id: product.id, order_id: @order.id)
+    order.quantity
+  end
+
+  def change_consumption_tax(price)
+    tax = 1.1
+    (price * tax).round(2).ceil
+  end
+
+  def subtotal(price, quantity)
+    price * quantity
+  end
 end

@@ -1,0 +1,46 @@
+<p>
+  ※ 本メールは、ライフウェーブパッチ販売サイトから自動的に送信されています。
+</p>
+
+<p><%= @user.name %> 様</p>
+<p>（ご登録メールアドレス : <%= @user.email %>）</p>
+
+<p>
+  この度はご注文頂き誠にありがとうございます。 <br> 下記ご注文内容詳細です。ご確認ください。
+</p>
+<br>
+
+<h4>注文情報</h4>
+<p>ご注文日時: <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+<p>注文ID: <%= @order.id %></p>
+<p>ご注文者名: <%= @order.user.name %></p>
+<p>
+  お届け先: 〒 <%= @order.postcode %>
+  <%= @order.prefecture_name %><%= @order.address_city %><%= @order.address_street %><%= @order.address_building %>
+</p>
+
+<br>
+
+<h4>ご注文商品</h4>
+<ul>
+  <% @items.each do |item| %>
+    <li style="list-style: none; margin-bottom: 30px; display: flex;">
+      <%= image_tag item.product_image_url(:thumb), width: 150, height: 150 %>
+      <p>
+        <%= item.name %> <br> <%= item.name_kana %> <br>
+        数量 : <%= order_quantity(item) %> <br>
+        小計（税込） ¥ <%= change_consumption_tax(subtotal(item.price, order_quantity(item))).to_s(:delimited) %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+
+<h4>合計決済金額（送料無料)</h4>
+<p>合計 （税込）<strong>¥ <%= @order.price.to_s(:delimited) %></strong></p>
+
+<br>
+
+<p>ご注文の詳細は、マイページでもご確認頂けます。</p>
+

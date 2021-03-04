@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
     @order.add_items(current_cart)
     if @purchaseByCard.save && @order.save!
       OrderDetail.create_items(@order, @cart.line_items)
+      OrderMailer.send_when_order(current_user, @order, @order.products).deliver
       flash[:success] = '注文が完了致しました <br> マイページにて購入履歴の確認ができます'
       redirect_to current_user
     else
