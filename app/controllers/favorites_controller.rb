@@ -8,6 +8,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     favorite = current_user.favorites.find_by(product_id: @product.id)
+    favorite.destroy
   end
 
   private

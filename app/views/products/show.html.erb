@@ -30,18 +30,26 @@
               <%= f.text_field :quantity, value: "0", class: "inputtext", id: "quantity-text" %>
               <div class="button" id="up">+</div>
             </div>
-            <div class="heart-and-cart d-flex justify-content-between">
-              <div class="favorites-icon">
-                <%= link_to root_path do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
+            <% if logged_in? %>
+              <div class="heart-and-cart d-flex justify-content-between">
+                <div class="favorites-icon">
+                  <%= render 'favorites/favorites-button', product: @product %>
+                </div>
+                <div class="cartplus">
+                  <%= f.button type: "submit" do %>
+                    <i class="fas fa-cart-plus"></i> カートに入れる
+                  <% end %>
+                </div>
               </div>
-              <div class="cartplus">
-                <%= f.button type: "submit" do %>
-                  <i class="fas fa-cart-plus"></i> カートに入れる
-                <% end %>
+            <% else %>
+              <div class="heart-and-cart">
+                <div class="cartplus" id="not-login-cartplus">
+                  <%= f.button type: "submit" do %>
+                    <i class="fas fa-cart-plus"></i> カートに入れる
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
           <div id="button-review">
             <a href="#" class="button-to-review">

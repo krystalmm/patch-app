@@ -589,6 +589,15 @@ main {
     .item-box {
       margin: 20px;
 
+      a {
+        display: block;
+
+        &:hover, &:active {
+          opacity: 0.8;
+          transition: opacity .3s ease;
+        }
+      }
+
       .item-bottom {
         justify-content: flex-end;
         margin-right: 20px;
@@ -661,6 +670,9 @@ main {
 
           a {
             display: block;
+            color: #fff;
+            padding: 8px 20px 2px 20px;
+            text-align: center;
           }
 
           &:hover, &:active {
@@ -669,12 +681,10 @@ main {
           }
 
           i {
-            color: #fff;
             font-size: 1.8rem;
             -webkit-font-smoothing: antialiased;
             -webkit-text-stroke-color: #777777;
             -webkit-text-stroke-width: 1px;
-            padding: 15px;
           }
         }
 
@@ -697,9 +707,14 @@ main {
             border-style: none;
             margin-bottom: 0;
             outline: none;
-            padding: 15px;
+            padding: 18px;
             text-align: center;
           }
+        }
+
+        #not-login-cartplus {
+          width: 100%;
+          text-align: center;
         }
       }
 
