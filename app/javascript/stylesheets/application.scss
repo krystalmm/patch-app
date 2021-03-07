@@ -1313,6 +1313,56 @@ main {
 }
 
 
+
+// お気に入りページ（users/favorites）
+
+.favorites-show {
+  .favorites-show-head {
+    @include base-head;
+    width: 250px;
+  }
+
+  .favorites-list {
+    width: 600px;
+
+    .favorites-list-item {
+      .item-name, .item-name-kana {
+        font-size: 1.3rem;
+      }
+
+      .item-img {
+        margin-left: 40px;
+
+        a {
+          display: block;
+
+          &:hover, &:active {
+            opacity: 0.8;
+            transition: opacity .3s ease;
+          }
+        }
+      }
+
+      .item-info {
+        a {
+          display: block;
+
+          &:hover, &:active {
+            opacity: 0.6;
+            transition: opacity .3s ease;
+          }
+        }
+      }
+
+      .item-price {
+        margin-top: 50px;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+
 // footer
 
 footer {
