@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :orders, dependent: :nullify
   has_many :favorites, dependent: :destroy
   has_many :like_products, through: :favorites, source: :product
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 30 }
 
