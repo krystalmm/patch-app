@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :card, dependent: :destroy
   has_many :orders, dependent: :nullify
   has_many :favorites, dependent: :destroy
+  has_many :like_items, through: :favorites, source: :product
 
   validates :name, presence: true, length: { maximum: 30 }
 

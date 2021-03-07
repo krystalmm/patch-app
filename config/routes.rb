@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :admin_users
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -15,22 +14,19 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:edit, :create, :update, :show]
-
+  resources :users, only: [:edit, :create, :update, :show] do
+    get :favorites, on: :collection
+  end
   resources :password_resets, only: [:new, :edit, :create, :update]
-
-  resources :products, only: [:index, :show]
-
+  resources :products, only: [:index, :show] do
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :carts, only: [:show]
-
   resources :cards, only: [:new, :create, :show, :destroy]
-
   resources :orders, only: [:new, :create, :index, :show]
 
   post '/add_item', to: 'carts#add_item'
-
   post '/update_item', to: 'carts#update_item'
-
   delete '/delete_item', to: 'carts#delete_item'
 
   if Rails.env.development?
