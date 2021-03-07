@@ -26,7 +26,7 @@ RSpec.describe 'Orders', type: :request do
   end
 
   describe '#create' do
-    let(:order) { FactoryBot.attributes_for(:order) }
+    let(:order) { FactoryBot.attributes_for(:order, user_id: user.id) }
 
     before do
       payjp_customer = double('Payjp::Customer')

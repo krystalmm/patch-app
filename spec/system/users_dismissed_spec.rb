@@ -7,9 +7,11 @@ RSpec.describe 'UsersDismissed', type: :system do
     login_as(user)
     click_on '退会をご希望の方はこちらから'
     click_link '退会する'
-    expect(current_path).to eq root_path
-    expect(has_css?('.alert-primary')).to be_truthy
-    expect(page).to have_content 'またのご利用を心よりお待ちしております'
+    aggregate_failures do
+      expect(current_path).to eq root_path
+      expect(has_css?('.alert-primary')).to be_truthy
+      expect(page).to have_content 'またのご利用を心よりお待ちしております'
+    end
   end
 
   it 'fails login with dismissed user' do
@@ -20,8 +22,10 @@ RSpec.describe 'UsersDismissed', type: :system do
     fill_in 'login-email', with: user.email
     fill_in 'login-password', with: user.password
     click_on 'ログインする'
-    expect(current_path).to eq signup_path
-    expect(has_css?('.alert-danger')).to be_truthy
-    expect(page).to have_content '退会済みです'
+    aggregate_failures do
+      expect(current_path).to eq signup_path
+      expect(has_css?('.alert-danger')).to be_truthy
+      expect(page).to have_content '退会済みです'
+    end
   end
 end
