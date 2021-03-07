@@ -59,9 +59,17 @@
         </div>
       </div>
       <div id="review" class="my-5">
-        <h4 class="review-head mt-5">
+        <h4 class="review-head my-5">
           <i class="far fa-comments"></i> レビュー
         </h4>
+        <% if @product.comments.exists? %>
+
+        <% else %>
+          <p class="text-center">この商品のレビューはまだありません。</p>
+        <% end %>
+        <div class="review-form">
+
+        </div>
       </div>
     </div>
   </div>

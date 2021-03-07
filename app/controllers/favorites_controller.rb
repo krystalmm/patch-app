@@ -10,10 +10,4 @@ class FavoritesController < ApplicationController
     favorite = current_user.favorites.find_by(product_id: @product.id)
     favorite.destroy
   end
-
-  private
-
-  def set_product
-    @product = Product.find(params[:product_id])
-  end
 end
