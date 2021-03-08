@@ -3,13 +3,14 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require('jquery')
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+require('jquery')
 require('hbmenu.js')
 require('sign_up_password.js')
 require('address_autofill.js')
+require('jquery.jpostal.js')
 require('jquery.autoKana.js')
 require('autokana.js')
 require('jquery.validationEngine-ja.js')
@@ -18,8 +19,6 @@ require('form-validation.js')
 require('review-scroll.js')
 require('quantity-count.js')
 require('payjp-form.js')
-require('jquery.raty.js')
-
 
 
 
