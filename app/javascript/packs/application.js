@@ -18,6 +18,7 @@ require('form-validation.js')
 require('review-scroll.js')
 require('quantity-count.js')
 require('payjp-form.js')
+require('jquery.raty.js')
 
 
 
