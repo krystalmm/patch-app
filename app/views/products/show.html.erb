@@ -77,7 +77,7 @@
             <%= form_with(model: [@product, @comment], remote: true) do |f| %>
               <div class="form-group col-8 offset-2">
                 <%= f.label :comment, "投稿内容" %>
-                <%= f.text_area :comment, class: 'form-control', rows: '3', placeholder: '&#13;&#10;こちらに商品についてのレビューをお書きください&#13;&#10;投稿内容がなくても、評価のみの投稿もできます'.html_safe %>
+                <%= f.text_area :comment, class: 'form-control', rows: '3', placeholder: '&#13;&#10;こちらに商品についてのレビューをお書きください&#13;&#10;文字数は800文字以下でご記入ください'.html_safe %>
                 <%= f.submit "投稿する", class: 'btn btn-dark btn-raised col-4 offset-4 my-5' %>
               </div>
             <% end %>
