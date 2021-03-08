@@ -58,18 +58,31 @@
           </div>
         </div>
       </div>
-      <div id="review" class="my-5">
-        <h4 class="review-head my-5">
+      <div id="review">
+        <h4 class="review-head mb-5">
           <i class="far fa-comments"></i> レビュー
         </h4>
-        <% if @product.comments.exists? %>
-
-        <% else %>
-          <p class="text-center">この商品のレビューはまだありません。</p>
-        <% end %>
-        <div class="review-form">
-
+        <div class="comment-list">
+          <div class="comment-top">
+            <p id="comments-count" class="text-center mb-0">レビュー件数: <%= @product.comments.count %></p>
+          </div>
+          <div id="comment-content-<%= @product.id %>">
+            <%= render 'comments/comment-content', product: @product %>
+          </div>
         </div>
+        <% if logged_in? %>
+          <hr>
+          <div class="review-form my-5">
+            <h5 class="review-form-head text-center mb-5">レビューを投稿する</h5>
+            <%= form_with(model: [@product, @comment], remote: true) do |f| %>
+              <div class="form-group col-8 offset-2">
+                <%= f.label :comment, "投稿内容" %>
+                <%= f.text_area :comment, class: 'form-control', rows: '3', placeholder: '&#13;&#10;こちらに商品についてのレビューをお書きください&#13;&#10;投稿内容がなくても、評価のみの投稿もできます'.html_safe %>
+                <%= f.submit "投稿する", class: 'btn btn-dark btn-raised col-4 offset-4 my-5' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

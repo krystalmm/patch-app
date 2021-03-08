@@ -743,6 +743,46 @@ main {
       }
     }
   }
+
+  #review {
+    margin-top: 100px;
+    width: 919px;
+
+    .comment-top {
+      width: 500px;
+      margin: 0 auto;
+      border: 1px solid #000;
+      padding: 15px;
+    }
+
+    .comment-content {
+      background-color: #f0f0f0;
+      padding: 10px 30px;
+      margin: 80px auto;
+      width: 582px;
+
+      .comment-wrap {
+        border-top: 1px solid #ccc;
+
+        &:nth-child(1) {
+          border-top: none;
+        }
+
+        .comment-info {
+          margin-right: 30px;
+          width: 250px;
+
+          .comment-user {
+            margin-top: 20px;
+          }
+        }
+
+        .comment-body {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
 }
 
 
