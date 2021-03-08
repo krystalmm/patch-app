@@ -4,7 +4,13 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.product_id = @product.id
-    @comment.save
+    respond_to do |format|
+      if @comment.save
+        format.js
+      else
+        format.js { render :errors }
+      end
+    end
   end
 
   def destroy

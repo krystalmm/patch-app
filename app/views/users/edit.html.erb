@@ -8,7 +8,7 @@
 <div class="container pt-4 mb-5">
   <div class="row">
     <div class="edit-form col-lg-6 offset-lg-3 col-8 offset-2">
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', obj: @user %>
       <p class="form-p mb-0">※<span class="essential-icon ml-2">必須</span> は入力必須項目です。</p>
       <p class="pt-1">※ 住所をご登録されますと、ご注文の際に入力する手間が省けます。</p>
       <%= form_with model: @user, id: 'edit-form', local: true do |f| %>

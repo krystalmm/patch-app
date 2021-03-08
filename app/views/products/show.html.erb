@@ -74,6 +74,8 @@
           <hr>
           <div class="review-form my-5">
             <h5 class="review-form-head text-center mb-5">レビューを投稿する</h5>
+            <div id="error_explanation">
+            </div>
             <%= form_with(model: [@product, @comment], remote: true) do |f| %>
               <div class="form-group col-8 offset-2">
                 <%= f.label :comment, "投稿内容" %>

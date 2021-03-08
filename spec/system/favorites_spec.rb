@@ -19,7 +19,9 @@ RSpec.describe 'Favorites', type: :system, js: true do
     visit product_path(product)
     find('.favorites-button').click
     find('.favorites-button').click
-    expect(page).to have_css '.far'
-    expect(page).to have_css "div#favorite-button-#{product.id}", text: '0'
+    aggregate_failures do
+      expect(page).to have_css '.far'
+      expect(page).to have_css "div#favorite-button-#{product.id}", text: '0'
+    end
   end
 end
