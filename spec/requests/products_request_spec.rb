@@ -8,6 +8,16 @@ RSpec.describe 'Products', type: :request do
       get products_path
       expect(response).to have_http_status(:success)
     end
+
+    it 'responds successfully when params[:option] hp' do
+      get '/products/?option=hp'
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'responds successfully when params[:option] cp' do
+      get '/products/?option=cp'
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe '#show' do

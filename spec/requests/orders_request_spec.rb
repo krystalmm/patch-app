@@ -75,4 +75,20 @@ RSpec.describe 'Orders', type: :request do
       expect(response).to redirect_to login_url
     end
   end
+
+  describe '#show' do
+    let(:product) { FactoryBot.create(:product) }
+    let(:order) { FactoryBot.create(:order, product_id: product.id) }
+
+    it 'responds successfully when user logged in' do
+      log_in_as(user)
+      get order_path(order)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'redirects login page when user not logged in' do
+      get order_path(order)
+      expect(response).to redirect_to login_url
+    end
+  end
 end
