@@ -70,6 +70,11 @@ RSpec.describe 'Users', type: :request do
       get user_path(user)
       expect(response).to redirect_to login_url
     end
+
+    it 'redirects favorites when not logged in' do
+      get favorites_users_path
+      expect(response).to redirect_to login_url
+    end
   end
 
   describe 'before_action: :correct_user' do

@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  before_action :logged_in_user
   before_action :set_card, only: [:new, :show, :destroy]
   before_action :set_payjp_secret_key, except: :new
   before_action :set_cart

@@ -31,4 +31,28 @@ RSpec.describe 'Cards', type: :request do
       expect(response).to redirect_to card_path(user.id)
     end
   end
+
+  describe 'before_action: :logged_in_user' do
+    let(:card) { FactoryBot.create(:card) }
+
+    it 'redirects new when not logged in' do
+      get new_card_path
+      expect(response).to redirect_to login_url
+    end
+
+    it 'redirects create when not logged in' do
+      post cards_path, params: { payjpToken: 'tok_xxxxxxxx' }
+      expect(response).to redirect_to login_url
+    end
+
+    it 'redirects show when not logged in' do
+      get card_path(card)
+      expect(response).to redirect_to login_url
+    end
+
+    it 'redirects destroy when not logged in' do
+      delete card_path(card)
+      expect(response).to redirect_to login_url
+    end
+  end
 end

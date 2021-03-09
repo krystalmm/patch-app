@@ -3,10 +3,13 @@ require 'rails_helper'
 RSpec.describe 'UsersDismissed', type: :system do
   let(:user) { FactoryBot.create(:user) }
 
-  it 'succeeds dismissed with correct_user' do
+  before do
     login_as(user)
     click_on '退会をご希望の方はこちらから'
     click_link '退会する'
+  end
+
+  it 'succeeds dismissed with correct_user' do
     aggregate_failures do
       expect(current_path).to eq root_path
       expect(has_css?('.alert-primary')).to be_truthy
@@ -15,9 +18,6 @@ RSpec.describe 'UsersDismissed', type: :system do
   end
 
   it 'fails login with dismissed user' do
-    login_as(user)
-    click_on '退会をご希望の方はこちらから'
-    click_link '退会する'
     click_link 'ログイン', match: :first
     fill_in 'login-email', with: user.email
     fill_in 'login-password', with: user.password

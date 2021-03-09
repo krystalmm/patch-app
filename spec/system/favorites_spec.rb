@@ -4,9 +4,12 @@ RSpec.describe 'Favorites', type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
   let(:product) { FactoryBot.create(:product) }
 
-  it 'succeeds create favorites when logged in' do
+  before do
     login_as(user)
     visit product_path(product)
+  end
+
+  it 'succeeds create favorites when logged in' do
     find('.favorites-button').click
     aggregate_failures do
       expect(page).to have_css '.fas'
@@ -15,8 +18,6 @@ RSpec.describe 'Favorites', type: :system, js: true do
   end
 
   it 'succeeds create and destroy favorites when logged in' do
-    login_as(user)
-    visit product_path(product)
     find('.favorites-button').click
     find('.favorites-button').click
     aggregate_failures do

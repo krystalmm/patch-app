@@ -5,8 +5,12 @@ RSpec.describe 'Comment', type: :system, js: true do
   let(:product) { FactoryBot.create(:product) }
   let(:comment) { FactoryBot.create(:comment) }
 
-  it 'succeeds create comments with valid comment when logged in' do
+  before do
     login_as(user)
+    visit product_path(product)
+  end
+
+  it 'succeeds create comments with valid comment' do
     visit product_path(product)
     fill_in 'comment_comment', with: 'good!!'
     click_on '投稿する'
@@ -14,9 +18,7 @@ RSpec.describe 'Comment', type: :system, js: true do
     expect(page).to have_content 'レビュー件数: 1'
   end
 
-  it 'fails create comments with invalid comment when logged in' do
-    login_as(user)
-    visit product_path(product)
+  it 'fails create comments with invalid comment' do
     fill_in 'comment_comment', with: ' '
     click_on '投稿する'
     expect(has_css?('.alert-danger')).to be_truthy
@@ -25,8 +27,6 @@ RSpec.describe 'Comment', type: :system, js: true do
   end
 
   it 'succeeds destroy comments when correct user' do
-    login_as(user)
-    visit product_path(product)
     fill_in 'comment_comment', with: 'good!!'
     click_on '投稿する'
     click_on 'レビューを削除する'
@@ -36,8 +36,6 @@ RSpec.describe 'Comment', type: :system, js: true do
 
   it 'does not destroy comments when not correct user' do
     other_user = FactoryBot.create(:user)
-    login_as(user)
-    visit product_path(product)
     fill_in 'comment_comment', with: 'good!!'
     click_on '投稿する'
     click_on 'マイページ'

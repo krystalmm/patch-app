@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update, :favorites]
+  before_action :correct_user, only: [:show, :edit, :update, :favorites]
 
   def new
     @user = User.new
@@ -33,6 +33,9 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def favorites
   end
 
   private
