@@ -613,6 +613,7 @@ main {
 .item-detail {
   .item-detail-main {
     width: 919px;
+    display: flex;
 
     .item-info {
       .item-name {
@@ -1678,6 +1679,106 @@ footer {
     }
   }
 
+  // 購入履歴ページ（/orders）
+
+  .ordered {
+    .ordered-head {
+      width: 150px;
+    }
+
+    .ordered-list {
+      margin: 0 auto;
+      width: 90%;
+
+      .ordered-list-item {
+        padding: 10px 20px;
+        width: 100%;
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  // お気に入りページ（users/favorites）
+
+  .favorites-show {
+    .favorites-show-head {
+      width: 200px;
+    }
+
+    .favorites-list {
+      width: 100%;
+
+      .favorites-list-item {
+        .item-img {
+          margin-left: 0;
+
+          a {
+            img {
+              width: 180px;
+            }
+          }
+        }
+
+        .item-price {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+
+  // 製品一覧ページ(/products)
+
+  .all-item {
+
+    .item-wrap {
+      margin: 0 auto;
+      width: 100%;
+
+      .item-box {
+        a {
+          img {
+            width: 180px;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  // 製品詳細ページ（products/:id）
+
+  .item-detail {
+    .item-detail-main {
+      width: 100%;
+      margin-top: 20px;
+
+      .item-img {
+        img {
+          width: 250px;
+          margin-top: 20px;
+        }
+      }
+
+      .item-info {
+        .heart-and-cart {
+          .cartplus {
+            width: 200px;
+
+            button {
+              width: 200px;
+            }
+          }
+        }
+      }
+    }
+
+    #review {
+      width: 100%;
+    }
+  }
+
 
   // footer
 
@@ -1915,6 +2016,117 @@ footer {
       .uncreated-user-p {
         margin-top: 30px;
         margin-bottom: 40px;
+      }
+    }
+  }
+
+
+  // お気に入りページ（users/favorites）
+
+  .favorites-show {
+    .favorites-show-head {
+      width: 150px;
+    }
+
+    .favorites-list {
+      width: 100%;
+
+      .favorites-list-item {
+        .item-img {
+          margin-left: 0;
+
+          a {
+            img {
+              width: 100px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // 製品一覧ページ(/products)
+
+  .all-item {
+    .all-item-head {
+      width: 150px;
+    }
+
+    .item-count {
+      margin: auto 20px;
+    }
+
+    .item-wrap {
+      width: 100%;
+      justify-content: center;
+
+      .item-box {
+        width: 120px;
+        a {
+          img {
+            width: 120px;
+          }
+        }
+      }
+    }
+  }
+
+
+  // 製品詳細ページ（products/:id）
+
+  .item-detail {
+    .item-detail-main {
+      width: 100%;
+      display: block;
+
+      .item-img {
+        img {
+          width: 200px;
+          margin-top: 20px;
+          display: block;
+          margin: auto;
+        }
+      }
+
+      .item-info {
+        margin-right: 30px;
+
+        .quantity {
+          justify-content: center;
+
+          .button {
+            padding: 10px 20px 0px 20px;
+          }
+        }
+
+        .heart-and-cart {
+          .favorites-icon {
+            a {
+              padding: 13px 20px 2px 20px;
+            }
+          }
+
+          .cartplus {
+            width: 160px;
+
+            button {
+              width: 160px;
+            }
+          }
+        }
+      }
+    }
+
+    #review {
+      width: 100%;
+
+      .comment-top {
+        width: 60%;
+      }
+
+      .comment-content {
+        width: 80%;
       }
     }
   }

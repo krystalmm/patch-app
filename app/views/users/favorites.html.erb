@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="favorites-show col-8 offset-2 mb-5">
+    <div class="favorites-show col-10 offset-1 col-md-8 offset-md-2 mb-5">
       <h3 class="favorites-show-head">お気に入り</h3>
       <ul class="favorites-list mx-auto mb-5 pb-3">
         <% current_user.like_products.each do |product| %>
@@ -24,6 +24,12 @@
           </li>
         <% end %>
       </ul>
+      <% unless current_user.like_products.exists? %>
+        <p class="text-center mt-5">
+          お気に入りに登録した商品はありません。
+        </p>
+        <%= link_to "製品一覧を見る", products_path, class: 'btn btn-raised btn-lg btn-dark my-5 col-6 offset-3' %>
+      <% end %>
     </div>
   </div>
 </div>

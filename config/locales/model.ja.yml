@@ -4,6 +4,13 @@ ja:
       user: ユーザー
       admin_user: 管理者ユーザー
       product: 商品
+      card: カード
+      cart: カート
+      comment: レビュー
+      favorite: お気に入り
+      line_item: カートの商品
+      order_detail: 注文詳細
+      order: 注文
     attributes:
       user:
         id: ID
@@ -13,10 +20,20 @@ ja:
         password_confirmation: パスワード（確認）
         name_kana: フリガナ
         postcode: 郵便番号
-        prefecture_name: 都道府県
+        prefecture_code: 都道府県番号
         address_city: 市区町村
         address_street: 町名・番地
         address_building: マンション名・階数・部屋番号
+        password_digest: パスワードダイジェスト
+        remember_digest: リメンバーダイジェスト
+        is_valid: 有効なユーザー（未退会）
+        reset_digest: パスワード再設定ダイジェスト
+        reset_sent_at: パスワード再設定メールの送信時刻
+        card: カード
+        orders: 注文
+        favorites: お気に入り
+        like_products: お気に入り商品
+        comments: レビュー
       product:
         id: ID
         name: 商品名
@@ -24,6 +41,54 @@ ja:
         description: 商品説明
         product_image: 商品画像
         stock_quantity: 在庫数
+      admin_user:
+        id: ID
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+      card:
+        id: ID
+        customer_id: 顧客ID
+        card_id: カードID
+        user: ユーザー
+        order: 注文
+      cart:
+        id: ID
+        line_items: カートの商品
+      comment:
+        id: ID
+        user: ユーザー
+        product: 商品
+        comment: レビュー内容
+      favorite:
+        id: ID
+        user: ユーザー
+        product: 商品
+      line_item:
+        id: ID
+        product: 商品
+        cart: カート
+        quantity: 数量
+      order_detail:
+        id: ID
+        product: 商品
+        order: 注文
+        quantity: 数量
+      order:
+        id: ID
+        user: ユーザー
+        card: カード
+        product_id: 商品ID
+        quantity: 数量
+        status: 注文状況
+        price: 注文金額
+        postcode: 郵便番号
+        prefecture_code: 都道府県番号
+        address_city: 市区町村
+        address_street: 町名・番地
+        address_building: マンション名・階数・部屋番号
+        order_details: 注文詳細
+        products: 商品
   activemodel:
     attributes:
       session:
