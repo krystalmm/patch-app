@@ -2,7 +2,9 @@ class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: [:unsubscribe, :withdraw]
   before_action :correct_user, only: [:unsubscribe, :withdraw]
 
-  def home; end
+  def home
+    @products = Product.order(:id).limit(4)
+  end
 
   def support; end
 

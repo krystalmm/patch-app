@@ -52,13 +52,16 @@
   </div>
 
   <div class="products">
-    <h3 class="products-head">PRODUCT <br> おすすめの製品</h3>
-    <div class="products-list">
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
+    <div class="products-wrap col-12 col-md-10 offset-md-1">
+      <div class="products-head-wrap d-flex justify-content-between">
+        <h4 class="products-head">PRODUCT <br> おすすめの製品</h4>
+        <%= link_to products_path do %>
+          <h4 class="products-more">MORE 　→ <br> 製品一覧へ</h4>
+        <% end %>
+      </div>
+      <ul class="products-list">
+        <%= render 'shared/products-list', products: @products %>
+      </ul>
     </div>
-    <h3 class="products-more">MORE 　→ <br> 製品一覧へ</h3>
   </div>
 </main>

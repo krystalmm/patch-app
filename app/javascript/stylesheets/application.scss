@@ -221,6 +221,58 @@ main {
       }
     }
   }
+
+  .products {
+    margin-top: 80px;
+    margin-bottom: 130px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+
+    .products-wrap {
+      margin-top: 40px;
+
+      .products-head-wrap {
+        a {
+          display: block;
+
+          &:hover, &:active {
+            opacity: 0.6;
+            transition: opacity .3s ease;
+          }
+        }
+      }
+
+      .products-list {
+        width: 1100px;
+        margin: 0 auto;
+        margin-top: 70px;
+        display: flex;
+        justify-content: center;
+
+        .item-box {
+          margin-right: 40px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          a {
+            display: block;
+
+            &:hover, &:active {
+              opacity: 0.8;
+              transition: opacity .3s ease;
+            }
+          }
+
+          .item-bottom {
+            justify-content: flex-end;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
 }
 
 
@@ -1645,6 +1697,30 @@ footer {
     height: 57.28px;
   }
 
+
+
+  // home
+
+  main {
+    .products {
+      .products-wrap {
+        .products-list {
+          width: 100%;
+          .item-box {
+            width: 135px;
+            margin-right: 20px;
+
+            a img {
+              width: 130px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
   // ログイン画面(sessions/new, login)
 
   .login-wrap {
@@ -1973,12 +2049,10 @@ footer {
   }
 
 
-  // ホームページ
+  // home
 
   main {
-
     .main-content-wrap {
-
       .main-content {
         padding-top: 50px;
 
@@ -1987,7 +2061,37 @@ footer {
         }
       }
     }
+
+    .products {
+      margin-bottom: 50px;
+
+      .products-wrap {
+        .products-list {
+          margin-top: 40px;
+          display: flex;
+          flex-wrap: wrap;
+
+          .item-box {
+            width: 100px;
+            margin-right: 10px;
+
+            &:nth-child(3) {
+              margin-top: 20px;
+            }
+
+            &:nth-child(4) {
+              margin-top: 20px;
+            }
+
+            a img {
+              width: 90px;
+            }
+          }
+        }
+      }
+    }
   }
+
 
 
   // 会員登録ページ(users/new, signup)
