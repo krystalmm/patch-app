@@ -970,7 +970,8 @@ main {
 
 .card-new {
   .card-new-head {
-    text-align: center;
+    @include base-head;
+    width: 400px;
   }
 
   .card-form {
@@ -1536,7 +1537,7 @@ footer {
           }
         }
 
-        /*　ハンバーガーボタン　*/
+        /* ハンバーガーボタン */
         .hamburger {
           display : block;
           position: fixed;
@@ -1691,7 +1692,7 @@ footer {
       width: 90%;
 
       .ordered-list-item {
-        padding: 10px 20px;
+        padding: 10px 10px;
         width: 100%;
         margin-bottom: 50px;
       }
@@ -1778,6 +1779,73 @@ footer {
       width: 100%;
     }
   }
+
+
+  // 購入手続きページ（/orders/new）
+
+  .order {
+    .order-items {
+      .order-list {
+        border-bottom: 1px solid #ccc;
+
+        .order-list-item {
+          width: 100%;
+        }
+      }
+    }
+
+    .total-price {
+      width: 100%;
+    }
+
+    .order-user-info {
+      .form-group {
+        width: 100%;
+      }
+    }
+
+    .order-paying {
+      .order-paying-content {
+        width: 100%;
+
+        .card-info-box {
+          width: 45%;
+        }
+      }
+    }
+
+    .order-submit {
+      width: 100%;
+    }
+
+    .order-back-cart {
+      width: 100%;
+    }
+  }
+
+
+  // 注文詳細ページ（orders/:id）
+
+  .ordered-detail {
+    .ordered-detail-head {
+      width: 200px;
+    }
+
+    .ordered-detail-info {
+      width: 100%;
+    }
+
+    .ordered-detail-item {
+      width: 100%;
+
+      .ordered-detail-list .ordered-detail-list-item {
+        .item-info .subtotal {
+          width: 100%;
+        }
+      }
+    }
+  }
+
 
 
   // footer
@@ -2046,6 +2114,24 @@ footer {
   }
 
 
+  // パスワードリセットページ（/password_resets/new）
+
+  .password-reset {
+    .password-reset-head {
+      width: 180px;
+    }
+  }
+
+
+  // パスワードリセット再設定ページ（password_resets#edit）
+
+  .password-reset-edit {
+    .password-reset-edit-head {
+      width: 180px;
+    }
+  }
+
+
   // 製品一覧ページ(/products)
 
   .all-item {
@@ -2108,7 +2194,7 @@ footer {
           }
 
           .cartplus {
-            width: 160px;
+            width: 200px;
 
             button {
               width: 160px;
@@ -2127,6 +2213,206 @@ footer {
 
       .comment-content {
         width: 80%;
+      }
+    }
+  }
+
+
+
+  // ショッピングカートページ（/carts/:id）
+
+  .cart-detail {
+    .cart-detail-head {
+      width: 180px;
+    }
+
+    .cart-list {
+      width: 100%;
+
+      .cart-list-item {
+        position: relative;
+        padding: 10px 0 25px 0;
+
+        .list-flex {
+          margin-bottom: 10px;
+        }
+
+        .cart-item-img {
+          margin-right: 10px;
+          margin-left: 10px;
+
+          a {
+            img {
+              width: 60px;
+            }
+          }
+        }
+
+        .cart-item-info {
+          position: relative;
+          width: 90px;
+
+          .name-and-price {
+            margin-bottom: 10px;
+            padding: 0 0 10px 0;
+          }
+
+          .item-delete-button {
+            width: 80px;
+          }
+        }
+
+        .quantity-and-price {
+          margin-right: 10px;
+
+          .quantity-reload {
+            .quantity {
+              input {
+                width: 20px;
+              }
+            }
+
+            .reload {
+              margin-top: 10px;
+
+              button {
+                width: 45px;
+                padding: 3px;
+
+                i {
+                  padding-right: 3px;
+                }
+              }
+            }
+          }
+        }
+
+        .subtotal {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .total-price {
+      margin-top: 10px;
+      width: 100%;
+
+      p {
+        margin-right: -5px;
+        text-align: right;
+      }
+    }
+
+    .cart-links {
+      a.keep-shopping {
+        width: 100px;
+        margin-right: 0px;
+      }
+
+      a.to-order {
+        width: 120px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+
+  // クレジットカード入力ページ
+
+  .card-new {
+    .card-new-head {
+      width: 220px;
+    }
+  }
+
+
+  // クレジットカード情報ページ（cards/:id）
+
+  .card-info {
+    .card-info-content {
+      .card-info-head {
+        width: 180px;
+      }
+
+      .card-info-content-box {
+        width: 180px;
+      }
+    }
+  }
+
+
+  // 購入手続きページ（/orders/new）
+
+  .order {
+    .order-head {
+      width: 200px;
+    }
+    .order-items {
+      .order-list {
+        .order-list-item {
+          .order-item-img {
+            margin-right: 10px;
+            margin-left: 10px;
+
+            a img {
+              width: 80px;
+            }
+          }
+        }
+      }
+    }
+
+    .order-paying {
+      .order-paying-content {
+
+        .card-info-box {
+          width: 60%;
+          padding: 5px;
+
+          .card-number {
+            img {
+              width: 20px;
+              height: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // 注文詳細ページ（orders/:id）
+
+  .ordered-detail {
+    .ordered-detail-head {
+      width: 150px;
+    }
+
+    .ordered-detail-item {
+      .ordered-detail-list {
+        .ordered-detail-list-item {
+          .item-img a {
+            img {
+              width: 80px;
+            }
+          }
+
+          .item-info {
+            margin-left: 10px;
+            margin-top: 0;
+
+            .ordered-quantity {
+              margin-bottom: 20px;
+            }
+          }
+        }
+      }
+
+      .ordered-total-price .total-price {
+        margin-left: 40px;
       }
     }
   }

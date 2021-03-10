@@ -4,9 +4,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="card-new col-8 offset-2 col-lg-6 offset-lg-3">
+    <div class="card-new col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
       <h3 class="card-new-head my-5">クレジットカード情報入力</h3>
-      <div class="card-form ml-5">
+      <div class="card-form">
         <%= form_with model: @card, id: 'card-form', url: cards_path, method: :post do |f| %>
           <div class="card-form-number">
             <strong><%= f.label :カード番号, class: 'card-form-number-title' %></strong>
