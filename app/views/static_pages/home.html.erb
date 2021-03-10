@@ -6,9 +6,9 @@
         <%= image_tag asset_path("LifeWave-main.png"), alt: "main-image-LifeWave", class: "d-block w-100" %>
       </div>
       <div class="carousel-item">
-        <a href="#">
+        <%= link_to product_path(4) do %>
           <%= image_tag asset_path("LifeWave-main-x39.png"), alt: "main-image-x39", class: "d-block w-100" %>
-        </a>
+        <% end %>
       </div>
     </div>
     <a href="#carouselExampleControls" class="carousel-control-prev" role="button" data-slide="prev">
