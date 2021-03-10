@@ -37,6 +37,7 @@ ja:
       product:
         id: ID
         name: 商品名
+        name_kana: 商品名のカナ
         price: 商品価格
         description: 商品説明
         product_image: 商品画像
