@@ -1,0 +1,67 @@
+<% provide(:title, "ライフウェーブパッチ販売サイト | LifeWave") %>
+<main>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag asset_path("LifeWave-main.png"), alt: "main-image-LifeWave", class: "d-block w-100" %>
+      </div>
+      <div class="carousel-item">
+        <%= link_to product_path(4) do %>
+          <%= image_tag asset_path("LifeWave-main-x39.png"), alt: "main-image-x39", class: "d-block w-100" %>
+        <% end %>
+      </div>
+    </div>
+    <a href="#carouselExampleControls" class="carousel-control-prev" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a href="#carouselExampleControls" class="carousel-control-next" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <div class="main-content-wrap">
+    <div class="main-content col-8 offset-2">
+      <h3 class="main-head">What is LifeWave patch? <br> ライフウェーブパッチとは</h3>
+      <p>体のツボに貼るだけで <br> 特定の光周波数でツボや経絡を刺激し、<br> 針を使わないで <br> 鍼治療と同じ効果を得ることができる<br>パッチ（光線療法器具）です。</p>
+      <div class="main-content-list-wrap">
+        <ul class="main-content-list row">
+          <li class="main-content-list-item col-lg">
+              <p>薬物を一切使わない<br>光線療法器具</p>
+          </li>
+          <li class="main-content-list-item col-lg">
+            <p>数秒〜１週間で<br>体感できる即効性</p>
+          </li>
+          <li class="main-content-list-item col-lg">
+            <p>１００カ国で<br>一般医療機器として認可</p>
+          </li>
+          <div class="w-100"></div>
+          <li class="main-content-list-item col-lg">
+            <p>全ての製品に<br>エビデンス取得済</p>
+          </li>
+          <li class="main-content-list-item col-lg">
+            <p>世界特許取得済</p>
+          </li>
+          <li class="main-content-list-item col-lg">
+            <p>ペットにも使える<br>安全性</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="products">
+    <div class="products-wrap col-12 col-md-10 offset-md-1">
+      <div class="products-head-wrap d-flex justify-content-between">
+        <h4 class="products-head">PRODUCT <br> おすすめの製品</h4>
+        <%= link_to products_path do %>
+          <h4 class="products-more">MORE 　→ <br> 製品一覧へ</h4>
+        <% end %>
+      </div>
+      <ul class="products-list">
+        <%= render 'shared/products-list', products: @products %>
+      </ul>
+    </div>
+  </div>
+</main>

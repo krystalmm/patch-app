@@ -1,0 +1,64 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+
+AllCops:
+  TargetRubyVersion: 2.7.2
+  Exclude: # 除外するファイルを指定
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'node_modules/node-sass/src/libsass/contrib/libsass.spec'
+
+Rails:
+  Enabled: true
+
+AsciiComments: #日本語のコメントを許可
+  Enabled: false
+
+Documentation: # クラスにコメントを記載しなくてもいい
+  Enabled: false
+
+ClassAndModuleChildren: # モジュール名::クラス名の定義を許可する
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+# 自分で定義したグローバル変数を警告対象外にする
+GlobalVars:
+  AllowedVariables: [$CFLAGS, $LIBS]
+
+# RSpecのコードは長くても警告対象外にする
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+# && の書き方を警告対象外にする
+Style/SafeNavigation:
+  Enabled: false
+
+# ヘルパーメソッドでもインスタンス変数を使う
+Rails/HelperInstanceVariable:
+  Exclude:
+    - 'app/helpers/sessions_helper.rb'
+
+# update_attributeを警告対象外にする
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# ABC Sizeの最大点数
+Metrics/AbcSize:
+  Max: 24
+
+# メソッドの長さをmax12行にする
+Metrics/MethodLength:
+  Max: 16

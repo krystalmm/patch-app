@@ -1,0 +1,45 @@
+<% provide(:title, 'ログイン | ライフウェーブパッチ販売サイト') %>
+
+<%= render 'shared/backpage' %>
+
+<h3 class="login-head">ログイン</h3>
+
+<div class="login-wrap col-lg-6 offset-lg-3 col-8 offset-2">
+  <div class="created-user">
+    <h4 class="created-user-head">会員登録がお済みのお客様</h4>
+    <p class="created-user-p">メールアドレスとパスワードを入力してログインしてください。</p>
+  </div>
+  <%= form_with scope: :session, url: login_path, id: 'login-form', local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, class: 'form-control validate[required] validate[custom[email]]', id: 'login-email', placeholder: ' 例 : life@wave.co.jp', autocomplete: 'email' %>
+      <small class="form-text text-muted">
+        ※ ご登録いただいているメールアドレスを入力してください。
+      </small>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, class: 'form-control validate[required] validate[minSize[8]]', id: 'login-password', placeholder: ' ご登録いただいているパスワードを入力してください' %>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="login-password-check" value="">
+        <label class="form-check-label" for="login-password-check">パスワードを表示する</label>
+      </div>
+    </div>
+    <div class="form-check remember-me-checkbox">
+      <%= f.check_box :remember_me, class: 'form-check-input', id: 'remember-me-check' %>
+      <%= f.label :remember_me, class: 'form-check-label' do %>ログイン情報を保存する <% end %>
+    </div>
+    <div class="login-submit">
+      <%= f.submit 'ログインする', class: 'btn btn-raised btn-lg btn-dark col-6 offset-3', id: 'form-login-submit' %>
+    </div>
+    <div class="forgot-password">
+      <%= link_to "パスワードをお忘れの方はこちらをクリック", new_password_reset_path, class: 'border-bottom border-dark' %>
+    </div>
+  <% end %>
+  <div class="uncreated-user">
+    <h4 class="uncreated-user-head">まだ会員登録されていないお客様</h4>
+    <p class="uncreated-user-p">初めてご利用のお客様は、こちらから会員登録を行ってください。</p>
+    <%= link_to '新規会員登録', signup_path, class: 'btn btn-raised btn-lg btn-dark col-6 offset-3' %>
+  </div>
+</div>
+

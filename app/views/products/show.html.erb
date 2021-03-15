@@ -1,0 +1,91 @@
+<% provide(:title, "#{@product.name} | ライフウェーブパッチ販売サイト") %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="item-detail col-md-10 offset-md-1">
+      <div class="item-detail-main">
+        <div class="item-img mt-4">
+          <%= image_tag @product.product_image_url %>
+        </div>
+        <div class="item-info ml-5 mt-4 pt-3">
+          <p class="item-name mt-3 mb-0"><strong><%= @product.name %></strong></p>
+          <p class="item-name-kana"><strong><%= @product.name_kana %></strong></p>
+          <p class="item-price">¥ <span class="price-big"> <%= change_consumption_tax(@product.price).to_s(:delimited) %> </span> (税込)</p>
+          <% if @product.stock_quantity > 3 %>
+            <p class="stock-quantity">在庫 : <span id="stock"><%= @product.stock_quantity %></span></p>
+          <% elsif @product.stock_quantity > 0 %>
+            <p class="stock-quantity">在庫 : 残り<span id="stock"><%= @product.stock_quantity %></span>つ</p>
+          <% else %>
+            <p class="stock-quantity">在庫 : なし<span id="stock"><% @product.stock_quantity %></span></p>
+          <% end %>
+          <div class="item-description">
+            <p>【<%= @product.description %>】</p>
+          </div>
+          <%= form_with model: @line_item, url: add_item_path, local: true do |f| %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <div class="quantity d-flex">
+              <div class="button" id="down">−</div>
+              <%= f.text_field :quantity, value: "0", class: "inputtext", id: "quantity-text" %>
+              <div class="button" id="up">+</div>
+            </div>
+            <% if logged_in? %>
+              <div class="heart-and-cart d-flex justify-content-between">
+                <div class="favorites-icon">
+                  <%= render 'favorites/favorites-button', product: @product %>
+                </div>
+                <div class="cartplus">
+                  <%= f.button type: "submit" do %>
+                    <i class="fas fa-cart-plus"></i> カートに入れる
+                  <% end %>
+                </div>
+              </div>
+            <% else %>
+              <div class="heart-and-cart">
+                <div class="cartplus" id="not-login-cartplus">
+                  <%= f.button type: "submit" do %>
+                    <i class="fas fa-cart-plus"></i> カートに入れる
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <div id="button-review">
+            <a href="#" class="button-to-review">
+              <i class="far fa-comments"></i> レビューを見る ↓
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="review">
+        <h4 class="review-head mb-5">
+          <i class="far fa-comments"></i> レビュー
+        </h4>
+        <div class="comment-list">
+          <div class="comment-top">
+            <p id="comments-count" class="text-center mb-0">レビュー件数: <%= @product.comments.count %></p>
+          </div>
+          <div id="comment-content-<%= @product.id %>">
+            <%= render 'comments/comment-content', product: @product %>
+          </div>
+        </div>
+        <% if logged_in? %>
+          <hr>
+          <div class="review-form my-5">
+            <h5 class="review-form-head text-center mb-5">レビューを投稿する</h5>
+            <div id="error_explanation">
+            </div>
+            <%= form_with(model: [@product, @comment], remote: true) do |f| %>
+              <div class="form-group col-8 offset-2">
+                <%= f.label :comment, "投稿内容" %>
+                <%= f.text_area :comment, class: 'form-control', rows: '3', placeholder: '&#13;&#10;こちらに商品についてのレビューをお書きください&#13;&#10;文字数は800文字以下でご記入ください'.html_safe %>
+                <%= f.submit "投稿する", class: 'btn btn-dark btn-raised col-4 offset-4 my-5' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

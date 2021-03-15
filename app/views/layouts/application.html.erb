@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%= yield(:title) %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <%= stylesheet_pack_tag 'validationEngine.jquery.css' %>
+    <%= javascript_pack_tag 'application' %>
+    <script src="https://kit.fontawesome.com/0e93b877b5.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+    <script src="https://js.pay.jp" type="text/javascript"></script>
+    <%= include_gon(init: true) %>
+  </head>
+
+  <body>
+    <header>
+      <div class="gnav">
+        <h1 class="gnav-logo">
+          <a href="/">
+            <%= image_tag asset_path("lifewave-logo.png"), alt: "LifeWave-Logo", class: "logo-img" %>
+          </a>
+        </h1>
+        <ul class="gnav-nav">
+          <% if admin_user? %>
+            <li class="gnav-nav-item">
+              <a href="/admin/">ADMIN <br> 管理者画面</a>
+            </li>
+          <% end %>
+          <% if logged_in? %>
+          <li class="gnav-nav-item">
+            <%= link_to products_path do %>
+              ALL ITEM <br> 製品一覧
+            <% end %>
+          </li>
+          <li class="gnav-nav-item">
+            <%= link_to cart_path(current_cart) do %>
+              <i class="fas fa-shopping-cart"></i><br> カートを見る
+            <% end %>
+          </li>
+          <li class="gnav-nav-item">
+            <%= link_to current_user do %>
+              <i class="fas fa-user"></i> <br> マイページ
+            <% end %>
+          </li>
+          <% else %>
+          <li class="gnav-nav-item">
+            <%= link_to products_path do %>
+              ALL ITEM <br> 製品一覧
+            <% end %>
+          </li>
+          <li class="gnav-nav-item">
+            <%= link_to cart_path(current_cart) do %>
+              <i class="fas fa-shopping-cart"></i><br> カートを見る
+            <% end %>
+          </li>
+          <li class="gnav-nav-item">
+            <%= link_to login_path do %>
+              LOGIN <br> ログイン
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+        <div class="media-s">
+          <div class="cart-icon">
+            <%= link_to cart_path(current_cart) do %>
+              <i class="fas fa-shopping-cart"></i>
+            <% end %>
+          </div>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <nav class="globalMenuSp">
+            <ul>
+              <% if logged_in? %>
+                <li>
+                  <%= link_to current_user do %>
+                    <i class="fas fa-user"></i> <br> マイページ
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to products_path do %>
+                    ALL ITEM <br> 製品一覧
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to login_path do %>
+                    LOGIN <br> ログイン
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to products_path do %>
+                    ALL ITEM <br> 製品一覧
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="header-height"></div>
+
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %><%= ' flash-long-sentence' if message.include?('<br>') %> col-10 offset-1 col-lg-8 offset-lg-2">
+        <%= message.html_safe %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+    <footer>
+      <div class="row">
+        <div class="footer-box">
+          <div class="footer-category col-lg-9">
+            <h2 class="footer-head">CATEGORY <br> 種類</h2>
+            <div class="category-box">
+              <ul class="category-list-left">
+                <li class="footer-category-item">
+                  <%= link_to "全身・局所的な痛みに", product_path(2) %>
+                </li>
+                <li class="footer-category-item">
+                  <%= link_to "スタミナ不足の方に", product_path(5) %>
+                </li>
+                <li class="footer-category-item">
+                  <%= link_to "良質な睡眠に", product_path(3) %>
+                </li>
+              </ul>
+              <ul class="category-list-center">
+                <li class="footer-category-item">
+                  <%= link_to "ストレスを緩和させたい方に", product_path(7) %>
+                </li>
+                <li class="footer-category-item">
+                  <%= link_to "身体的老化が気になる全ての方に", product_path(4) %>
+                </li>
+                <li class="footer-category-item">
+                  <%= link_to "体に溜まった毒素を取り除きたい方に", product_path(6) %>
+                </li>
+              </ul>
+              <ul class="category-list-right">
+                <li class="footer-category-item">
+                  <%= link_to "スポーツを楽しみたい方に", product_path(1) %>
+                </li>
+                <li class="footer-category-item">
+                  <%= link_to "お肌の老化でお悩みの方に", product_path(9) %>
+                </li>
+                <li class="footer-category-item">
+                  <%= link_to "体型が気になる方に", product_path(8) %>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-service col-lg-3">
+            <h2 class="footer-head">SERVICE <br> サービス</h2>
+            <ul>
+              <li class="footer-service-item"><a href="#">パッチについて</a></li>
+              <li class="footer-service-item"><a href="#">ご注文の流れ</a></li>
+              <li class="footer-service-item"><a href="#">お問い合わせ</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-end">
+        <p>LIFE WAVE</p>
+      </div>
+    </footer>
+  </body>
+</html>

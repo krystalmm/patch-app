@@ -1,0 +1,25 @@
+<% provide(:title, 'ご登録カード情報 | ライフウェーブパッチ販売サイト') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="card-info col-8 offset-2 col-lg-6 offset-lg-3">
+      <div class="card-info-content mx-auto">
+        <h3 class="card-info-head">ご登録カード情報</h3>
+        <div class="card-info-content-box">
+          <div class="card-number">
+            <%= image_tag asset_path("cards/#{card_src(@card_brand)}"), width: 50, height: 30, class: 'mr-3' %>
+            <%= " **** **** ****" + @card_info.last4 %>
+          </div>
+          <div class="card-exp-info mt-3">
+            <%= "有効期限 : " + @exp_month + "/" + @exp_year %>
+          </div>
+        </div>
+      </div>
+      <div class="card-delete my-5 pb-4">
+        <%= link_to "削除する", card_path(@card.id), method: :delete, class: "btn btn-raised btn-dark col-lg-8 offset-lg-2 col-10 offset-1" %>
+      </div>
+    </div>
+  </div>
+</div>

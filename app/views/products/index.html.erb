@@ -1,0 +1,28 @@
+<% provide(:title, '製品一覧 | ライフウェーブパッチ販売サイト') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="all-item col-12 col-lg-10 offset-lg-1">
+      <h3 class="all-item-head">製品一覧</h3>
+      <div class="item-count row">
+        <p><%= all_products_count %> 件 :</p>
+        <div class="order-select dropdown">
+          <button class="btn dropdown-toggle" type="button" id="item-order-select-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            並べ替え
+          </button>
+          <div class="dropdown-menu" aria-labelledby="item-order-select-button">
+            <a class="dropdown-item" href="/products">おすすめ順</a>
+            <a class="dropdown-item" href="/products/?option=cp">価格（安い順）</a>
+            <a class="dropdown-item" href="/products/?option=hp">価格（高い順）</a>
+          </div>
+        </div>
+      </div>
+      <ul class="item-wrap d-flex flex-wrap mb-5 pb-3">
+        <%= render 'shared/products-list', products: @products %>
+      </ul>
+      <%= paginate @products %>
+    </div>
+  </div>
+</div>

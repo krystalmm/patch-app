@@ -1,0 +1,19 @@
+<div class="comment-content">
+  <% product.comments.each do |product_comment| %>
+    <div class="comment-wrap d-flex">
+      <div class="comment-info">
+        <p class="comment-user mb-0">投稿者: <%= product_comment.user.name %></p>
+      </div>
+      <p class="comment-body"><%= product_comment.comment %></p>
+    </div>
+    <p class="text-right mr-3">投稿日: <%= product_comment.created_at.strftime('%Y/%m/%d') %></p>
+    <% if product_comment.user == current_user %>
+      <div class="delete-comment">
+        <%= link_to "レビューを削除する", product_comment_path(product_comment.product, product_comment), method: :delete, remote: true, class: 'btn btn-sm btn-secondary col-4 offset-8' %>
+      </div>
+    <% end %>
+  <% end %>
+  <% unless product.comments.exists? %>
+    <p class="pt-3 text-center">この商品についてのレビューはまだありません。</p>
+  <% end %>
+</div>

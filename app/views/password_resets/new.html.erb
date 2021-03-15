@@ -1,0 +1,24 @@
+<% provide(:title, 'パスワードリセット | ライフウェーブパッチ販売サイト') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="password-reset col-lg-6 offset-lg-3 col-8 offset-2">
+      <h3 class="password-reset-head">パスワードリセット</h3>
+      <p class="password-reset-text mt-5">ご登録されているメールアドレスを入力してください。 <br> パスワードリセットのURLを送信致します。</p>
+      <div class="password-reset-form">
+        <%= form_with scope: :password_reset, url: password_resets_path, id: 'password-reset-form', local: true do |f| %>
+          <div class="form-group mt-5">
+            <%= f.label :email, 'メールアドレス' %>
+            <%= f.email_field :email, class: 'form-control validate[required] validate[custom[email]]', id: 'password-reset-email', placeholder: '例 : life@wave.co.jp', autocomplete: 'email' %>
+          </div>
+
+          <div class="password-reset-submit mb-5 pb-3">
+            <%= f.submit '送信する', class: 'btn btn-raised btn-dark btn-lg col-6 offset-3 mt-5 mb-5' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

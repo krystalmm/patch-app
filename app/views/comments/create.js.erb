@@ -1,0 +1,4 @@
+$('#comment-content-<%= @product.id %>').html('<%= j(render 'comments/comment-content', product: @product) %>');
+$('#comments-count').html('レビュー件数: <%= @product.comments.count %>');
+$('#error_explanation').empty();
+$('#comment_comment').val('');

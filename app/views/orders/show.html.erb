@@ -1,0 +1,75 @@
+<% provide(:title, 'ご注文詳細 | ライフウェーブパッチ販売サイト') %>
+
+<%= render 'shared/backpage' %>
+
+<div class="container">
+  <div class="row">
+    <div class="ordered-detail col-10 offset-1">
+      <h3 class="ordered-detail-head">ご注文詳細</h3>
+      <div class="ordered-detail-info mb-5">
+        <table class="table table-borderless">
+          <tbody>
+            <tr class="border-bottom">
+              <td>ご注文番号</td>
+              <td><%= @order.id %></td>
+            </tr>
+            <tr class="border-bottom">
+              <td>ご注文日時</td>
+              <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            </tr>
+            <tr class="border-bottom">
+              <td>ご注文者名</td>
+              <td>
+                <%= @order.user.name %>
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>お届け先</td>
+              <td>
+                〒 <%= @order.postcode %> <br>
+                <%= @order.prefecture_name %><%= @order.address_city %><%= @order.address_street %><%= @order.address_building %>
+              </td>
+            </tr>
+            <tr>
+              <td class="pb-0">ご注文進行状況</td>
+              <td class="pb-0"><%= @order.status %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ordered-detail-item">
+        <h4 class="ordered-detail-sub-head my-5">ご注文商品</h4>
+        <ul class="ordered-detail-list">
+          <% @order.products.each do |product| %>
+            <li class="ordered-detail-list-item d-flex">
+              <div class="item-img">
+                <%= link_to product_path(product) do %>
+                  <%= image_tag product.product_image_url(:thumb), width: 200 %>
+                <% end %>
+              </div>
+              <div class="item-info">
+                <p class="item-name mb-0"><strong><%= product.name%></strong></p>
+                <p class="item-name-kana mb-4"><strong><%= product.name_kana %></strong></p>
+                <p class="mb-3">¥ <%= change_consumption_tax(product.price).to_s(:delimited) %> (税込)</p>
+                <p class="ordered-quantity">数量 : <%= order_quantity(product) %></p>
+                <div class="subtotal d-flex">
+                  <p class="sub-head">小計<span class="sm">（税込）</span></p>
+                  <p class="subtotal-price"><strong>¥ <%= change_consumption_tax(subtotal(product.price, order_quantity(product))).to_s(:delimited) %></strong></p>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <div class="ordered-total-price d-flex mb-5 pb-5">
+          <p>決済金額</p>
+          <div class="total-price">
+            <p class="postage"><strong>送料無料</strong></p>
+            <p class="price">
+              合計<span class="sm">（税込）</span><span class="big"><strong>¥ <%= @order.price.to_s(:delimited) %></strong></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
