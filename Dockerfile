@@ -6,13 +6,20 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client chromium-driver
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
     apt-get install nodejs
-RUN apt-get install -y vim
+RUN apt-get install -y vim && \
+    apt-get install -y nginx
+
+ADD nginx.conf /etc/nginx/sites-available/app.conf
+RUN rm -f /etc/nginx/sites-enabled/default && \
+    ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
+
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 COPY . /myapp
+RUN mkdir /myapp/tmp/sockets
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
@@ -21,5 +28,6 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD bundle exec puma -d && \
+    /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
 

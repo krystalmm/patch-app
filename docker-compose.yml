@@ -8,9 +8,12 @@ services:
       - POSTGRES_PASSWORD=postgres
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/myapp
+      - ./public:/myapp/public
+      - ./tmp:/myapp/tmp
+      - ./log:/myapp/log
       - bundle_path:/bundle
     ports:
       - "3000:3000"
@@ -23,6 +26,14 @@ services:
     image: selenium/standalone-chrome-debug
     logging:
       driver: none
-
+  nginx:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - ./public:/myapp/public
+      - ./tmp:/myapp/tmp
+    depends_on:
+      - web
 volumes:
   bundle_path:
