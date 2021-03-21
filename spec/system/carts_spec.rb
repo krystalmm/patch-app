@@ -7,7 +7,7 @@ RSpec.describe 'Cart', type: :system, js: true do
 
   it 'succeeds add item in cart' do
     visit product_path(product)
-    fill_in 'quantity-text', with: "1"
+    fill_in 'quantity-text', with: '1'
     click_on 'カートに入れる'
     aggregate_failures do
       expect(page).to have_content 'ショッピングカート'
@@ -18,7 +18,7 @@ RSpec.describe 'Cart', type: :system, js: true do
 
   it 'succeeds update item quantity in cart' do
     visit product_path(product)
-    fill_in 'quantity-text', with: "1"
+    fill_in 'quantity-text', with: '1'
     click_on 'カートに入れる'
     fill_in 'quantity', with: 3
     click_on '更新'
@@ -27,7 +27,7 @@ RSpec.describe 'Cart', type: :system, js: true do
 
   it 'succeeds delete item' do
     visit product_path(product)
-    fill_in 'quantity-text', with: "1"
+    fill_in 'quantity-text', with: '1'
     click_on 'カートに入れる'
     click_on '削除する'
     expect(has_css?('.alert-info')).to be_truthy

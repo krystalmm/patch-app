@@ -9,14 +9,13 @@ class CartsController < ApplicationController
     @line_item = current_cart.line_items.build(product_id: params[:product_id]) if @line_item.blank?
 
     @line_item.quantity += params[:quantity].to_i
-    if params[:quantity].to_i > 0
+    if params[:quantity].to_i.positive?
       @line_item.save
       flash[:success] = 'カートに商品が追加されました'
-      redirect_to current_cart
     else
       flash[:danger] = '商品の在庫がありません <br> 再入荷するまで少々お待ち下さい'
-      redirect_to current_cart
     end
+    redirect_to current_cart
   end
 
   def update_item
