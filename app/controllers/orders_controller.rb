@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
       default_card_information = customer.cards.retrieve(@card.card_id)
       @card_info = customer.cards.retrieve(@card.card_id)
       @exp_month = default_card_information.exp_month.to_s
-      @exp_year = default_card_information.exp_year.to_s.slice(2,3)
+      @exp_year = default_card_information.exp_year.to_s.slice(2, 3)
       @card_brand = default_card_information.brand
     else
       @card = Card.new
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @purchaseByCard = Payjp::Charge.create(
+    @purchase_by_card = Payjp::Charge.create(
       amount: @cart.total_price,
       customer: @card.customer_id,
       currency: 'jpy',
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     )
     @order = Order.new(order_params)
     @order.add_items(current_cart)
-    if @purchaseByCard.save && @order.save!
+    if @purchase_by_card.save && @order.save!
       OrderDetail.create_items(@order, @cart.line_items)
       OrderMailer.send_when_order(current_user, @order, @order.products).deliver
       flash[:success] = '注文が完了致しました <br> マイページにて購入履歴の確認ができます'
@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(user_id: current_user.id).page(params[:page]).per(5).order(id: "desc")
+    @orders = Order.where(user_id: current_user.id).page(params[:page]).per(5).order(id: 'desc')
   end
 
   def show
@@ -61,7 +61,8 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :card_id, :quantity, :price, :postcode, :prefecture_code, :address_city, :address_street, :address_building)
+    params.require(:order).permit(:user_id, :card_id, :quantity, :price, :postcode, :prefecture_code, :address_city,
+                                  :address_street, :address_building)
   end
 
   def set_card

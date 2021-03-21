@@ -51,10 +51,10 @@
                 <p class="item-name mb-0"><strong><%= product.name%></strong></p>
                 <p class="item-name-kana mb-4"><strong><%= product.name_kana %></strong></p>
                 <p class="mb-3">¥ <%= change_consumption_tax(product.price).to_s(:delimited) %> (税込)</p>
-                <p class="ordered-quantity">数量 : <%= order_quantity(product) %></p>
+                <p class="ordered-quantity">数量 : <%= order_quantity(product, @order) %></p>
                 <div class="subtotal d-flex">
                   <p class="sub-head">小計<span class="sm">（税込）</span></p>
-                  <p class="subtotal-price"><strong>¥ <%= change_consumption_tax(subtotal(product.price, order_quantity(product))).to_s(:delimited) %></strong></p>
+                  <p class="subtotal-price"><strong>¥ <%= change_consumption_tax(subtotal(product.price, order_quantity(product, @order))).to_s(:delimited) %></strong></p>
                 </div>
               </div>
             </li>

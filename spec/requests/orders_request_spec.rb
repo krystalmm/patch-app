@@ -40,13 +40,12 @@ RSpec.describe 'Orders', type: :request do
       allow(payjp_customer).to receive(:default_card).and_return('car_xxxxxxxxxxxxx')
       allow(Payjp::Charge).to receive(:create).and_return(charge_mock)
       allow(charge_mock).to receive(:save).and_return(charge_mock)
-      allow(charge_mock).to receive(:price).and_return(10000)
+      allow(charge_mock).to receive(:price).and_return(10_000)
     end
 
     it 'succeeds create order when user logged in' do
       log_in_as(user)
       post cards_path, params: { payjpToken: 'tok_xxxxxxxx' }
-      card = FactoryBot.create(:card, user_id: user.id, customer_id: 'cus_xxxxxxxxxxxxx', card_id: 'car_xxxxxxxxxxxxx')
       aggregate_failures do
         expect do
           post orders_path, params: { order: order }

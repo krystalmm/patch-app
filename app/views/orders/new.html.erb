@@ -50,7 +50,7 @@
           <h4 class="order-paying-head order-sub-head">お支払い</h4>
           <div class="order-paying-content mt-3">
             <p>※ お支払いは、クレジットカードのみ可能です。</p>
-            <% if has_card %>
+            <% if card? %>
               <p class="card-info-text mt-4"><strong>ご登録済みのカード情報</strong></p>
               <div class="card-info-box">
                 <div class="card-number">
