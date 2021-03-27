@@ -1,19 +1,29 @@
-# README
+### スクールの課題と並行して作成したECサイトのアプリケーションです。
 
-* Ruby version
+## アプリケーション名
+### Patch App
 
-* System dependencies
+#### 概要
+母が愛用しているパッチを商品にして作成してみたECサイトです。
 
-* Configuration
+## アプリトップページ
+![patch-app-top](https://user-images.githubusercontent.com/71312197/112713978-708b5300-8f1b-11eb-831d-b289ab81dd4d.png)
 
-* Database creation
+## 開発環境
 
-* Database initialization
+* Docker
 
-* How to run the test suite
+### 使用言語
 
-* Services (job queues, cache servers, search engines, etc.)
+* HTML&CSS(SCSS)
+* Ruby
+* JavaScript
+* フレームワーク
+  * Ruby on Rails
+* テスト
+  * RSpec
 
-* Deployment instructions
+## インストール方法
 
-* ...
+
+
