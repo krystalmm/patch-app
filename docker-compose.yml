@@ -3,37 +3,43 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql
     environment:
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_PASSWORD: postgres
+
   web:
     build: .
     command: bundle exec puma -C config/puma.rb
     volumes:
       - .:/myapp
-      - ./public:/myapp/public
-      - ./tmp:/myapp/tmp
-      - ./log:/myapp/log
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/myapp/log
       - bundle_path:/bundle
-    ports:
-      - "3000:3000"
     depends_on:
       - db
     environment:
       - BUNDLE_PATH=/bundle
       - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
+
   selenium_chrome:
     image: selenium/standalone-chrome-debug
     logging:
       driver: none
+
   nginx:
     build: .
     ports:
       - 80:80
     volumes:
-      - ./public:/myapp/public
-      - ./tmp:/myapp/tmp
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
     depends_on:
       - web
+
 volumes:
   bundle_path:
+  db-data:
+  public-data:
+  tmp-data:
+  log-data:

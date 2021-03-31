@@ -13,13 +13,14 @@ ADD nginx.conf /etc/nginx/sites-available/app.conf
 RUN rm -f /etc/nginx/sites-enabled/default && \
     ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
 
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+RUN mkdir /patch-app
+WORKDIR /patch-app
+COPY Gemfile /patch-app/Gemfile
+COPY Gemfile.lock /patch-app/Gemfile.lock
 RUN bundle install
-COPY . /myapp
-RUN mkdir /myapp/tmp/sockets
+COPY . /patch-app
+RUN mkdir /patch-app/tmp/sockets
+RUN mkdir /patch-app/tmp/pids
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
