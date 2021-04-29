@@ -1,11 +1,11 @@
 version: '3'
 services:
-  # db:
-  #   image: postgres
-  #   volumes:
-  #     - db-data:/var/lib/postgresql
-  #   environment:
-  #     POSTGRES_PASSWORD: postgres
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql
+    environment:
+      POSTGRES_PASSWORD: postgres
 
   web:
     build: .
@@ -16,8 +16,8 @@ services:
       - tmp-data:/myapp/tmp
       - log-data:/myapp/log
       - bundle_path:/bundle
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
     environment:
       - BUNDLE_PATH=/bundle
       - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
@@ -39,7 +39,7 @@ services:
 
 volumes:
   bundle_path:
-  # db-data:
+  db-data:
   public-data:
   tmp-data:
   log-data:
