@@ -29,7 +29,3 @@
 * AWS
 * Docker/Docker-compose
 * RSpec
-
-## 機能一覧
-
-
