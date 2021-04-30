@@ -29,6 +29,3 @@
 * AWS
 * Docker/Docker-compose
 * RSpec
-
-
-

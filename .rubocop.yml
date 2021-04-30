@@ -57,8 +57,11 @@ Rails/SkipsModelValidations:
 
 # ABC Sizeの最大点数
 Metrics/AbcSize:
-  Max: 24
+  Max: 34
 
-# メソッドの長さをmax12行にする
+# メソッドの長さをmax20行にする
 Metrics/MethodLength:
-  Max: 16
+  Max: 20
+
+Rails/UniqueValidationWithoutIndex:
+  Enabled: false
