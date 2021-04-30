@@ -7,16 +7,14 @@ RUN apt-get update -qq && apt-get install -y nodejs postgresql-client chromium-d
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash - && \
     apt-get install nodejs
 RUN apt-get install -y vim
-
+ENV TZ Asia/Tokyo
 RUN mkdir /patch-app
 WORKDIR /patch-app
 COPY Gemfile /patch-app/Gemfile
 COPY Gemfile.lock /patch-app/Gemfile.lock
 RUN bundle install
 COPY . /patch-app
-RUN mkdir /patch-app/tmp/sockets
-RUN mkdir /patch-app/tmp/pids
-
-CMD bundle exec puma -d && \
-    /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
-
+# Add a script to be executed every time the container starts.
+COPY entrypoint.sh /usr/bin/
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]

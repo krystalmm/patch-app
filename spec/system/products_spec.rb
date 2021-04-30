@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Products', type: :system do
   describe '#show' do
     let(:product) { FactoryBot.create(:product) }
-<<<<<<< HEAD
     let(:stock1) { FactoryBot.create(:product, :stock1) }
     let(:stock0) { FactoryBot.create(:product, :stock0) }
 
